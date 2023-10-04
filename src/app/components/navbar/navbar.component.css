@@ -1,0 +1,25 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004080;
+    margin: 0;
+    color: #ffff;
+    font-family: 'Lora', serif;}
+.nav-logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.nav-profile{
+    display: flex;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
