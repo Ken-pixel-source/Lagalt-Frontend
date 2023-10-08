@@ -11,33 +11,7 @@
     margin: 0;
   }
   
-  /* Header/logo Title */
-  .header {
-    padding: 60px;
-    text-align: center;
-    background: #1abc9c;
-    color: white;
-  }
   
-  /* Style the top navigation bar */
-  .navbar {
-    display: flex;
-    background-color: #333;
-  }
-  
-  /* Style the navigation bar links */
-  .navbar a {
-    color: white;
-    padding: 14px 20px;
-    text-decoration: none;
-    text-align: center;
-  }
-  
-  /* Change color on hover */
-  .navbar a:hover {
-    background-color: #ddd;
-    color: black;
-  }
   
   /* Column container */
   .row {  
@@ -51,6 +25,7 @@
     flex: 30%;
     background-color: #4CAF50;
     padding: 20px;
+    border-radius: 10px;
   }
   
   /* Main column */
@@ -58,6 +33,8 @@
     flex: 70%;
     background-color: white;
     padding: 20px;
+    border-radius: 10px;
+
   }
   
   /* Fake image, just for this example */
