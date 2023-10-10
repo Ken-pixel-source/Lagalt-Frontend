@@ -10,6 +10,7 @@ import { ProjectListComponent } from './components/project-list/project-list.com
 import { ProjectItemComponent } from './components/project-item/project-item.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     ProjectListComponent,
     ProjectItemComponent,
     ProjectPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
