@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
+import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 
 const routes: Routes = [
   {
@@ -8,6 +9,8 @@ const routes: Routes = [
     pathMatch: "full",
     component: ProjectPageComponent
   },
+  { path: 'product/:id', 
+    component:  ProjectDetailsComponent},
  
 ];
 

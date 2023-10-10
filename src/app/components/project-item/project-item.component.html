@@ -1,18 +1,8 @@
-<div class="pokemon-list-card-parent">
-<div class="pokemon-list-card-child" *ngIf="show; else notCatched">
-    <!-- Content of the Pokémon card -->
-        <p>{{ rightPokeName(pokemonParam?.name) }}</p>
-        <img [src]="pokemonParam?.imageSrc" alt="{{ pokemonParam?.name }}">
-        <button (click)="catchPokemon()">CATCH!</button>
+<div class="project-item-parent">
+    <div class="project-item-child">
+        <h3>{{ project?.name }}</h3>
+        <p>{{ project?.description }}</p>
     </div>
-
-
-    <ng-template #notCatched>
-        <div class="pokemon-list-card-parent">
-            <div class="pokemon-list-card-child">
-                <p>{{ rightPokeName(pokemonParam?.name) }}</p>
-                <img src="https://pngimg.com/d/pokeball_PNG21.png" alt="pokeball">
-            </div>
-        </div>
-    </ng-template>
 </div>
+
+  
