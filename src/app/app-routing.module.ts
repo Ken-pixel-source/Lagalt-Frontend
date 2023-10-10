@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
-import { ProjectDetailsComponent } from './components/project-details/project-details.component';
+
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { LoginPageComponent   } from './pages/login-page/login-page.component';
+
+
 
 const routes: Routes = [
-  {
-    path:'',
-    pathMatch: "full",
-    component: ProjectPageComponent
-  },
-  { path: 'product/:id', 
-    component:  ProjectDetailsComponent},
- 
+  { path: 'project', component: ProjectPageComponent },
+  { path: 'profile', component: ProfilePageComponent },
+  { path: 'login', component: LoginPageComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to login page by default
 ];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

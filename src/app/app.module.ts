@@ -10,6 +10,7 @@ import { ProjectPageComponent } from './pages/project-page/project-page.componen
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     ProjectItemComponent,
     ProjectPageComponent,
     ProfilePageComponent,
-    ],
+    LoginPageComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
