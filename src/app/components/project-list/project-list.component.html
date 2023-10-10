@@ -2,26 +2,16 @@
     <div class="side">      
       <h2>Filter</h2>
       <div class="filterBox">
-        <label for="categoryFilter">Filter by Category:</label>
-        <div class="filter">
-            Phones
-            <input type="checkbox" id="smartphones" [(ngModel)]="categoryFilters['smartphones']" (change)="applyFilters()">
-        </div>
-        <div class="filter">
-            Laptops
-            <input type="checkbox" id="laptops" [(ngModel)]="categoryFilters['laptops']"(change)="applyFilters()">
-        </div>
-        <div class="filter">
-            Fragnances
-            <input type="checkbox" id="fragrances" [(ngModel)]="categoryFilters['fragrances']" (change)="applyFilters()">
-        </div>
+        
       </div>
       
     </div>
     <div class="main">
         <h1>List of Projects</h1>
+        <input [(ngModel)]="searchQuery" type="text" placeholder="Search by project name" (input)="filterProjects()">
         <div class="project-list-parent">
-            <app-project-item *ngFor="let project of projects" [project]="project"></app-project-item>        </div>
+            <app-project-item *ngFor="let project of filteredProjects" [project]="project"></app-project-item>
+        </div>
     </div>
   </div>
   
