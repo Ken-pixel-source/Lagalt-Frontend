@@ -1,10 +1,51 @@
-<div *ngIf="product">
-    <h1>{{ product?.title }}</h1>
-    <p>{{ product?.description }}</p>
-    <p><strong>Price:</strong> ${{ product?.price }}</p>
-    <p><strong>Rating:</strong> {{ product?.rating }}</p>
-    <p><strong>Brand:</strong> {{ product?.brand }}</p>
-    <p><strong>Category:</strong> {{ product?.category }}</p>
-    <!-- Add more details as needed -->
-</div>
+<div class="container h-full">
+    <div class="bg-gray-100 shadow-lg rounded-lg overflow-hidden row">
+      <div class="side bg-green-500 text-white rounded-l-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 cursor-pointer" id="arrow" (click)="goBack()">
+          <path fill="yellow" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
+        </svg>
+  
+        <h1 class="text-2xl mt-4">{{ project?.name }}</h1>
+  
+        <div class="imageUploader mt-4">
+          <img id="currentPhoto" src="https://store-images.s-microsoft.com/image/apps.39913.13535614984864253.2f5761c9-d28c-49ce-8c65-73dfd53bb21a.32eea5f2-bea3-4057-91b0-6f2545182748" class="w-40 h-40 mx-auto rounded-full shadow">
+        </div>
+  
+        <div class="mt-4">
+          <h2 class="text-xl">Project Leader</h2>
+          <div class="leaderInfo">
+            <p>Kasper</p>
+          </div>
+        </div>
+  
+        <div class="mt-4">
+          <button class="btn bg-blue-500 hover:bg-blue-700 text-white">Send Request</button>
+        </div>
+      </div>
+      <div class="main p-4 bg-white rounded-r-lg">
+        <div class="tags">
+          <h2 class="text-xl">Tags</h2>
+        </div>
+        <h2 class="text-2xl mt-4 justify-start flex">Description</h2>
+        <div class="flex justify-start p-1 border-red-200">
+          <p>{{ project?.description }}</p>
+        </div>
+        <h2 class="text-2xl mt-4 justify-start flex">Requirements</h2>
+        <div class="">
+             <ul class="flex justify-start flex-col text-yellow-500 list-disc list-inside dark:text-gray-400">
+                <li>
+                    Du må ha bachelor
+                </li>
+                <li>
+                    Over C i snitt
+                </li>
+                <li>
+                    Må kunne .Net
+                </li>
+            </ul>
+        </div>
+           
+      </div>
+    </div>
+  </div>
   

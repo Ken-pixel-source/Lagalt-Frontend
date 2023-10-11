@@ -1,0 +1,133 @@
+
+
+
+  
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Style the body */
+  body {
+    font-family: Arial;
+    margin: 0;
+  }
+
+#arrow{
+    display: flex;
+    border: 5px solid #FFC107;
+    border-radius: 15px;
+    color: yellow;
+    background-color: #004080;
+    width: 70px;
+    height: 50px;
+    justify-content: flex-start;
+}
+#arrow:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+/* Base Button Styles */
+.btn {
+    background-color: #3490dc;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover State */
+  .btn:hover {
+    background-color: #2779bd;
+  }
+  
+  /* Photo Preview */
+  #photoPreview {
+    display: none;
+  }
+  
+  /* Current Photo Styles */
+  #currentPhoto {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    border: 5px solid #FFC107;
+    outline: 1px solid black;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+ 
+  
+ /* Base Button Styles */
+button {
+    background-color: #3490dc; /* Base color for bg-blue-500 */
+    color: #fff; /* Text color for text-white */
+    font-weight: 700; /* Font weight for font-bold */
+    padding: 0.5rem 1rem; /* Padding for py-2 px-4 */
+    border-radius: 0.25rem; /* Rounded corners for rounded */
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  
+    /* Hover Effect */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+  }
+  
+  /* Hover State */
+  button:hover {
+    background-color: #2779bd; /* Color on hover (hover:bg-blue-700) */
+  }
+  
+  
+  /* Column container */
+  .row {  
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+  }
+  
+  /* Create two unequal columns that sits next to each other */
+  /* Sidebar/left column */
+  .side {
+    flex: 30%;
+    display: flex;
+    flex-direction: column;
+    background-color: #4CAF50;
+    padding: 20px;
+    border-radius: 10px;
+    height: 100%;
+    
+    
+  }
+
+  /* Main column */
+  .main {
+    flex: 70%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+  
+  }
+  .tags{
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  
+  /* Footer */
+  .footer {
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+  }
+  
+  /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 700px) {
+    
+  }

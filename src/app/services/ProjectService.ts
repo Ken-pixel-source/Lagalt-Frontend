@@ -10,12 +10,15 @@ import { environment } from '../enviroment/enviroments';
 export class ProjectService {
   private apiUrl = environment.projectUrl;
   constructor(private readonly httpClient: HttpClient) {
-
+    
   }
 
   
   getProjects(): Observable<Project[]> {
     return this.httpClient.get<Project[]>(this.apiUrl);
   }
-  
+  getProjectById(id: string): Observable<Project | undefined> {
+    const url = `${this.apiUrl}/${id}`; // Replace with the actual API endpoint
+    return this.httpClient.get<Project>(url);
+  }
 }
