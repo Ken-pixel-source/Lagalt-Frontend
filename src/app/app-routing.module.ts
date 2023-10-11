@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'project', component: ProjectPageComponent },
   { path: 'profile', component: ProfilePageComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to login page by default
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, 
 ];
 
 
