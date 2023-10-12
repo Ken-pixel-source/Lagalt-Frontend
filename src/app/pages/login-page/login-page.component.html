@@ -1,11 +1,11 @@
 <div class="logo-container">
-  <img [src]="imageSrc" alt="Logo" class="logo">
+  <img src="assets/images/lagaltlogo.png" alt="Logo" class="logo">
   <h1 class="title">Lagalt</h1>
 </div>
 
 <div class="button-container">
   <div class="button-wrapper">
-    <button class="login-button">
+    <button class="login-button" (click)="onLoginClick()">
       Login
     </button>
     <button class="guest-button">
