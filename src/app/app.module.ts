@@ -11,6 +11,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { EditProfilComponent } from './components/edit-profil/edit-profil.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     ProjectItemComponent,
     ProjectPageComponent,
     ProfilePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    EditProfilComponent
   ],
   imports: [
     BrowserModule,

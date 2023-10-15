@@ -36,4 +36,18 @@ export class ProfilePageComponent implements OnInit{
     });
   }
 
+  public showModal = false;
+  handleSave(data: any) {
+    // This is where you'd send the data to the API when it's ready
+    console.log(data);
+
+    // For now, let's simulate updating the profile with the new data
+    this.userSkills = data.skills;
+    this.userPortfolio = data.portfolio;
+
+    // Hide the modal
+    this.showModal = false;
+  }
+
+
 }

@@ -1,0 +1,19 @@
+<div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+  <div class="bg-white p-4 rounded-lg w-1/2">
+    <h2 class="text-xl font-bold mb-4">Edit Skills and Portfolio</h2>
+
+    <div>
+      <label class="block mb-2">Skills:</label>
+      <textarea [(ngModel)]="formData.skills" rows="4" class="w-full p-2 border rounded"></textarea>
+    </div>
+
+    <div class="mt-4">
+      <label class="block mb-2">Portfolio:</label>
+      <textarea [(ngModel)]="formData.portfolio" rows="4" class="w-full p-2 border rounded"></textarea>
+    </div>
+
+    <div class="mt-4 flex justify-end">
+      <button (click)="save()" class="bg-blue-500 text-white p-2 rounded">Save</button>
+    </div>
+  </div>
+</div>

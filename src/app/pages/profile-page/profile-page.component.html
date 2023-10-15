@@ -13,7 +13,9 @@
 
   <div class="w-3/4 p-6">
     <div class="flex justify-end mb-6">
-      <button class="bg-blue-500 text-white p-2 rounded">Edit</button>
+      <button (click)="showModal = true" class="bg-blue-500 text-white p-2 rounded">Edit</button>
+      <app-edit-profil *ngIf="showModal" (saveData)="handleSave($event)"></app-edit-profil>
+
     </div>
 
 <div class="mb-6">
