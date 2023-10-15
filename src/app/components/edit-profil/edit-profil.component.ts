@@ -12,17 +12,17 @@ export class EditProfilComponent {
     portfolio: []
   };
 
-  // EventEmitter to notify when the data is saved
   @Output() saveData = new EventEmitter<any>();
 
   save() {
     this.saveData.emit(this.formData);
-    // Close the modal (we will implement this next)
     this.closeModal();
   }
 
+
+
   closeModal() {
-    // Logic to close the modal (this can be updated based on how you handle modal visibility)
+
   }
 
 }

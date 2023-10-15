@@ -17,7 +17,7 @@ export class ProfilePageComponent implements OnInit{
   constructor(private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    const userId = 1; // You can adjust this based on the logged-in user
+    const userId = 1;
 
     this.profileService.getUserDetails(userId).subscribe(data => {
       this.userDetails = data;
@@ -38,14 +38,12 @@ export class ProfilePageComponent implements OnInit{
 
   public showModal = false;
   handleSave(data: any) {
-    // This is where you'd send the data to the API when it's ready
+
     console.log(data);
 
-    // For now, let's simulate updating the profile with the new data
     this.userSkills = data.skills;
     this.userPortfolio = data.portfolio;
 
-    // Hide the modal
     this.showModal = false;
   }
 
