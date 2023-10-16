@@ -47,5 +47,38 @@ export class ProfilePageComponent implements OnInit{
     this.showModal = false;
   }
 
+  public slickConfig = {
+    "slidesToShow": 6,  // Number of slides to show at once
+    "slidesToScroll": 1,  // Number of slides to scroll at once
+    "dots": true,  // Show dots/navigation below the slides
+    "infinite": true,  // Infinite loop sliding
+    "autoplay": true,  // Auto play the slides
+    "autoplaySpeed": 2000,  // Speed of auto play in milliseconds
+
+    // Responsive breakpoint settings
+    "responsive": [
+      {
+        "breakpoint": 1024,
+        "settings": {
+          "slidesToShow": 3,
+          "slidesToScroll": 1,
+        }
+      },
+      {
+        "breakpoint": 600,
+        "settings": {
+          "slidesToShow": 2,
+          "slidesToScroll": 2
+        }
+      },
+      {
+        "breakpoint": 480,
+        "settings": {
+          "slidesToShow": 1,
+          "slidesToScroll": 1
+        }
+      }
+    ]
+  };
 
 }
