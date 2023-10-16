@@ -14,6 +14,8 @@ const routes: Routes = [
   { path: 'projects/:id', component: ProjectDetailsPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: '', component: LandingPageComponent }, // Redirect to login page by default
+
+
 ];
 
 
