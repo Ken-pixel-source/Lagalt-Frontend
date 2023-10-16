@@ -36,16 +36,16 @@ body {
 /* Column container */
 .row {  
   display: flex;
-  height: 100%;
+  height: auto;
 }
 
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
 .side {
-  flex: 30%;
+  flex: 20%;
   background-color: #4CAF50;
   padding: 20px;
-  border-radius: 10px;
+  height: auto;
   
 }
 .filterBox{
@@ -77,3 +77,8 @@ body {
   background: #ddd;
 }
 
+@media screen and(max-width: 500px){
+  .row{
+    flex-direction: column;
+  }
+}

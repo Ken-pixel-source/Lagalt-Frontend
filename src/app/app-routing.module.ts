@@ -5,6 +5,7 @@ import { ProjectDetailsComponent } from './components/project-details/project-de
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { LoginPageComponent   } from './pages/login-page/login-page.component';
 import { ProjectDetailsPageComponent } from './pages/project-details-page/project-details-page.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,9 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent },
   { path: 'projects/:id', component: ProjectDetailsPageComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', component: LandingPageComponent }, // Redirect to login page by default
+
+
 ];
 
 

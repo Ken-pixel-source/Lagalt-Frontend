@@ -11,7 +11,11 @@ export type Project = {
     tags: any[]; // You can replace 'any' with a tag model if needed
     projectRequests: any[]; // You can replace 'any' with a project request model if needed
   }
-  
+export type ProjectType ={
+  projectTypeId: number;
+  projectTypeName: string;
+  projects: Project[];
+}
   export interface ProjectResponse{ 
     projects: Project[]
 }
