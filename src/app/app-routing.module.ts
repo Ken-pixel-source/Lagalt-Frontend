@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfilePageComponent },
   { path: 'projects/:id', component: ProjectDetailsPageComponent },
   { path: 'login', component: LoginPageComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect to login page by default
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 

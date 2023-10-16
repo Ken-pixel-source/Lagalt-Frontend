@@ -12,6 +12,9 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LogoComponent } from './components/logo/logo.component';
+import { ButtonGroupComponent } from './components/button-group/button-group.component';
+import { EditProfilComponent } from './components/edit-profile/edit-profile.component';
 import { ProjectDetailsPageComponent } from './pages/project-details-page/project-details-page.component';
 
 @NgModule({
@@ -23,9 +26,13 @@ import { ProjectDetailsPageComponent } from './pages/project-details-page/projec
     ProjectItemComponent,
     ProjectPageComponent,
     ProfilePageComponent,
-    LoginPageComponent,
+    LogoComponent,
+    ButtonGroupComponent,
+    EditProfilComponent,
+    LoginPageComponent
     ProjectDetailsPageComponent,
     ProjectDetailsComponent,
+
   ],
   imports: [
     BrowserModule,

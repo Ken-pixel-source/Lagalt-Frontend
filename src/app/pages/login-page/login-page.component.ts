@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import keycloak from 'src/keycloak';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -6,5 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
+
+  constructor(private router: Router) {}
+
 
 }
