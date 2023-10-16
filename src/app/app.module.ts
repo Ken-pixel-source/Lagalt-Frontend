@@ -6,11 +6,13 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
+import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ProjectDetailsPageComponent } from './pages/project-details-page/project-details-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     ProjectItemComponent,
     ProjectPageComponent,
     ProfilePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ProjectDetailsPageComponent,
+    ProjectDetailsComponent,
   ],
   imports: [
     BrowserModule,

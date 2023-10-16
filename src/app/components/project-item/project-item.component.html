@@ -1,8 +1,10 @@
-<div class="project-item-parent">
-    <div class="project-item-child">
-        <h3>{{ project?.name }}</h3>
-        <p>{{ project?.projectId }}</p>
-        <p>{{ project?.description }}</p>
+
+
+<div class="max-w-sm bg-gray-200 border border-gray-400 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer flex flex-col items-center p-2">
+    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://store-images.s-microsoft.com/image/apps.39913.13535614984864253.2f5761c9-d28c-49ce-8c65-73dfd53bb21a.32eea5f2-bea3-4057-91b0-6f2545182748" alt="" />
+    <div class="p-5"> 
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ project?.name }}</h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ project?.description }}</p>
     </div>
 </div>
 

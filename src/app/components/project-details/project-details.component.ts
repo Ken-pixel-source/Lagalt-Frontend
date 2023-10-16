@@ -1,24 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/models/product';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectService } from 'src/app/services/ProjectService';
+import { Project } from 'src/app/models/projects';
+
 @Component({
   selector: 'app-project-details',
   templateUrl: './project-details.component.html',
   styleUrls: ['./project-details.component.css'],
 })
-export class ProjectDetailsComponent implements OnInit{
-    productId: number | undefined;
-    product: Product | undefined;
-  
-    constructor(private route: ActivatedRoute) {}
-  
-    ngOnInit(): void {
-      this.route.params.subscribe((params) => {
-        this.productId = +params['id']; // Convert the ID to a number
-  
-        // Fetch the product details using the productId
-    
+export class ProjectDetailsComponent implements OnInit {
+  project: Project | undefined;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private projectService: ProjectService
+  ) {}
+
+  ngOnInit(): void {
+    const projectId = this.route.snapshot.paramMap.get('id');
+    if (projectId) {
+      this.projectService.getProjectById(projectId).subscribe({
+        next: (projectData) => {
+          this.project = projectData;
+        },
+        error: (error) => console.log(error),
       });
     }
-  
+  }
+  goBack(): void {
+    this.router.navigate(['/project']);
+  }
 }
