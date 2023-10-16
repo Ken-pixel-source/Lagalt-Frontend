@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ButtonGroupComponent } from './components/button-group/button-group.component';
+import { EditProfilComponent } from './components/edit-profil/edit-profil.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,10 @@ import { ButtonGroupComponent } from './components/button-group/button-group.com
     ProjectItemComponent,
     ProjectPageComponent,
     ProfilePageComponent,
-    LoginPageComponent,
     LogoComponent,
     ButtonGroupComponent
+    LoginPageComponent,
+    EditProfilComponent
   ],
   imports: [
     BrowserModule,

@@ -1,29 +1,49 @@
-<div class="profile-container">
-    <div class="left-section">
-      <img src="path-to-default-user-icon.png" alt="User Avatar" class="user-avatar"/>
-      <div class="user-info">
-        <!-- Add user's basic info here like name, email, etc. -->
+<div class="flex h-screen bg-gray-100">
+  <div class="w-1/4 bg-green-500 p-4">
+    <div class="flex flex-col items-center">
+      <div class="relative">
+        <img [src]="userDetails?.avatar" alt="Profile Image" class="w-40 h-40 rounded-full mb-4">
       </div>
-    </div>
-  
-    <div class="right-section">
-      <button>Logout</button>
-      <h2>Skills:</h2>
-      <ul>
-        <li>Skill 1</li>
-        <!-- Add more skills -->
-      </ul>
-  
-      <h2>Portfolio</h2>
-      <div class="portfolio-image">
-        <img src="path-to-portfolio-image.jpg" alt="Portfolio Image" />
+      <div class="text-white text-xl font-bold mt-4">
+        {{ userDetails?.username }}
       </div>
-  
-      <h2>Joined Projects:</h2>
-      <ul>
-        <li>Project 1</li>
-        <!-- Add more projects -->
-      </ul>
     </div>
   </div>
-  
+
+
+  <div class="w-3/4 p-6">
+    <div class="flex justify-end mb-6">
+      <button (click)="showModal = true" class="bg-blue-500 text-white p-2 rounded">Edit</button>
+      <app-edit-profil *ngIf="showModal" (saveData)="handleSave($event)"></app-edit-profil>
+
+    </div>
+
+<div class="mb-6">
+  <h2 class="text-xl font-bold mb-4">Skills:</h2>
+  <ul>
+    <li *ngFor="let skill of userSkills" class="mb-2">{{ skill.title }}</li>
+  </ul>
+</div>
+
+<div class="mb-6">
+  <h2 class="text-xl font-bold mb-4">Portfolio:</h2>
+  <div *ngFor="let item of userPortfolio" class="mb-4">
+    <img [src]="item.thumbnailUrl" alt="Portfolio item" class="mb-2">
+    <p>{{ item.title }}</p>
+  </div>
+</div>
+
+<div class="mb-6">
+  <h2 class="text-xl font-bold mb-4">Joined Projects:</h2>
+  <div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let project of userJoinedProjects" class="p-4 border rounded-lg flex items-center space-x-4">
+      <div class="w-14 h-14 bg-gray-300 rounded-full"></div>
+      <div class="flex-1">
+        <h3 class="text-lg font-semibold">{{ project.title }}</h3>
+        <p>{{ project.body }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
