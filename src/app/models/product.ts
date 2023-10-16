@@ -16,4 +16,5 @@ export type Product = {
 export interface ProductResponse{ 
     products: Product[]
 }
+
   

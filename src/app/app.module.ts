@@ -6,6 +6,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
+import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +15,7 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ButtonGroupComponent } from './components/button-group/button-group.component';
 import { EditProfilComponent } from './components/edit-profile/edit-profile.component';
+import { ProjectDetailsPageComponent } from './pages/project-details-page/project-details-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,9 @@ import { EditProfilComponent } from './components/edit-profile/edit-profile.comp
     ButtonGroupComponent,
     EditProfilComponent,
     LoginPageComponent
+    ProjectDetailsPageComponent,
+    ProjectDetailsComponent,
+
   ],
   imports: [
     BrowserModule,

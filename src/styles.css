@@ -4,4 +4,5 @@
 
 html, body {  font-family: 'roboto', sans-serif;background: linear-gradient(175deg, rgba(0,64,128,1) 24%, rgba(38,140,43,1) 46%, rgba(255,193,7,1) 93%);
     ; height: 100%; text-align: center;  letter-spacing: 1.9px;}
+
 body { margin: 0; }
