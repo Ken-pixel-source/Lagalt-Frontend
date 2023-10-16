@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Project } from 'src/app/models/projects';
+import { Project, ProjectType } from 'src/app/models/projects';
 import {ProjectService} from 'src/app/services/ProjectService'
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProjectListComponent implements OnInit {
   projects: Project[] = [];
+  projectTypes: ProjectType[] = [];
 
   constructor(
     private projectService: ProjectService,
@@ -23,9 +24,18 @@ export class ProjectListComponent implements OnInit {
       next: (projectsData) => {
         this.projects = projectsData;
         this.filterProjects();
+        console.log("Prosjekter:", this.projects)
+      },
+      
+      error: (error) => console.log(error)
+    });
+    this.projectService.getProjectType().subscribe({
+      next: (projectTypesData) => {
+        this.projectTypes = projectTypesData;
+        console.log('Project Types:', this.projectTypes); // Log the project types
       },
       error: (error) => console.log(error)
-    })
+    });
   }
   searchQuery: string = ''; // Property to store the search query
   filteredProjects: Project[] = []; // Property to store filtered projects

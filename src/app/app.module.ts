@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ProjectDetailsPageComponent } from './pages/project-details-page/project-details-page.component';
+import { LandingComponentComponent } from './components/landing-component/landing-component.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { ProjectTypesComponent } from './components/project-types/project-types.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { ProjectDetailsPageComponent } from './pages/project-details-page/projec
     LoginPageComponent,
     ProjectDetailsPageComponent,
     ProjectDetailsComponent,
+    LandingComponentComponent,
+    LandingPageComponent,
+    ProjectTypesComponent,
   ],
   imports: [
     BrowserModule,
