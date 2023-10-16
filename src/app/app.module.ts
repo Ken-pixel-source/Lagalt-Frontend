@@ -29,7 +29,7 @@ import { ProjectDetailsPageComponent } from './pages/project-details-page/projec
     LogoComponent,
     ButtonGroupComponent,
     EditProfilComponent,
-    LoginPageComponent
+    LoginPageComponent,
     ProjectDetailsPageComponent,
     ProjectDetailsComponent,
 
