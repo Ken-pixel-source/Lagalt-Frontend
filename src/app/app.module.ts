@@ -11,6 +11,8 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LogoComponent } from './components/logo/logo.component';
+import { ButtonGroupComponent } from './components/button-group/button-group.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     ProjectItemComponent,
     ProjectPageComponent,
     ProfilePageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    LogoComponent,
+    ButtonGroupComponent
   ],
   imports: [
     BrowserModule,

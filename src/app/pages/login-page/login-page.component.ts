@@ -11,14 +11,5 @@ export class LoginPageComponent {
 
   constructor(private router: Router) {}
 
-  onLoginClick() {
-    keycloak.login()
 
-}
-
-
-  onLogoutClick() {
-    keycloak.logout()
-
-  }
 }
