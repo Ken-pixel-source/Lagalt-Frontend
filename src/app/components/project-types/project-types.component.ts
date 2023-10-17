@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ProjectType } from 'src/app/models/projects';
 
 @Component({
@@ -6,11 +6,13 @@ import { ProjectType } from 'src/app/models/projects';
   templateUrl: './project-types.component.html',
   styleUrls: ['./project-types.component.css']
 })
-export class ProjectTypesComponent implements OnInit{
+export class ProjectTypesComponent {
   @Input() projectType?: ProjectType;
+  @Output() projectTypeSelected = new EventEmitter<number>();
 
   constructor() {}
-  ngOnInit(): void {
 
+  onCheckboxChange(event: any) {
+    this.projectTypeSelected.emit(this.projectType?.projectTypeId);
   }
 }

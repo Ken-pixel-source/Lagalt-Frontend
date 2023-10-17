@@ -1,0 +1,22 @@
+<h1 class="text-5xl font-extrabold dark:text-white bg-green-500 flex justify-center h-20 items-center">Create New Project</h1>
+
+<div class="form">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 cursor-pointer" (click)="goBack()">
+    <path fill="yellow" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
+  </svg>
+  <form (submit)="createProject()">
+    <div class="mb-6">
+      <label for="name" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Project Name</label>
+      <input type="text" id="name" [(ngModel)]="project.name" name="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
+    </div>
+    <div class="mb-6">
+      <label for="description" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Project Description</label>
+      <textarea id="description" [(ngModel)]="project.description" rows="4" name="description" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..." required></textarea>
+    </div>
+    <div class="mb-6">
+      <label for="tags" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Tags</label>
+      <input type="text" id="tags" [(ngModel)]="tags" name="tags" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Tags (comma-separated)" required>
+    </div>
+    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">Create New Project</button>
+  </form>
+</div>

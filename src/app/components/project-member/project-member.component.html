@@ -1,0 +1,51 @@
+<div class="container h-full">
+    <div class="bg-gray-100 shadow-lg rounded-lg row">
+      <div class="side bg-green-500 text-white rounded-l-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 cursor-pointer" id="arrow" >
+          <path fill="yellow" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
+        </svg>
+  
+        <h1 class="text-2xl mt-4">jajaj</h1>
+  
+        <div class="imageUploader mt-4">
+          <img id="currentPhoto" src="https://t3.ftcdn.net/jpg/03/04/53/76/360_F_304537655_ZdqIkxOgANc5nbCYjfwk0G1IAespkd2A.jpg" class="w-40 h-40 mx-auto rounded-full shadow">
+        </div>
+  
+        <div class="mt-4">
+          <h2 class="text-xl">Project Leader</h2>
+          <div class="leaderInfo">
+            <p>Kasper</p>
+          </div>
+        </div>
+  
+        <div class="mt-4">
+          <button class="btn bg-blue-500 hover:bg-blue-700 text-white">Send Request</button>
+        </div>
+      </div>
+        <div class="main">
+        <div class="tab  bg-green-500 flex justify-around items-center">
+            <button (click)="openTab('Message')" [class.active]="activeTab === 'Message'">Message Board</button>
+            <button (click)="openTab('Process')" [class.active]="activeTab === 'Process'">Process</button>
+            <button (click)="openTab('Tools')" [class.active]="activeTab === 'Tools'">Tools and Resources</button>
+        </div>
+          
+          <div [id]="'Message'" class="tabcontent" [style.display]="activeTab === 'Message' ? 'block' : 'none'">
+            <h3>Message</h3>
+            <p>Message is the capital city of England.</p>
+          </div>
+          
+          <div [id]="'Process'" class="tabcontent" [style.display]="activeTab === 'Process' ? 'block' : 'none'">
+            <h3>Process</h3>
+            <p>Process is the capital of France.</p>
+          </div>
+          
+          <div [id]="'Tools'" class="tabcontent" [style.display]="activeTab === 'Tools' ? 'block' : 'none'">
+            <h3>Tools</h3>
+            <p>Tools is the capital of Japan.</p>
+          </div>
+          
+       </div>
+        
+      </div>
+    </div>
+  
