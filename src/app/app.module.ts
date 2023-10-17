@@ -16,6 +16,9 @@ import { LogoComponent } from './components/logo/logo.component';
 import { ButtonGroupComponent } from './components/button-group/button-group.component';
 import { EditProfilComponent } from './components/edit-profile/edit-profile.component';
 import { ProjectDetailsPageComponent } from './pages/project-details-page/project-details-page.component';
+import { LandingComponentComponent } from './components/landing-component/landing-component.component';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
+import { ProjectTypesComponent } from './components/project-types/project-types.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,11 @@ import { ProjectDetailsPageComponent } from './pages/project-details-page/projec
     LoginPageComponent,
     ProjectDetailsPageComponent,
     ProjectDetailsComponent,
+
+    LandingComponentComponent,
+    LandingPageComponent,
+    ProjectTypesComponent,
+
 
   ],
   imports: [
