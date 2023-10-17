@@ -32,14 +32,12 @@ import { ProjectTypesComponent } from './components/project-types/project-types.
     LogoComponent,
     ButtonGroupComponent,
     EditProfilComponent,
-    LoginPageComponent
+    LoginPageComponent,
     ProjectDetailsPageComponent,
     ProjectDetailsComponent,
-
     LandingComponentComponent,
     LandingPageComponent,
     ProjectTypesComponent,
-
 
   ],
   imports: [
