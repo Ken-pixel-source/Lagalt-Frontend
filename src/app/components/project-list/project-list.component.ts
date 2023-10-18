@@ -24,7 +24,6 @@ export class ProjectListComponent implements OnInit {
       next: (projectsData) => {
         this.projects = projectsData;
         this.filterProjects();
-        console.log("Prosjekter:", this.projects)
       },
       
       error: (error) => console.log(error)
@@ -32,10 +31,12 @@ export class ProjectListComponent implements OnInit {
     this.projectService.getProjectType().subscribe({
       next: (projectTypesData) => {
         this.projectTypes = projectTypesData;
-        console.log('Project Types:', this.projectTypes); // Log the project types
+        this.filterProjects();
+
       },
       error: (error) => console.log(error)
     });
+
   }
   searchQuery: string = ''; // Property to store the search query
   filteredProjects: Project[] = []; // Property to store filtered projects

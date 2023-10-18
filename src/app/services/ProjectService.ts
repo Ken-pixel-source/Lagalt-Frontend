@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Project, ProjectResponse, ProjectType } from '../models/projects';
 import { environment } from '../enviroment/enviroments';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root' // Makes the service a singleton and injectable throughout the app
@@ -25,6 +26,12 @@ export class ProjectService {
   getProjectType(): Observable<ProjectType[]> {
     return this.httpClient.get<ProjectType[]>(this.projectTypeUrl);
   } 
+  getProjectTypeName(projectTypeId: number): Observable<string> {
+    const url = `${this.projectTypeUrl}/${projectTypeId}`;
+    return this.httpClient.get<ProjectType>(url).pipe(
+      map((projectType: ProjectType) => projectType.projectTypeName)
+    );
+  }
   createProject(project: any): Observable<any> {
     return this.httpClient.post(this.projectUrl, project);
   }

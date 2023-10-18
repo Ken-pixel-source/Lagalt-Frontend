@@ -45,6 +45,12 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   
+
+ 
+  
+
+  
+
   .tabItem{
     flex: 1;
     padding: 10px;
@@ -56,6 +62,7 @@ body {
     background-color: white;
     box-shadow: 0px -3px 0px 0px green inset;
   }
+
 
   /* Column container */
   .row {  
@@ -70,7 +77,7 @@ body {
     flex: 20%;
     display: flex;
     flex-direction: column;
-    background-color: #4CAF50;
+    background-color: #004080;
     padding: 20px;
     height: 100%;
   }
@@ -95,6 +102,7 @@ body {
     border-radius: 10px;
   
   }
+  
   .tags{
     display: flex;
     justify-content: flex-start;

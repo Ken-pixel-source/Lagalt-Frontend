@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/ProjectService';
-import { Project } from 'src/app/models/projects';
+import { Project, ProjectType } from 'src/app/models/projects';
 
 @Component({
   selector: 'app-project-details',
@@ -10,6 +10,7 @@ import { Project } from 'src/app/models/projects';
 })
 export class ProjectDetailsComponent implements OnInit {
   project: Project | undefined;
+  projectTypeName: string | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,11 +24,24 @@ export class ProjectDetailsComponent implements OnInit {
       this.projectService.getProjectById(projectId).subscribe({
         next: (projectData) => {
           this.project = projectData;
+          if (this.project && this.project.projectTypeId) {
+            this.getProjectTypeName(this.project.projectTypeId);
+          }
         },
         error: (error) => console.log(error),
       });
     }
   }
+
+  getProjectTypeName(projectTypeId: number): void {
+    this.projectService.getProjectTypeName(projectTypeId).subscribe({
+      next: (typeName) => {
+        this.projectTypeName = typeName;
+      },
+      error: (error) => console.log(error),
+    });
+  }
+
   goBack(): void {
     this.router.navigate(['/project']);
   }
