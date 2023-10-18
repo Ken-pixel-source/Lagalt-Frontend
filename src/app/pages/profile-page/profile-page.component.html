@@ -1,5 +1,9 @@
+<app-navbar></app-navbar>
 <div class="flex flex-col md:flex-row h-screen bg-gray-100 overflow-auto">
   <div class="w-full md:w-1/4 bg-green-500 p-4">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 cursor-pointer" id="arrow" (click)="goBack()">
+      <path fill="yellow" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
+    </svg>
     <div class="flex flex-col items-center">
       <div class="relative">
         <img [src]="userDetails?.avatar" alt="{{ userDetails?.username }}'s profile image" class="w-40 h-40 rounded-full mb-4">

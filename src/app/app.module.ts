@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
@@ -19,11 +18,13 @@ import { ProjectDetailsPageComponent } from './pages/project-details-page/projec
 import { LandingComponentComponent } from './components/landing-component/landing-component.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { ProjectTypesComponent } from './components/project-types/project-types.component';
+import { NewProjectComponent } from './components/new-project/new-project.component';
+import { MyProjectsComponent } from './components/my-projects/my-projects.component';
+import { ProjectMemberComponent } from './components/project-member/project-member.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     NavbarComponent,
     ProjectListComponent,
     ProjectItemComponent,
@@ -33,11 +34,17 @@ import { ProjectTypesComponent } from './components/project-types/project-types.
     ButtonGroupComponent,
     EditProfilComponent,
     LoginPageComponent,
-    ProjectDetailsPageComponent,
+
     ProjectDetailsComponent,
+    ProjectDetailsPageComponent,
+
+
     LandingComponentComponent,
     LandingPageComponent,
     ProjectTypesComponent,
+    NewProjectComponent,
+    MyProjectsComponent,
+    ProjectMemberComponent,
 
   ],
   imports: [

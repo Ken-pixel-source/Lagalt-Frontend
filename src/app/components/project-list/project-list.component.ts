@@ -39,11 +39,24 @@ export class ProjectListComponent implements OnInit {
   }
   searchQuery: string = ''; // Property to store the search query
   filteredProjects: Project[] = []; // Property to store filtered projects
+  selectedProjectTypes: number[] = [];
 
-  filterProjects() {
-    this.filteredProjects = this.projects.filter((project) =>
-      project.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-    );
+
+filterProjects() {
+  this.filteredProjects = this.projects.filter((project) =>
+    project.name.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
+    (this.selectedProjectTypes.length === 0 || (project.projectTypeId !== null && this.selectedProjectTypes.includes(project.projectTypeId)))
+  );
+}
+
+  
+  toggleProjectTypeSelection(projectTypeId: number) {
+    if (this.selectedProjectTypes.includes(projectTypeId)) {
+      this.selectedProjectTypes = this.selectedProjectTypes.filter(id => id !== projectTypeId);
+    } else {
+      this.selectedProjectTypes.push(projectTypeId);
+    }
+    this.filterProjects();
   }
-
+  
 }

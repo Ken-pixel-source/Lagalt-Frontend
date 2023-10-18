@@ -24,5 +24,8 @@ export class ProjectService {
   }
   getProjectType(): Observable<ProjectType[]> {
     return this.httpClient.get<ProjectType[]>(this.projectTypeUrl);
+  } 
+  createProject(project: any): Observable<any> {
+    return this.httpClient.post(this.projectUrl, project);
   }
 }
