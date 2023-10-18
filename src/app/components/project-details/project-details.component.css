@@ -1,13 +1,13 @@
 
 
 
-  
+
   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-  
+
   * {
     box-sizing: border-box;
   }
-  
+
   /* Style the body */
   body {
     font-family: Arial;
@@ -41,17 +41,17 @@
     text-transform: uppercase;
     transition: background-color 0.3s ease;
   }
-  
+
   /* Hover State */
   .btn:hover {
     background-color: #2779bd;
   }
-  
+
   /* Photo Preview */
   #photoPreview {
     display: none;
   }
-  
+
   /* Current Photo Styles */
   #currentPhoto {
     width: 120px;
@@ -62,9 +62,9 @@
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
-  
- 
-  
+
+
+
  /* Base Button Styles */
 button {
     background-color: #3490dc; /* Base color for bg-blue-500 */
@@ -74,24 +74,24 @@ button {
     border-radius: 0.25rem; /* Rounded corners for rounded */
     border: none; /* Remove default button border */
     cursor: pointer; /* Change cursor to pointer on hover */
-  
+
     /* Hover Effect */
     transition: background-color 0.3s ease; /* Smooth transition on hover */
   }
-  
+
   /* Hover State */
   button:hover {
     background-color: #2779bd; /* Color on hover (hover:bg-blue-700) */
   }
-  
-  
+
+
   /* Column container */
-  .row {  
+  .row {
     display: flex;
     flex-wrap: wrap;
     height: 100%;
   }
-  
+
   /* Create two unequal columns that sits next to each other */
   /* Sidebar/left column */
   .side {
@@ -101,8 +101,6 @@ button {
     background-color: #004080;
     padding: 20px;
     height: 100%;
-    
-    
   }
 
   /* Main column */
@@ -111,22 +109,22 @@ button {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
-  
+
   }
   .tags{
     display: flex;
     justify-content: flex-start;
   }
 
-  
+
   /* Footer */
   .footer {
     padding: 20px;
     text-align: center;
     background: #ddd;
   }
-  
+
   /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 700px) {
-    
+
   }
