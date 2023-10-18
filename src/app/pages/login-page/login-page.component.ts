@@ -9,23 +9,8 @@ import { UserService } from 'src/app/services/userService';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
 })
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent {
 
 
-  constructor(private userService: UserService) {}
-  ngOnInit() {
-
-
-    
-    this.userService.registerUser().subscribe(
-      (response) => {
-        // User registration successful, handle the response
-      },
-      (error) => {
-        // Handle errors
-        console.error('Error:', error);
-      }
-    );
-  }
 
 }
