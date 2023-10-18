@@ -8,7 +8,7 @@ import { ProjectItemComponent } from './components/project-item/project-item.com
 import { ProjectDetailsComponent } from './components/project-details/project-details.component';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LogoComponent } from './components/logo/logo.component';
@@ -21,7 +21,10 @@ import { ProjectTypesComponent } from './components/project-types/project-types.
 import { NewProjectComponent } from './components/new-project/new-project.component';
 import { MyProjectsComponent } from './components/my-projects/my-projects.component';
 import { ProjectMemberComponent } from './components/project-member/project-member.component';
+import { HttpAuthInterceptor } from 'src/app/services/HttpAuthInterceptor';
+import { RefreshTokenHttpInterceptor } from 'src/app/services/RefreshTokenHttpInterceptor';
 import { MessageComponent } from './components/message/message.component';
+
 
 @NgModule({
   declarations: [
@@ -52,7 +55,18 @@ import { MessageComponent } from './components/message/message.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpAuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RefreshTokenHttpInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
