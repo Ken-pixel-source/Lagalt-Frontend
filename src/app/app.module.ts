@@ -21,6 +21,7 @@ import { ProjectTypesComponent } from './components/project-types/project-types.
 import { NewProjectComponent } from './components/new-project/new-project.component';
 import { MyProjectsComponent } from './components/my-projects/my-projects.component';
 import { ProjectMemberComponent } from './components/project-member/project-member.component';
+import { MessageComponent } from './components/message/message.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ProjectMemberComponent } from './components/project-member/project-memb
     NewProjectComponent,
     MyProjectsComponent,
     ProjectMemberComponent,
+    MessageComponent,
 
   ],
   imports: [
