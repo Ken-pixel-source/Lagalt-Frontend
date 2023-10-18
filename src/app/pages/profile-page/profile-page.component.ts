@@ -1,5 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { ProfileService } from '../../services/profileService';
+import { Project } from 'src/app/models/projects';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -8,13 +10,14 @@ import { ProfileService } from '../../services/profileService';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit{
+  project: Project | undefined;
 
   userDetails: any;
   userSkills: any;
   userPortfolio: any;
   userJoinedProjects: any;
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService, private router: Router) { }
 
   ngOnInit(): void {
     const userId = 1;
@@ -46,39 +49,8 @@ export class ProfilePageComponent implements OnInit{
 
     this.showModal = false;
   }
-
-  public slickConfig = {
-    "slidesToShow": 6,  // Number of slides to show at once
-    "slidesToScroll": 1,  // Number of slides to scroll at once
-    "dots": true,  // Show dots/navigation below the slides
-    "infinite": true,  // Infinite loop sliding
-    "autoplay": true,  // Auto play the slides
-    "autoplaySpeed": 2000,  // Speed of auto play in milliseconds
-
-    // Responsive breakpoint settings
-    "responsive": [
-      {
-        "breakpoint": 1024,
-        "settings": {
-          "slidesToShow": 3,
-          "slidesToScroll": 1,
-        }
-      },
-      {
-        "breakpoint": 600,
-        "settings": {
-          "slidesToShow": 2,
-          "slidesToScroll": 2
-        }
-      },
-      {
-        "breakpoint": 480,
-        "settings": {
-          "slidesToShow": 1,
-          "slidesToScroll": 1
-        }
-      }
-    ]
-  };
+  goBack(): void {
+    this.router.navigate(['/project']);
+  }
 
 }
