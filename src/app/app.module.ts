@@ -34,11 +34,8 @@ import { ProjectMemberComponent } from './components/project-member/project-memb
     ButtonGroupComponent,
     EditProfilComponent,
     LoginPageComponent,
-
     ProjectDetailsComponent,
     ProjectDetailsPageComponent,
-
-
     LandingComponentComponent,
     LandingPageComponent,
     ProjectTypesComponent,
