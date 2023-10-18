@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class ProjectMemberComponent {
   activeTab: string = 'London';
 
-  openTab(cityName: string) {
-    this.activeTab = cityName;
+  openTab(projectThing: string) {
+    this.activeTab = projectThing;
   }
 }
