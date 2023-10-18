@@ -1,101 +1,64 @@
-    <!--<div class="nav-container">
-      <div class="nav-logo">
-        <img src="assets\images\lagaltlogo.png" alt="Logo" width="150px">
-        <h1 class="text-3xl font-bold underline">
-          Lagalt
-        </h1>      
-      </div>
-      <div class="nav-profile" [routerLink]="['/profile']"> 
-        <img src="assets\images\profile.png" alt="Logo" width="100px">
-      </div>
-    </div>  -->
- <!--
-    <div class="bg-blue-500 p-4 flex justify-between items-center">
-       Left Side: Logo and Hamburger 
-      <div class="flex items-center">
-         
-          <img src="assets\images\lagaltlogo.png" alt="Lagalt Logo" class="mr-4" width="100px">
-          
-          <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-            <span class="sr-only">Open main menu</span>
-           
-        </button>
-        
-          <button (click)="toggleDropdown()" class="p-2">
-              <i class="fas fa-bars"></i>
-          </button>
-  
-          
-          <div *ngIf="showDropdown" class="absolute mt-12 bg-white p-4 rounded shadow-lg">
-              
-              <a href="#" class="block py-2">Menu Item 1</a>
-              <a href="#" class="block py-2">Menu Item 2</a>
-          </div>
-      </div>
-      
-     
-      <div class="flex items-center">
-          
-          <a href="/create-project" class="mr-4 p-2 bg-white rounded-full">
-              <i class="fas fa-plus"></i>
-          </a>
-  
-         
-          <a href="/profile">
-              <img src="assets\images\profile.png" alt="Profile Icon" class="w-8 h-8 rounded-full">
-          </a>
-      </div>
-  </div>
-  -->
+<nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pl-4 pr-4">
+    <!--Left portion-->
+    <div class="flex items-center justify-start p-4">
+      <a href="#" class="flex items-center">
+          <img src="assets\images\lagaltlogo.png" class="h-8 pr-4" alt="Lagalt Logo" />
+          <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Lagalt</span>
+      </a>
 
-  
-
-  <nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto pl-4 pr-4">
-      <!--Left-side-->
-      <div class="flex items-center justify-start p-4">
-        <a href="#" class="flex items-center">
-            <img src="assets\images\lagaltlogo.png" class="h-8 pr-4" alt="Lagalt Logo" />
-            <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Lagalt</span>
-        </a>
-
-      <!--Hamburger menu-->
-        <button data-collapse-toggle="navbar-hamburger" (click)="toggleDropdown()" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-          </svg>
-        </button>
-        <div *ngIf="showDropdown" class="absolute mt-12 bg-white p-4 rounded shadow-lg" id="navbar-hamburger">
-          <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-            <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded dark:bg-blue-600" aria-current="page">Home</a>
-            </li>
-            <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Services</a>
-            </li>
-            <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">Pricing</a>
-            </li>
-            <li>
-              <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!--Right-side-->
-      <div class="flex items-center justify-end p-4">
-        <button type="button">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 mr-4">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-          <a href="/create-project" class=" bg-white rounded-full"></a>
+    <!--Hamburger menu-->
+      <button data-collapse-toggle="navbar-hamburger" (click)="toggleDropdown()" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
         </svg>
-        </button> 
-          <a href="/profile">
-            <img src="assets\images\profile.png" alt="Profile Icon" class="w-8 h-8 rounded-full ml-4 mr-2">
-          </a>
+      </button>
+      <div *ngIf="showDropdown" class="absolute mt-12 bg-white p-4 rounded shadow-lg" id="navbar-hamburger">
+        <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+          <li>
+            <a href="#" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded dark:bg-blue-600" aria-current="page">Home</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Services</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">Pricing</a>
+          </li>
+          <li>
+            <a href="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Contact</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </nav>
-  
+
+    <!--Right portion-->
+    <div class="flex items-center justify-end p-4">
+      
+      <button type="button" routerLink="/newproject" class="flex items-center justify-between py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+        <p class="mr-1">New Project</p>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 mr-2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+      </button>
+        
+        <!-- Profile Icon Button -->
+        <button (click)="toggleProfileDropdown()" type="button" class="inline-flex justify-center w-8 h-8 ml-4 text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+          <span class="sr-only">Open profile menu</span>
+          <img src="assets\images\profile.png" alt="Profile Icon" class="ml-4 w-8 h-8 rounded-full">
+        </button>
+
+      <!-- Profile Dropdown Content -->
+      <div *ngIf="showProfileDropdown" class="absolute mt-2 top-14 bg-white p-4 rounded shadow-lg w-48" id="navbar-profile">
+        <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+          <li>
+              <a routerLink="/profile" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">My Profile</a>
+          </li>
+          <li>
+              <button (click)="logout()" class="block w-full text-left py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Logout</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

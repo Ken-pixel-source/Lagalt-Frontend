@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { ProjectService } from 'src/app/services/ProjectService';
 
 @Component({
@@ -12,25 +11,32 @@ export class NewProjectComponent {
   project: any = {
     name: '',
     description: '',
+    tags: [], // Initialize tags as an empty array
   };
   tags: string = '';
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService, private router: Router) {}
 
   createProject() {
-    // Split comma-separated tags and convert to an array
-    const tagArray = this.tags.split(',').map((tag) => tag.trim());
-
-    // Add the tag array to the project object
-    this.project.tags = tagArray;
-
-    // Send the project data to the server
-    this.projectService.createProject(this.project).subscribe((response) => {
-      // Handle the response (e.g., show a success message, navigate to the project list, etc.)
-    });
+    // Split the input tags string into an array
+    this.project.tags = this.tags.split(',').map((tag) => tag.trim());
+    console.log('Project data to be sent to the API:', this.project);
+    this.projectService.createProject(this.project).subscribe(
+      (response) => {
+        // Handle the successful response, e.g., show a success message
+        console.log('Project created successfully!', response);
+        // You can also navigate to the project list or perform other actions
+        this.router.navigate(['/project']);
+      },
+      (error) => {
+        // Handle any errors that occur during project creation
+        console.error('Error creating the project:', error);
+        // You can display an error message or take appropriate action
+      }
+    );
   }
 
-  goBack() {
-    // Implement the logic to navigate back to the project list or previous page
+  goBack(): void {
+    this.router.navigate(['/project']);
   }
 }
