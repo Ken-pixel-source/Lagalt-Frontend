@@ -11,6 +11,8 @@ export class ButtonGroupComponent {
     keycloak.login()
   }
 
+  
+
   showToken
   () {
     console.log(keycloak.token)
