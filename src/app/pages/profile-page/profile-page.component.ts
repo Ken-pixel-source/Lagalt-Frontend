@@ -1,15 +1,15 @@
-import { Component,OnInit } from '@angular/core';
-import { ProfileService } from '../../services/profileService';
+import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/models/projects';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import keycloak from 'src/keycloak';
+import { UserService } from 'src/app/services/userService';
 
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
   styleUrls: ['./profile-page.component.css']
 })
-export class ProfilePageComponent implements OnInit{
+export class ProfilePageComponent implements OnInit {
   project: Project | undefined;
 
   userDetails: any;
@@ -17,31 +17,24 @@ export class ProfilePageComponent implements OnInit{
   userPortfolio: any;
   userJoinedProjects: any;
 
-  constructor(private profileService: ProfileService, private router: Router) { }
+  userName: string | undefined;
+
+  constructor(private userservice: UserService, private router: Router) { }
 
   ngOnInit(): void {
-    const userId = 1;
+    this.userName = keycloak.tokenParsed?.preferred_username;
 
-    this.profileService.getUserDetails(userId).subscribe(data => {
-      this.userDetails = data;
-    });
 
-    this.profileService.getUserSkills(userId).subscribe(data => {
-      this.userSkills = data;
-    });
-
-    this.profileService.getUserPortfolio(userId).subscribe(data => {
-      this.userPortfolio = data;
-    });
-
-    this.profileService.getUserJoinedProjects(userId).subscribe(data => {
-      this.userJoinedProjects = data;
-    });
+    const userId = keycloak.tokenParsed?.sub;
+    if (userId) {
+      this.userservice.getUserById(userId).subscribe(data => {
+        this.userDetails = data;
+      });
+    }
   }
 
   public showModal = false;
   handleSave(data: any) {
-
     console.log(data);
 
     this.userSkills = data.skills;
@@ -49,8 +42,8 @@ export class ProfilePageComponent implements OnInit{
 
     this.showModal = false;
   }
+
   goBack(): void {
     this.router.navigate(['/project']);
   }
-
 }
