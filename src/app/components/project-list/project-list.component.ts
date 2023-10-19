@@ -46,7 +46,10 @@ export class ProjectListComponent implements OnInit {
 filterProjects() {
   this.filteredProjects = this.projects.filter((project) =>
     project.name.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
-    (this.selectedProjectTypes.length === 0 || (project.projectTypeId !== null && this.selectedProjectTypes.includes(project.projectTypeId)))
+    (
+      this.selectedProjectTypes.length === 0 || (project.projectTypeId !== null && 
+      this.selectedProjectTypes.includes(project.projectTypeId)
+    ))
   );
 }
 
