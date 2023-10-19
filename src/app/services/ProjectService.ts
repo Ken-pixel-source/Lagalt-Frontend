@@ -10,29 +10,32 @@ import { map } from 'rxjs';
 })
 export class ProjectService {
   private projectUrl = environment.projectUrl;
-  private projectTypeUrl = environment.projectTypeUrl
-  constructor(private readonly httpClient: HttpClient) {
-    
-  }
+  private projectTypeUrl = environment.projectTypeUrl;
 
-  
+  constructor(private readonly httpClient: HttpClient) {}
+
   getProjects(): Observable<Project[]> {
     return this.httpClient.get<Project[]>(this.projectUrl);
   }
+
   getProjectById(id: string): Observable<Project | undefined> {
     const url = `${this.projectUrl}/${id}`; // Replace with the actual API endpoint
     return this.httpClient.get<Project>(url);
   }
+
   getProjectType(): Observable<ProjectType[]> {
     return this.httpClient.get<ProjectType[]>(this.projectTypeUrl);
-  } 
+  }
+
   getProjectTypeName(projectTypeId: number): Observable<string> {
     const url = `${this.projectTypeUrl}/${projectTypeId}`;
     return this.httpClient.get<ProjectType>(url).pipe(
       map((projectType: ProjectType) => projectType.projectTypeName)
     );
   }
-  createProject(project: any): Observable<any> {
-    return this.httpClient.post(this.projectUrl, project);
+
+  createProject(project: any ): Observable<any> {
+    return this.httpClient.post(`${this.projectUrl}`, project);
   }
+  
 }

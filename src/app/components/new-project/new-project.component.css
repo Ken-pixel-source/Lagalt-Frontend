@@ -16,3 +16,8 @@
     cursor: pointer;
     transform: scale(1.2);
 }
+.overskrift{
+    background: rgb(21,103,186);
+    background: linear-gradient(130deg, rgba(21,103,186,0.9137780112044818) 0%, rgba(210,224,233,1) 17%, rgba(210,224,233,1) 77%, rgba(255,193,7,0.9417892156862745) 100%);
+  
+}
