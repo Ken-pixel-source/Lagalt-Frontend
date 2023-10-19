@@ -24,6 +24,8 @@ export class NavbarComponent  implements OnInit {
       return !!keycloak.authenticated;
     }
 
+    
+
 
     onLogoutClick() {
       keycloak.logout()
