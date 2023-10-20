@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/ProjectService';
+import { UserService } from 'src/app/services/userService';
 import { Project, ProjectType } from 'src/app/models/projects';
 
 @Component({
@@ -11,11 +12,13 @@ import { Project, ProjectType } from 'src/app/models/projects';
 export class ProjectDetailsComponent implements OnInit {
   project: Project | undefined;
   projectTypeName: string | undefined;
+  projectLeaderName: string | undefined;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private userService: UserService // Import the user service
   ) {}
 
   ngOnInit(): void {
@@ -27,6 +30,14 @@ export class ProjectDetailsComponent implements OnInit {
           if (this.project && this.project.projectTypeId) {
             this.getProjectTypeName(this.project.projectTypeId);
           }
+
+          // Find project leader name
+          this.userService.getUsers().subscribe((users) => {
+            const projectLeader = users.find((user) => user.userId === this.project?.ownerId);
+            if (projectLeader) {
+              this.projectLeaderName = projectLeader.userName;
+            }
+          });
         },
         error: (error) => console.log(error),
       });

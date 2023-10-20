@@ -1,25 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/ProjectService';
+import keycloak from 'src/keycloak';
 
 @Component({
   selector: 'app-new-project',
   templateUrl: './new-project.component.html',
   styleUrls: ['./new-project.component.css']
 })
-export class NewProjectComponent {
+export class NewProjectComponent implements OnInit {  
   project: any = {
     name: '',
     description: '',
-    tags: [], // Initialize tags as an empty array
+    imageUrl: '',
+    projectTypes: [],
   };
-  tags: string = '';
+  projectTypes: any[] = []; 
 
   constructor(private projectService: ProjectService, private router: Router) {}
 
   createProject() {
     // Split the input tags string into an array
-    this.project.tags = this.tags.split(',').map((tag) => tag.trim());
+    this.project.projectStatusId = 1;
     console.log('Project data to be sent to the API:', this.project);
     this.projectService.createProject(this.project).subscribe(
       (response) => {
@@ -32,6 +34,18 @@ export class NewProjectComponent {
         // Handle any errors that occur during project creation
         console.error('Error creating the project:', error);
         // You can display an error message or take appropriate action
+      }
+    );
+  }
+  
+  ngOnInit() {
+    // Fetch project types and store them in projectTypes
+    this.projectService.getProjectType().subscribe(
+      (projectTypes) => {
+        this.projectTypes = projectTypes;
+      },
+      (error) => {
+        console.error('Error fetching project types:', error);
       }
     );
   }

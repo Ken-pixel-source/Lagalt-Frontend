@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'src/app/services/messageService';
-import { Message } from 'src/app/models/message';
+import { Message, MessageCreate } from 'src/app/models/message';
+import keycloak from 'src/keycloak';
 
 @Component({
   selector: 'app-message',
@@ -19,7 +20,8 @@ export class MessageComponent implements OnInit {
   fetchMessages(): void {
     this.messageService.getMessages().subscribe(data => {
       this.messages = data;
-    });
+    },
+    error => { console.error("Error fetching messages:", error); }
+    );
   }
 }
-

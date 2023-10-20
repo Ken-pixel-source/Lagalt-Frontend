@@ -2,7 +2,7 @@
       projectId: number;
       name: string;
       description: string;
-      ownerId: number;
+      ownerId: string;
       projectStatusId: number | null;
       projectTypeId: number | null;
       users: any[]; // You can replace 'any' with a user model if needed

@@ -1,24 +1,23 @@
+import { User } from './user';
+import { Project } from './projects';
+
 export interface Message {
     messageId: number;
     subject: string;
-    parentId?: number; 
-    parent?: Message;
+    //parentId: number; 
+    //parent: Message | null;
     messageContent: string;
     imageUrl: string;
-    timestamp: Date;
-    userId?: string; 
-    user?: User;
-    projectId?: number;
-    project?: Project; 
-    replies?: Message[];
+    timestamp: string | null;
+    creatorId: string | null; 
+    //user: User | null;
+    projectId: number;
+    //project: Project | null; 
+    replies: Message[] | null;
   }
-  
-  // Also add interfaces for User and Project if they aren't defined elsewhere:
-  export interface User {
-    // Include fields for the User model
+
+  export interface MessageCreate {
+    subject: string;
+    messageContent: string;
+    imageUrl: string;
   }
-  
-  export interface Project {
-    // Include fields for the Project model
-  }
-  
