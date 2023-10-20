@@ -19,7 +19,7 @@ export class ProfilePageComponent implements OnInit {
 
   userName: string | undefined;
 
-  constructor(private userservice: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.userName = keycloak.tokenParsed?.preferred_username;
@@ -27,11 +27,14 @@ export class ProfilePageComponent implements OnInit {
 
     const userId = keycloak.tokenParsed?.sub;
     if (userId) {
-      this.userservice.getUserById(userId).subscribe(data => {
+      this.userService.getUserById(userId).subscribe(data => {
         this.userDetails = data;
       });
     }
   }
+
+
+
 
   public showModal = false;
   handleSave(data: any) {

@@ -1,17 +1,23 @@
 <div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
   <div class="bg-white p-4 rounded-lg w-1/2 relative">
 
-
     <h2 class="text-xl font-bold mb-4">Edit Skills and Portfolio</h2>
-
-    <div>
-      <label class="block mb-2">Skills:</label>
-      <textarea [(ngModel)]="formData.skills" rows="4" class="w-full p-2 border rounded"></textarea>
+    
+    <!-- Skill Input Section -->
+    <div class="mb-4">
+      <label for="skillInput" class="block text-sm font-medium text-gray-700">Add Skill</label>
+      <div class="mt-1 flex rounded-md shadow-sm">
+        <input type="text" name="skill" id="skillInput" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" placeholder="Enter your skill" [(ngModel)]="newSkill">
+        <button (click)="addSkill()" class="bg-blue-500 text-white p-2 rounded-r-md">Add</button>
+      </div>
     </div>
 
-    <div class="mt-4">
-      <label class="block mb-2">Portfolio:</label>
-      <textarea [(ngModel)]="formData.portfolio" rows="4" class="w-full p-2 border rounded"></textarea>
+    <!-- List of added skills -->
+    <div class="mb-4">
+      <h3 class="text-md font-bold mb-2">Skills:</h3>
+      <ul>
+        <li *ngFor="let skill of formData.SkillName">{{ skill }}</li>
+      </ul>
     </div>
 
     <div class="mt-4 flex justify-end">

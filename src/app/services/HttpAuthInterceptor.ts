@@ -7,8 +7,8 @@ import keycloak from "src/keycloak";
 export class HttpAuthInterceptor implements HttpInterceptor {
 
     /**
-     * Automatically add the Auth Token to the Request Headers.
-     * @param req request object before sending
+
+    * @param req request object before sending
      * @param next forward to Http Request
      * @returns HttpEvent
      */
