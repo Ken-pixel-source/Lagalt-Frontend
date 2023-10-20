@@ -22,7 +22,6 @@ export class MessageService {
   }
 
   createMessage(message: MessageCreate): Observable<any> {
-    //const url = `${this.messageUrl}/${message}`;
-    return this.httpClient.post(this.messageUrl, message);
+    return this.httpClient.post(`${this.messageUrl}`, message);
   }
 }
