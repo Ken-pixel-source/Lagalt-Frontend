@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'src/app/services/messageService';
 import { Message, MessageCreate } from 'src/app/models/message';
+import keycloak from 'src/keycloak';
 
 @Component({
   selector: 'app-message',
@@ -9,11 +10,6 @@ import { Message, MessageCreate } from 'src/app/models/message';
 })
 export class MessageComponent implements OnInit {
   messages: Message[] = [];
-  newMessage: MessageCreate = {
-    subject: '',
-    messageContent: '',
-    imageUrl: ''
-  };
 
   constructor(private messageService: MessageService) { }
 
@@ -24,18 +20,8 @@ export class MessageComponent implements OnInit {
   fetchMessages(): void {
     this.messageService.getMessages().subscribe(data => {
       this.messages = data;
-    });
-  }
-
-  addMessage() {
-    this.messageService.createMessage(this.newMessage).subscribe(data => {
-      this.messages.push(data);
-      // Reset the form (clear input)
-      this.newMessage = {
-        subject: '',
-        messageContent: '',
-        imageUrl: '',
-      };
-    });
+    },
+    error => { console.error("Error fetching messages:", error); }
+    );
   }
 }

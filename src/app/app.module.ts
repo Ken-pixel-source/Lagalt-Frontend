@@ -24,6 +24,7 @@ import { ProjectMemberComponent } from './components/project-member/project-memb
 import { HttpAuthInterceptor } from 'src/app/services/HttpAuthInterceptor';
 import { RefreshTokenHttpInterceptor } from 'src/app/services/RefreshTokenHttpInterceptor';
 import { MessageComponent } from './components/message/message.component';
+import { NewMessageComponent } from './components/new-message/new-message.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { MessageComponent } from './components/message/message.component';
     MyProjectsComponent,
     ProjectMemberComponent,
     MessageComponent,
+    NewMessageComponent,
 
   ],
   imports: [
