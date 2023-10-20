@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Project, ProjectType } from 'src/app/models/projects';
 import {ProjectService} from 'src/app/services/ProjectService'
@@ -19,25 +19,25 @@ export class ProjectListComponent implements OnInit {
     
     ) {}
 
-  ngOnInit(): void {
-    this.projectService.getProjects().subscribe({
-      next: (projectsData) => {
-        this.projects = projectsData;
-        this.filterProjects();
-      },
-      
-      error: (error) => console.log(error)
-    });
-    this.projectService.getProjectType().subscribe({
-      next: (projectTypesData) => {
-        this.projectTypes = projectTypesData;
-        this.filterProjects();
+    ngOnInit(): void {
+      // Load projects and project types data
+      this.projectService.getProjects().subscribe({
+        next: (projectsData) => {
+          this.projects = projectsData;
+          this.filterProjects(); // Filter and render projects
+        },
+        error: (error) => console.log(error)
+      });
+  
+      this.projectService.getProjectType().subscribe({
+        next: (projectTypesData) => {
+          this.projectTypes = projectTypesData;
+          this.filterProjects(); // Filter and render projects
+        },
+        error: (error) => console.log(error)
+      });
+    }
 
-      },
-      error: (error) => console.log(error)
-    });
-
-  }
   searchQuery: string = ''; // Property to store the search query
   filteredProjects: Project[] = []; // Property to store filtered projects
   selectedProjectTypes: number[] = [];
@@ -50,7 +50,6 @@ filterProjects() {
   );
 }
 
-  
   toggleProjectTypeSelection(projectTypeId: number) {
     if (this.selectedProjectTypes.includes(projectTypeId)) {
       this.selectedProjectTypes = this.selectedProjectTypes.filter(id => id !== projectTypeId);

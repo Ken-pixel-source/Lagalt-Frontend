@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="side">
+    <div class="side" *ngIf="projectTypes && projectTypes.length > 0">
         <app-project-types
         *ngFor="let projectType of projectTypes"
         [(ngModel)]="projectType.projectTypeId"
