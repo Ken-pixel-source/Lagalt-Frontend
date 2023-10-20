@@ -10,9 +10,14 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './project-page.component.html',
   styleUrls: ['./project-page.component.css']
 })
-export class ProjectPageComponent  {
+export class ProjectPageComponent implements OnInit  {
  
   constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+  
+
+  }
 
   
   }

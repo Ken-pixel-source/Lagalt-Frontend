@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/userService';
 export class ProfilePageComponent implements OnInit {
   project: Project | undefined;
 
-  userDetails: any;
+  user: any;
   userSkills: any;
   userPortfolio: any;
   userJoinedProjects: any;
@@ -28,13 +28,10 @@ export class ProfilePageComponent implements OnInit {
     const userId = keycloak.tokenParsed?.sub;
     if (userId) {
       this.userService.getUserById(userId).subscribe(data => {
-        this.userDetails = data;
+        this.user = data;
       });
     }
   }
-
-
-
 
   public showModal = false;
   handleSave(data: any) {

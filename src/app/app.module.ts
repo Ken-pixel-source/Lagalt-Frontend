@@ -10,7 +10,6 @@ import { ProjectPageComponent } from './pages/project-page/project-page.componen
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { HttpClientModule,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LogoComponent } from './components/logo/logo.component';
 import { ButtonGroupComponent } from './components/button-group/button-group.component';
 import { EditProfilComponent } from './components/edit-profile/edit-profile.component';
@@ -37,7 +36,6 @@ import { MessageComponent } from './components/message/message.component';
     LogoComponent,
     ButtonGroupComponent,
     EditProfilComponent,
-    LoginPageComponent,
     ProjectDetailsComponent,
     ProjectDetailsPageComponent,
     LandingComponentComponent,

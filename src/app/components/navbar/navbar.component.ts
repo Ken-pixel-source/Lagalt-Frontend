@@ -1,4 +1,5 @@
 import { Component, OnInit} from '@angular/core';
+import { UserService } from 'src/app/services/userService';
 import keycloak from 'src/keycloak';
 
 @Component({
@@ -6,9 +7,12 @@ import keycloak from 'src/keycloak';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent  implements OnInit {
-  ngOnInit(): void {
-  }
+export class NavbarComponent {
+
+  constructor(private userService: UserService) {}
+
+
+ 
   showDropdown = false;
   showProfileDropdown = false;
 
@@ -23,9 +27,6 @@ export class NavbarComponent  implements OnInit {
     isAuthenticated(): boolean {
       return !!keycloak.authenticated;
     }
-
-    
-
 
     onLogoutClick() {
       keycloak.logout()

@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProjectPageComponent } from './pages/project-page/project-page.component';
 import { AuthGuard } from 'src/app/authGuard/auth.guard.guard';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { LoginPageComponent   } from './pages/login-page/login-page.component';
 import { ProjectDetailsPageComponent } from './pages/project-details-page/project-details-page.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { NewProjectComponent } from './components/new-project/new-project.component';
@@ -15,7 +14,6 @@ const routes: Routes = [
   { path: 'projects/:id', component: ProjectDetailsPageComponent, canActivate: [AuthGuard] },
   { path: 'project-member', component: ProjectMemberComponent, canActivate: [AuthGuard] },
   { path: 'project-member/:id', component: ProjectMemberComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginPageComponent },
   { path: 'newproject', component: NewProjectComponent, canActivate: [AuthGuard] },
   { path: '', component: LandingPageComponent },
 ];
