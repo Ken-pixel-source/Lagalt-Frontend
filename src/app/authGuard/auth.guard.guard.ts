@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import keycloak from 'src/keycloak';
+import { NavbarComponent } from '../components/navbar/navbar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +28,7 @@ export class AuthGuard implements CanActivate {
       }
 
       alert("You must be logged in to access this page.");
-      return false;
+      keycloak.login();
+      return false
   }
-
 }
-

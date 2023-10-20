@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Message } from '../models/message';
+import { Message, MessageCreate } from '../models/message';
 import { environment } from '../enviroment/enviroments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MessageService {
-  private messageUrl = environment.projectUrl;
+  private messageUrl = environment.messageUrl;
 
   constructor(private readonly httpClient: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class MessageService {
     return this.httpClient.get<Message>(url);
   }
 
-  createMessage(message: Message): Observable<any> {
+  createMessage(message: MessageCreate): Observable<any> {
     //const url = `${this.messageUrl}/${message}`;
     return this.httpClient.post(this.messageUrl, message);
   }

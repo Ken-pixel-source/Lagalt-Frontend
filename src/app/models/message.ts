@@ -15,3 +15,9 @@ export interface Message {
     project: Project | null; 
     replies: Message[] | null;
   }
+
+  export interface MessageCreate {
+    subject: string | null;
+    messageContent: string;
+    imageUrl: string | null;
+  }
