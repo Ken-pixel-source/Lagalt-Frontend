@@ -15,12 +15,10 @@ export class ProjectPageComponent implements OnInit  {
   ) { }
 
   ngOnInit(): void {
-    // Now you can use the registerUser() function from the UserService here if needed
     this.registerUser();
   }
 
   registerUser() {
-    // Call the registerUser() function from the UserService
     this.userService.registerUser().subscribe(
       response => {
         console.log("User registered successfully:", response);
@@ -30,4 +28,6 @@ export class ProjectPageComponent implements OnInit  {
       }
     );
   }
+
+
 }

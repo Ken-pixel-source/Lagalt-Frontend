@@ -27,4 +27,10 @@ import { User } from '../models/user';
     addUserSkills(userId: string, SkillName: string) {
       return this.http.post(`${this.userApiUrl}/${userId}/skills`, { SkillName });
     }
+
+
+    getSkillsByUserId(userId: string): Observable<number[]> {
+      return this.http.get<number[]>(`${this.userApiUrl}/${userId}/skills`);
+    }
+
   }

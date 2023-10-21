@@ -24,3 +24,9 @@ export interface UserProfile {
   portfolioProjects: number[];
   userReviews: number[];
 }
+
+
+ export interface skills {
+  skillId: number;
+  skillName: string;
+}

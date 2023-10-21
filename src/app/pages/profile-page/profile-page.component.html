@@ -1,55 +1,33 @@
 <app-navbar></app-navbar>
-<div class="flex flex-col md:flex-row h-screen bg-gray-100 overflow-auto">
-  <div class="flex flex-col p-5 h-screen bg-[#004080] text-white ">
+<div class="flex h-screen bg-gray-100 overflow-auto">
+
+  <!-- Sidebar -->
+  <div class="flex flex-col p-5 h-screen bg-[#004080] text-white space-y-4">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 cursor-pointer" id="arrow" (click)="goBack()">
-        <path fill="yellow" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
+      <path fill="yellow" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
     </svg>
-    <h1 class="text-2xl mt-4">{{ project?.name }}</h1>
-
-    <div class="mt-4">
-        <img id="currentPhoto" src="https://t3.ftcdn.net/jpg/03/04/53/76/360_F_304537655_ZdqIkxOgANc5nbCYjfwk0G1IAespkd2A.jpg" class="w-40 h-40 mx-auto rounded-full shadow-lg">
-    </div>
-    <div class="mt-4">
+    <div class="mt-4 flex items-center justify-center space-x-4">
       <div class="leaderInfo">
-          <h2>{{ userName }}</h2>
+          <h2 class="text-2xl font-bold">{{ userName }}</h2>
       </div>
-  </div>
-    <div class="text-white text-xl font-bold mt-4">
-      </div>
-  </div>
-
-  <div class="w-full md:w-3/4 p-4 md:p-6 overflow-y-auto">
-    <div class="flex justify-end mb-6">
-      <button (click)="showModal = true" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors duration-300">Add Skills</button>
-      <app-edit-profile *ngIf="showModal" (saveData)="handleSave($event)"></app-edit-profile>
     </div>
 
-    <div class="mb-6">
-      <h2 class="text-xl font-bold mb-4">Skills:</h2>
-      <ul>
-
+    <!-- Display user skills inside Sidebar -->
+    <div class="mt-6 bg-white p-4 rounded-md shadow-md">
+      <h2 class="text-xl font-bold mb-4 text-[#004080]">Technical Skills</h2>
+      <ul class="space-y-2">
+        <li *ngFor="let skill of userSkills" class="text-lg text-[#004080]">{{ skill.skillName }}</li>
       </ul>
     </div>
+  </div>
 
-    <div class="mb-6">
-      <h2 class="text-xl font-bold mb-4">Portfolio:</h2>
-      <div *ngFor="" class="mb-4">
-        <img [src]="" alt="" class="mb-2">
-        <p></p>
-      </div>
-    </div>
-
-    <div class="mb-6">
-      <h2 class="text-xl font-bold mb-4">Joined Projects:</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div *ngFor="" class="p-4 border rounded-lg flex items-center space-x-4">
-          <div class="w-14 h-14 bg-gray-300 rounded-full"></div>
-          <div class="flex-1">
-            <h3 class="text-lg font-semibold"></h3>
-            <p></p>
-          </div>
-        </div>
-      </div>
+  <!-- Main Content -->
+  <div class="flex-grow p-4 md:p-6 overflow-y-auto">
+    <div class="flex justify-end mb-6 space-x-4">
+      <button click="showModal = true" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300">Add Skills</button>
+      <app-edit-profile *ngIf="showModal" (saveData)="handleSave($event)"></app-edit-profile>
+      <button click="showModal = true" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300">Add Skills</button>
+      <app-edit-profile *ngIf="showModal" (saveData)="handleSave($event)"></app-edit-profile>
     </div>
   </div>
 </div>

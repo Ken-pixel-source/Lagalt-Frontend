@@ -48,11 +48,8 @@ export class EditProfilComponent {
   save() {
     this.saveSkillsToServer();
     this.saveData.emit(this.formData);
-    this.closeModal();
+
   }
 
-  closeModal() {
-    // Your logic to close the modal
-  }
 }
 
