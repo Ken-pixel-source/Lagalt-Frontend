@@ -3,12 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Message, MessageCreate } from '../models/message';
 import { environment } from '../enviroment/enviroments';
+import { Subject } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MessageService {
   private messageUrl = environment.messageUrl;
+  private messageUpdated = new Subject<Message>();
+  public messageUpdated$ = this.messageUpdated.asObservable();
 
   constructor(private readonly httpClient: HttpClient) { }
 
@@ -22,6 +27,10 @@ export class MessageService {
   }
 
   createMessage(message: MessageCreate): Observable<any> {
-    return this.httpClient.post(`${this.messageUrl}`, message);
+    return this.httpClient.post(`${this.messageUrl}`, message).pipe(
+      tap((newMessage: any) => {
+        this.messageUpdated.next(newMessage);
+      })
+    );
   }
 }

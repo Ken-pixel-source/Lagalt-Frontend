@@ -8,6 +8,7 @@ import keycloak from 'src/keycloak';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
+
 export class MessageComponent implements OnInit {
   messages: Message[] = [];
 
@@ -15,8 +16,12 @@ export class MessageComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchMessages();
-  }
 
+    this.messageService.messageUpdated$.subscribe((newMessage) => {
+      this.messages.push(newMessage);
+    });
+  }
+  
   fetchMessages(): void {
     this.messageService.getMessages().subscribe(data => {
       this.messages = data;
