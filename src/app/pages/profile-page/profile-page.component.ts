@@ -35,10 +35,7 @@ export class ProfilePageComponent implements OnInit {
 
   public showModal = false;
   handleSave(data: any) {
-    console.log(data);
-
-    this.userSkills = data.skills;
-    this.userPortfolio = data.portfolio;
+    console.log(data)
 
     this.showModal = false;
   }

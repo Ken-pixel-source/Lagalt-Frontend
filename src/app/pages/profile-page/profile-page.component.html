@@ -20,7 +20,7 @@
 
   <div class="w-full md:w-3/4 p-4 md:p-6 overflow-y-auto">
     <div class="flex justify-end mb-6">
-      <button (click)="showModal = true" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors duration-300">Edit</button>
+      <button (click)="showModal = true" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors duration-300">Add Skills</button>
       <app-edit-profile *ngIf="showModal" (saveData)="handleSave($event)"></app-edit-profile>
     </div>
 

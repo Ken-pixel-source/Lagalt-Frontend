@@ -12,7 +12,6 @@ export class EditProfilComponent {
 
   public formData = {
     SkillName: [] as string[],  // Explicitly setting the type to string[]
-    portfolio: []
 };
 
   public newSkill: string = '';  // For two-way data binding with the skill input
