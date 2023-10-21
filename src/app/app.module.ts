@@ -23,8 +23,8 @@ import { HttpAuthInterceptor } from 'src/app/services/HttpAuthInterceptor';
 import { RefreshTokenHttpInterceptor } from 'src/app/services/RefreshTokenHttpInterceptor';
 import { MessageComponent } from './components/message/message.component';
 import { NewMessageComponent } from './components/new-message/new-message.component';
-import { AddPortofolioComponent } from './components/add-portofolio/add-portofolio.component';
-
+import { AddPortfolioComponent } from './components/add-portofolio/add-portfolio.component';
+import { PortfolioProjectsListComponent } from './components/portfolio-projects-list/portfolio-projects-list.component';
 
 @NgModule({
   declarations: [
@@ -46,8 +46,8 @@ import { AddPortofolioComponent } from './components/add-portofolio/add-portofol
     ProjectMemberComponent,
     MessageComponent,
     NewMessageComponent,
-    AddPortofolioComponent,
-
+    AddPortfolioComponent,
+    PortfolioProjectsListComponent,
   ],
   imports: [
     BrowserModule,

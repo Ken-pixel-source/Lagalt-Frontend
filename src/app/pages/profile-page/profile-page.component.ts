@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import keycloak from 'src/keycloak';
 import { UserService } from 'src/app/services/userService';
-import { User, skills } from 'src/app/models/user'; // replace with the actual path to your models
+import { User, skills } from 'src/app/models/user';
 
 @Component({
   selector: 'app-profile-page',
@@ -13,6 +13,8 @@ export class ProfilePageComponent implements OnInit {
   user: User | undefined;
   userSkills: skills[] = [];
   userName: string | undefined;
+
+
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -30,22 +32,36 @@ export class ProfilePageComponent implements OnInit {
       this.userService.getSkillsByUserId(userId).subscribe(skills => {
         this.userSkills = skills.map(skill => skill as unknown as skills);
       });
+
+
     }
-}
-
-  public showModal = false;
-
-  handleSave(data: any) {
-    console.log(data)
-    this.showModal = false;
   }
 
-  goBack(): void {
-    this.router.navigate(['/project']);
-  }
 
-  handleCloseModal() {
-    this.showModal = false;
-  }
+
+      goBack(): void {
+          this.router.navigate(['/project']);
+        }
+
+      public showModal = false;
+      public showPortfolioModal = false;
+
+      handleSave(data: any) {
+        console.log(data)
+        this.showModal = false;
+      }
+
+      handleCloseModal() {
+        this.showModal = false;
+      }
+
+     portfolioSave(data: any) {
+        console.log(data);
+        this.showPortfolioModal = false;
+      }
+
+     closePortfolioModal() {
+        this.showPortfolioModal = false;
+     }
 
 }

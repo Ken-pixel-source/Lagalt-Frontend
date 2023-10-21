@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/app/enviroment/enviroments';
 import { User } from '../models/user';
+import { PortfolioProject } from '../models/portofolio';
+
 
 @Injectable({
     providedIn: 'root',
@@ -31,6 +33,14 @@ import { User } from '../models/user';
 
     getSkillsByUserId(userId: string): Observable<number[]> {
       return this.http.get<number[]>(`${this.userApiUrl}/${userId}/skills`);
+    }
+
+    addPortfolio(userId: string, portfolio: PortfolioProject): Observable<any> {
+      return this.http.post<any>(`${this.userApiUrl}/${userId}/portfolioprojects`, portfolio);
+    }
+
+    getUserPortfolio(userId: string): Observable<PortfolioProject> {
+      return this.http.get<PortfolioProject>(`${this.userApiUrl}/${userId}/portfolioprojects`);
     }
 
   }
