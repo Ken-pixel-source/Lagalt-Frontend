@@ -43,4 +43,9 @@ export class ProfilePageComponent implements OnInit {
   goBack(): void {
     this.router.navigate(['/project']);
   }
+
+  handleCloseModal() {
+    this.showModal = false;
+  }
+
 }

@@ -23,6 +23,7 @@ import { HttpAuthInterceptor } from 'src/app/services/HttpAuthInterceptor';
 import { RefreshTokenHttpInterceptor } from 'src/app/services/RefreshTokenHttpInterceptor';
 import { MessageComponent } from './components/message/message.component';
 import { NewMessageComponent } from './components/new-message/new-message.component';
+import { AddPortofolioComponent } from './components/add-portofolio/add-portofolio.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { NewMessageComponent } from './components/new-message/new-message.compon
     ProjectMemberComponent,
     MessageComponent,
     NewMessageComponent,
+    AddPortofolioComponent,
 
   ],
   imports: [

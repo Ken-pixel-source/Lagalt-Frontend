@@ -14,9 +14,9 @@
 
     <!-- Display user skills inside Sidebar -->
     <div class="mt-6 bg-white p-4 rounded-md shadow-md">
-      <h2 class="text-xl font-bold mb-4 text-[#004080]">Technical Skills</h2>
-      <ul class="space-y-2">
-        <li *ngFor="let skill of userSkills" class="text-lg text-[#004080]">{{ skill.skillName }}</li>
+      <h2 class="text-xl font-bold mb-4 text-[#004080]">Technical Skills:</h2>
+      <ul class="space-y-2 text-left">
+        <li *ngFor="let skill of userSkills" class="text-lg text-[#004080]">-{{skill.skillName }}</li>
       </ul>
     </div>
   </div>
@@ -24,10 +24,7 @@
   <!-- Main Content -->
   <div class="flex-grow p-4 md:p-6 overflow-y-auto">
     <div class="flex justify-end mb-6 space-x-4">
-      <button click="showModal = true" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300">Add Skills</button>
-      <app-edit-profile *ngIf="showModal" (saveData)="handleSave($event)"></app-edit-profile>
-      <button click="showModal = true" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300">Add Skills</button>
-      <app-edit-profile *ngIf="showModal" (saveData)="handleSave($event)"></app-edit-profile>
+      <button (click)="showModal = true" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300">Add Skills</button>
+      <app-edit-profile *ngIf="showModal" (saveData)="handleSave($event)" (closeModalRequest)="handleCloseModal()"></app-edit-profile>
     </div>
-  </div>
 </div>
