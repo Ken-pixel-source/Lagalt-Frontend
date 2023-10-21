@@ -30,7 +30,9 @@ export class NewMessageComponent {
   }
 
   createMessage(): void {
-    this.messageService.createMessage(this.newMessage).subscribe(response => {
+    if (this.newMessage.subject && this.newMessage.messageContent) {
+
+      this.messageService.createMessage(this.newMessage).subscribe(response => {
       console.log('Message sent successfully!', response);
 
       // Clear the form
@@ -39,8 +41,10 @@ export class NewMessageComponent {
       this.newMessage.imageUrl = '';
 
       this.fetchMessages();
-    });
+      });
+      
+    } else {
+      alert('Both subject and message content are required!')
+    }
   }
-
-  
 }
