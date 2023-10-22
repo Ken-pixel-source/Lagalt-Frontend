@@ -11,6 +11,15 @@ import keycloak from 'src/keycloak';
 
 export class MessageComponent implements OnInit {
   messages: Message[] = [];
+  currentlyDisplayedMessageId: any | null = null;
+
+  toggleReplies(messageId: any): void {
+    if (this.currentlyDisplayedMessageId === messageId) {
+      this.currentlyDisplayedMessageId = null; // If already displaying replies for this message, hide them
+    } else {
+      this.currentlyDisplayedMessageId = messageId; // Otherwise, display replies for this message
+    }
+  }
 
   constructor(private messageService: MessageService) { }
 
