@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import keycloak from 'src/keycloak';
-import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
-
+import { UserService } from 'src/app/services/userService'; // Import the UserService
 
 @Component({
   selector: 'app-project-page',
@@ -11,17 +8,26 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./project-page.component.css']
 })
 export class ProjectPageComponent implements OnInit  {
- 
-  constructor(private http: HttpClient) { }
+
+  constructor(
+    private http: HttpClient,
+    private userService: UserService // Inject the UserService
+  ) { }
 
   ngOnInit(): void {
-  
-
+    this.registerUser();
   }
 
-  
+  registerUser() {
+    this.userService.registerUser().subscribe(
+      response => {
+        console.log("User registered successfully:", response);
+      },
+      error => {
+        console.error("Error registering user:", error);
+      }
+    );
   }
 
 
-
-
+}

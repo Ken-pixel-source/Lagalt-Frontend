@@ -11,7 +11,6 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { HttpClientModule,  HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LogoComponent } from './components/logo/logo.component';
-import { ButtonGroupComponent } from './components/button-group/button-group.component';
 import { EditProfilComponent } from './components/edit-profile/edit-profile.component';
 import { ProjectDetailsPageComponent } from './pages/project-details-page/project-details-page.component';
 import { LandingComponentComponent } from './components/landing-component/landing-component.component';
@@ -24,7 +23,11 @@ import { HttpAuthInterceptor } from 'src/app/services/HttpAuthInterceptor';
 import { RefreshTokenHttpInterceptor } from 'src/app/services/RefreshTokenHttpInterceptor';
 import { MessageComponent } from './components/message/message.component';
 import { NewMessageComponent } from './components/new-message/new-message.component';
-
+import { AddPortfolioComponent } from './components/add-portofolio/add-portfolio.component';
+import { PortfolioProjectsListComponent } from './components/portfolio-projects-list/portfolio-projects-list.component';
+import { OwnedProjectComponent } from './components/owned-project/owned-project.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { DeletePortfoSkillsComponent } from './components/delete-portfo-skills/delete-portfo-skills.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,6 @@ import { NewMessageComponent } from './components/new-message/new-message.compon
     ProjectPageComponent,
     ProfilePageComponent,
     LogoComponent,
-    ButtonGroupComponent,
     EditProfilComponent,
     ProjectDetailsComponent,
     ProjectDetailsPageComponent,
@@ -47,7 +49,11 @@ import { NewMessageComponent } from './components/new-message/new-message.compon
     ProjectMemberComponent,
     MessageComponent,
     NewMessageComponent,
-
+    AddPortfolioComponent,
+    PortfolioProjectsListComponent,
+    OwnedProjectComponent,
+    UpdateUserComponent,
+    DeletePortfoSkillsComponent,
   ],
   imports: [
     BrowserModule,

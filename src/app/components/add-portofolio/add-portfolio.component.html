@@ -1,0 +1,40 @@
+<div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+  <div class="bg-white p-4 rounded-lg w-1/2 relative">
+    <button (click)="closePortfolioModal()" class="absolute top-2 right-2 text-xl leading-none hover:text-gray-500">×</button>
+
+    <h2 class="text-xl font-bold mb-4">Add Portfolio</h2>
+
+    <div class="mb-2">
+      <label for="portfolioProjectName" class="block text-sm font-medium text-gray-700">Portfolio Project Name:</label>
+      <input type="text" id="portfolioProjectName" placeholder="Portfolio Name" [(ngModel)]="portfolioData.portfolioProjectName" class="mt-1 p-2 w-full border rounded-md">
+    </div>
+
+    <!-- Portfolio Project Description -->
+    <div class="mb-2">
+      <label for="portfolioProjectDescription" class="block text-sm font-medium text-gray-700">Description:</label>
+      <textarea id="portfolioProjectDescription" placeholder="Portfolio Description" [(ngModel)]="portfolioData.portfolioProjectDescription" class="mt-1 p-2 w-full border rounded-md"></textarea>
+    </div>
+
+    <!-- Start Date -->
+    <div class="mb-2">
+      <label for="startDate" class="block text-sm font-medium text-gray-700">Start Date:</label>
+      <input type="date" id="startDate" [(ngModel)]="portfolioData.startDate" class="mt-1 p-2 w-full border rounded-md">
+    </div>
+
+    <!-- End Date -->
+    <div class="mb-2">
+      <label for="endDate" class="block text-sm font-medium text-gray-700">End Date:</label>
+      <input type="date" id="endDate" [(ngModel)]="portfolioData.endDate" class="mt-1 p-2 w-full border rounded-md">
+    </div>
+
+    <!-- Image URL -->
+    <div class="mb-2">
+      <label for="imageUrl" class="block text-sm font-medium text-gray-700">Image URL:</label>
+      <input type="url" id="imageUrl" placeholder="Image URL" [(ngModel)]="portfolioData.imageUrl" class="mt-1 p-2 w-full border rounded-md">
+    </div>
+
+    <div class="mt-4 flex justify-end">
+      <button (click)="savePortfolio()" class="bg-blue-500 text-white p-2 rounded">Save</button>
+    </div>
+  </div>
+</div>
