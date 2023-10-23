@@ -1,5 +1,4 @@
 
-
 export interface PortfolioProject {
   portfolioProjectId: number;
   portfolioProjectName: string;
@@ -9,3 +8,4 @@ export interface PortfolioProject {
   imageUrl: string;
   users: string[];
 }
+

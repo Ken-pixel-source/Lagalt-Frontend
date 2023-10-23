@@ -25,6 +25,7 @@ import { MessageComponent } from './components/message/message.component';
 import { NewMessageComponent } from './components/new-message/new-message.component';
 import { AddPortfolioComponent } from './components/add-portofolio/add-portfolio.component';
 import { PortfolioProjectsListComponent } from './components/portfolio-projects-list/portfolio-projects-list.component';
+import { OwnedProjectComponent } from './components/owned-project/owned-project.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { PortfolioProjectsListComponent } from './components/portfolio-projects-
     NewMessageComponent,
     AddPortfolioComponent,
     PortfolioProjectsListComponent,
+    OwnedProjectComponent,
   ],
   imports: [
     BrowserModule,

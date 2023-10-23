@@ -29,4 +29,6 @@
       <button (click)="showPortfolioModal = true" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-300">Add Portfolio</button>
       <app-add-portfolio *ngIf="showPortfolioModal" (savePortfolioData)="portfolioSave($event)" (closePortfolioModalRequest)="closePortfolioModal()"></app-add-portfolio>
     </div>
+    <app-portfolio-projects-list></app-portfolio-projects-list>
+    <app-owned-project></app-owned-project>
 </div>

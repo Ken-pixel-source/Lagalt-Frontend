@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/app/enviroment/enviroments';
 import { User } from '../models/user';
 import { PortfolioProject } from '../models/portofolio';
+import { Project } from '../models/projects';
 
 
 @Injectable({
@@ -39,8 +40,14 @@ import { PortfolioProject } from '../models/portofolio';
       return this.http.post<any>(`${this.userApiUrl}/${userId}/portfolioprojects`, portfolio);
     }
 
-    getUserPortfolio(userId: string): Observable<PortfolioProject> {
-      return this.http.get<PortfolioProject>(`${this.userApiUrl}/${userId}/portfolioprojects`);
+    getUserPortfolios(userId: string): Observable<PortfolioProject[]> {
+      return this.http.get<PortfolioProject[]>(`${this.userApiUrl}/${userId}/portfolioprojects`);
     }
+
+
+    getUserOwnedProjects(userId: string): Observable<Project[]> {
+      return this.http.get<Project[]>(`${this.userApiUrl}/${userId}/ownerprojects`);
+    }
+
 
   }
