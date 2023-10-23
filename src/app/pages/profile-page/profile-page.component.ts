@@ -20,7 +20,7 @@ export class ProfilePageComponent implements OnInit {
   public showPortfolioModal = false;
   public showUpdateUserModal = false;
   public showSettingsMenu = false;
-  public activeModal: 'skills' | 'portfolio' | 'details' | null = null;
+  public activeModal: 'skills' | 'portfolio' | 'details' | 'delete' | null = null;
 
 
   constructor(private userService: UserService, private router: Router) { }
@@ -53,7 +53,7 @@ export class ProfilePageComponent implements OnInit {
           this.showSettingsMenu = !this.showSettingsMenu;
       }
 
-      openModal(type: 'skills' | 'portfolio' | 'details'): void {
+      openModal(type: 'skills' | 'portfolio' | 'details' | 'delete'): void {
           this.activeModal = type;
           this.showSettingsMenu = false; // Close the settings menu after opening the modal.
       }
@@ -61,8 +61,6 @@ export class ProfilePageComponent implements OnInit {
       closeModal(): void {
           this.activeModal = null;
       }
-
-
 
 
       handleSave(data: any) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { UserService } from 'src/app/services/userService';
 import { PortfolioProject } from 'src/app/models/portofolio';
 import keycloak from 'src/keycloak';
@@ -15,6 +15,9 @@ export class DeletePortfoSkillsComponent implements OnInit {
   public portfolios: PortfolioProject[] = [];
 
   constructor(private userService: UserService) {}
+
+  @Output() closeModalRequest = new EventEmitter<void>();
+
 
   ngOnInit(): void {
     const userId = keycloak.tokenParsed?.sub;
@@ -45,8 +48,6 @@ export class DeletePortfoSkillsComponent implements OnInit {
       }
   }
 
-
-
   onDeletePortfolio(portfolioProjectId: number): void {
     const userId = keycloak.tokenParsed?.sub;
     if (userId) {
@@ -55,4 +56,10 @@ export class DeletePortfoSkillsComponent implements OnInit {
       });
     }
   }
+
+
+closeModal(): void {
+    this.closeModalRequest.emit();
+}
+
 }

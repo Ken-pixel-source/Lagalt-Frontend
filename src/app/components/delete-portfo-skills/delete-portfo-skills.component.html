@@ -1,18 +1,34 @@
-<div>
-  <h2>Skills</h2>
-  <ul>
-      <li *ngFor="let skill of userSkills" >
-        {{ skill.skillName }}
-        <button (click)="onDeleteSkill(skill.skillId)">Delete</button>
-      </li>
-  </ul>
+<div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+  <div class="bg-white p-4 rounded-lg w-1/2 relative">
+    <button (click)="closeModal()" class="absolute top-2 right-2 text-xl leading-none hover:text-gray-500">×</button>
 
+    <h2 class="text-xl font-bold mb-4">Manage Content</h2>
 
-  <h2>Portfolio Projects</h2>
-  <ul>
-    <li *ngFor="let portfolio of portfolios">
-      {{ portfolio.portfolioProjectName }} <!-- Assuming your portfolio object has a name property -->
-      <button (click)="onDeletePortfolio(portfolio.portfolioProjectId)">Delete</button> <!-- Assuming your portfolio object has an id property -->
-    </li>
-  </ul>
+    <!-- Skills Section -->
+    <div class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Skills</h3>
+      <ul class="bg-gray-100 p-4 rounded-md space-y-2">
+        <li *ngFor="let skill of userSkills" class="flex justify-between items-center">
+          <span class="text-gray-700">{{ skill.skillName }}</span>
+          <button (click)="onDeleteSkill(skill.skillId)" class="text-sm px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition duration-200">
+            Delete
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Portfolio Projects Section -->
+    <div class="mb-6">
+      <h3 class="text-lg font-semibold mb-2">Portfolio Projects</h3>
+      <ul class="bg-gray-100 p-4 rounded-md space-y-2">
+        <li *ngFor="let portfolio of portfolios" class="flex justify-between items-center">
+          <span class="text-gray-700">{{ portfolio.portfolioProjectName }}</span>
+          <button (click)="onDeletePortfolio(portfolio.portfolioProjectId)" class="text-sm px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600 transition duration-200">
+            Delete
+          </button>
+        </li>
+      </ul>
+    </div>
+
+  </div>
 </div>
