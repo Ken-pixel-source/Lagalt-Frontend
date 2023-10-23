@@ -63,7 +63,6 @@ body {
     box-shadow: 0px -3px 0px 0px green inset;
   }
 
-
   /* Column container */
   .row {  
     display: flex;
@@ -100,7 +99,6 @@ body {
     flex: 70%;
     background-color: white;
     border-radius: 10px;
-  
   }
   
   .tags{

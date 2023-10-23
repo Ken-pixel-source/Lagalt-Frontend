@@ -11,8 +11,6 @@ export class NavbarComponent {
 
   constructor(private userService: UserService) {}
 
-
- 
   showDropdown = false;
   showProfileDropdown = false;
 

@@ -47,16 +47,15 @@ export class ProjectListComponent implements OnInit {
   filteredProjects: Project[] = []; // Property to store filtered projects
   selectedProjectTypes: number[] = [];
 
-
-filterProjects() {
-  this.filteredProjects = this.projects.filter((project) =>
-    project.name.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
-    (
-      this.selectedProjectTypes.length === 0 || (project.projectTypeId !== null && 
-      this.selectedProjectTypes.includes(project.projectTypeId)
-    ))
-  );
-}
+  filterProjects() {
+    this.filteredProjects = this.projects.filter((project) =>
+      project.name.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
+      (
+        this.selectedProjectTypes.length === 0 || (project.projectTypeId !== null && 
+        this.selectedProjectTypes.includes(project.projectTypeId)
+      ))
+    );
+  }
 
   toggleProjectTypeSelection(projectTypeId: number) {
     if (this.selectedProjectTypes.includes(projectTypeId)) {

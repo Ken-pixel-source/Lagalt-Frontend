@@ -18,7 +18,6 @@ h1 {
   padding:10px;
 }
 
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
@@ -30,8 +29,6 @@ body {
   font-family: Arial;
   margin: 0;
 }
-
-
 
 /* Column container */
 .row {  
@@ -59,9 +56,6 @@ body {
   padding: 20px;
 
 }
-
-
-
 
 @media only screen and (max-width: 600px) {
   .row{
