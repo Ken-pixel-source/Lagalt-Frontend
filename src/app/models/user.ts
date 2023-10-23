@@ -31,7 +31,3 @@ export interface UserProfile {
   skillName: string;
 }
 
-export interface UserDetail {
-  description: string;
-  education: string;
-}

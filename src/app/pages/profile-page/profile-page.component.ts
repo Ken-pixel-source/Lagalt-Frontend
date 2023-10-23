@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import keycloak from 'src/keycloak';
 import { UserService } from 'src/app/services/userService';
-import { User, skills, UserDetail  } from 'src/app/models/user';
+import { User, skills  } from 'src/app/models/user';
 
 
 
@@ -15,10 +15,6 @@ export class ProfilePageComponent implements OnInit {
   user: User | undefined;
   userSkills: skills[] = [];
   userName: string | undefined;
-  userDetail: UserDetail | undefined;
-
-
-
 
   constructor(private userService: UserService, private router: Router) { }
 
@@ -27,9 +23,9 @@ export class ProfilePageComponent implements OnInit {
 
     const userId = keycloak.tokenParsed?.sub;
     if (userId) {
-      // Fetching the user details
-      this.userService.getUserById(userId).subscribe(data => {
-        this.user = data as User;
+      // Fetching the user details of type User
+      this.userService.getUserDataById<User>(userId).subscribe(data => {
+        this.user = data;
       });
 
       // Fetching the skills of the user
@@ -37,16 +33,8 @@ export class ProfilePageComponent implements OnInit {
         this.userSkills = skills.map(skill => skill as unknown as skills);
       });
 
-
     }
-
-    if (userId) {
-      // Fetching the user details
-      this.userService.getUserDetailById(userId).subscribe((data: UserDetail) => {
-        this.userDetail = data;
-      });
-    }
-  }
+}
 
       goBack(): void {
           this.router.navigate(['/project']);

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/app/enviroment/enviroments';
-import { User, UserDetail } from '../models/user';
+import { User } from '../models/user';
 import { PortfolioProject } from '../models/portofolio';
 import { Project } from '../models/projects';
 
@@ -19,18 +19,17 @@ import { Project } from '../models/projects';
       return this.http.post(`${this.userApiUrl}/register`, {});
     }
 
-    // retrieve user details by their ID
-    getUserById(userId: string): Observable<User> {
-      return this.http.get<User>(`${this.userApiUrl}/${userId}`);
+    getUserDataById<T>(userId: string): Observable<T> {
+      return this.http.get<T>(`${this.userApiUrl}/${userId}`);
     }
 
     getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userApiUrl);
     }
+
     addUserSkills(userId: string, SkillName: string) {
       return this.http.post(`${this.userApiUrl}/${userId}/skills`, { SkillName });
     }
-
 
     getSkillsByUserId(userId: string): Observable<number[]> {
       return this.http.get<number[]>(`${this.userApiUrl}/${userId}/skills`);
@@ -44,9 +43,6 @@ import { Project } from '../models/projects';
       return this.http.get<PortfolioProject[]>(`${this.userApiUrl}/${userId}/portfolioprojects`);
     }
 
-    getUserDetailById(userId: string): Observable<UserDetail> {
-      return this.http.get<UserDetail>(`https://lagalt.azurewebsites.net/api/v1/users/${userId}`);
-    }
 
 
 
@@ -54,7 +50,7 @@ import { Project } from '../models/projects';
       return this.http.get<Project[]>(`${this.userApiUrl}/${userId}/ownerprojects`);
     }
 
-        updateUserDetails(userId: string, description: string, education: string): Observable<any> {
+    updateUserDetails(userId: string, description: string, education: string): Observable<any> {
         const body = {
             description: description,
             education: education,

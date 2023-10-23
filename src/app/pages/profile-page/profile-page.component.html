@@ -35,12 +35,12 @@
     </div>
 
     <!-- This is just an example. You can structure and style it as per your needs -->
-        <div *ngIf="userDetail">
+        <div *ngIf="user">
           <h2>About Me</h2>
-          <p>{{ userDetail.description }}</p>
+          <p>{{ user.description }}</p>
 
           <h2>Education</h2>
-          <p>{{ userDetail.education }}</p>
+          <p>{{ user.education }}</p>
         </div>
     <app-portfolio-projects-list></app-portfolio-projects-list>
     <app-owned-project></app-owned-project>
