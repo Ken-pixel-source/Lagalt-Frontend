@@ -24,17 +24,21 @@
   <!-- Main Content -->
   <div class="flex-grow p-4 md:p-6 overflow-y-auto">
     <div class="flex justify-end mb-6 space-x-4">
-      <button (click)="showModal = true" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300">Add Skills</button>
-      <app-edit-profile *ngIf="showModal" (saveData)="handleSave($event)" (closeModalRequest)="handleCloseModal()"></app-edit-profile>
+      <img src="assets\images\Settings.png" alt="Settings" (click)="toggleSettingsMenu()" class="h-8 w-8 cursor-pointer">
 
-      <button (click)="showPortfolioModal = true" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-300">Add Portfolio</button>
-      <app-add-portfolio *ngIf="showPortfolioModal" (savePortfolioData)="portfolioSave($event)" (closePortfolioModalRequest)="closePortfolioModal()"></app-add-portfolio>
+      <!-- Dropdown Menu -->
+      <div *ngIf="showSettingsMenu" class="absolute right-0 mt-2 w-60 py-3 bg-white rounded-md shadow-xl z-10">
+          <button (click)="openModal('skills')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-green-600">Add Skills</button>
+          <button (click)="openModal('portfolio')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-blue-600">Add Portfolio</button>
+          <button (click)="openModal('details')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-orange-400">Edit Details</button>
+      </div>
 
-      <button (click)="showUpdateUserModal = true" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-300">Edit Details </button>
-      <app-update-user *ngIf="showUpdateUserModal" (saveData)="handleUserUpdate()" (closeModalRequest)="closeUpdateUserModal()"></app-update-user>
-    </div>
+      <!-- Modals -->
+      <app-edit-profile *ngIf="activeModal === 'skills'" (saveData)="handleSave($event)" (closeModalRequest)="closeModal()"></app-edit-profile>
+      <app-add-portfolio *ngIf="activeModal === 'portfolio'" (savePortfolioData)="portfolioSave($event)" (closePortfolioModalRequest)="closeModal()"></app-add-portfolio>
+      <app-update-user *ngIf="activeModal === 'details'" (saveData)="handleUserUpdate()" (closeModalRequest)="closeModal()"></app-update-user>
+  </div>
 
-    <!-- This is just an example. You can structure and style it as per your needs -->
         <div *ngIf="user">
           <h2>About Me</h2>
           <p>{{ user.description }}</p>
@@ -44,4 +48,6 @@
         </div>
     <app-portfolio-projects-list></app-portfolio-projects-list>
     <app-owned-project></app-owned-project>
+    <app-delete-portfo-skills></app-delete-portfo-skills>
 </div>
+

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/app/enviroment/enviroments';
@@ -44,6 +44,14 @@ import { Project } from '../models/projects';
     }
 
 
+    deletePortfolio(userId: string, portfolioProjectID: string): Observable<any> {
+      return this.http.delete<any>(`${this.userApiUrl}/${userId}/portfolioprojects/${portfolioProjectID}`);
+    }
+
+    deleteUserSkill(skillId: string, userId: string): Observable<any> {
+      const params = new HttpParams().set('id', userId);
+      return this.http.delete<any>(`${this.userApiUrl}/skills/${skillId}`, { params: params });
+  }
 
 
     getUserOwnedProjects(userId: string): Observable<Project[]> {

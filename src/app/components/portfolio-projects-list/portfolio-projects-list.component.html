@@ -1,7 +1,6 @@
 <div *ngFor="let portfolio of portfolios">
   <h2>{{ portfolio.portfolioProjectName }}</h2>
   <p>{{ portfolio.portfolioProjectDescription }}</p>
-  <img [src]="portfolio.imageUrl" alt="{{ portfolio.portfolioProjectName }}" />
   <p>Start Date: {{ portfolio.startDate | date }}</p>
   <p>End Date: {{ portfolio.endDate | date }}</p>
 </div>

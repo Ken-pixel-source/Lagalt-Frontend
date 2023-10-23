@@ -16,6 +16,13 @@ export class ProfilePageComponent implements OnInit {
   userSkills: skills[] = [];
   userName: string | undefined;
 
+  public showModal = false;
+  public showPortfolioModal = false;
+  public showUpdateUserModal = false;
+  public showSettingsMenu = false;
+  public activeModal: 'skills' | 'portfolio' | 'details' | null = null;
+
+
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
@@ -40,9 +47,22 @@ export class ProfilePageComponent implements OnInit {
           this.router.navigate(['/project']);
         }
 
-      public showModal = false;
-      public showPortfolioModal = false;
-      public showUpdateUserModal = false;
+
+
+      toggleSettingsMenu(): void {
+          this.showSettingsMenu = !this.showSettingsMenu;
+      }
+
+      openModal(type: 'skills' | 'portfolio' | 'details'): void {
+          this.activeModal = type;
+          this.showSettingsMenu = false; // Close the settings menu after opening the modal.
+      }
+
+      closeModal(): void {
+          this.activeModal = null;
+      }
+
+
 
 
       handleSave(data: any) {

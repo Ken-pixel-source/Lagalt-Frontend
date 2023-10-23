@@ -27,6 +27,7 @@ import { AddPortfolioComponent } from './components/add-portofolio/add-portfolio
 import { PortfolioProjectsListComponent } from './components/portfolio-projects-list/portfolio-projects-list.component';
 import { OwnedProjectComponent } from './components/owned-project/owned-project.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { DeletePortfoSkillsComponent } from './components/delete-portfo-skills/delete-portfo-skills.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
     PortfolioProjectsListComponent,
     OwnedProjectComponent,
     UpdateUserComponent,
+    DeletePortfoSkillsComponent,
   ],
   imports: [
     BrowserModule,
