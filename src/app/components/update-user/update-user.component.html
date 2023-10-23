@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Update Profile</h2>
+
+  <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" id="description" [(ngModel)]="Description" class="form-control" placeholder="Enter updated description">
+  </div>
+
+  <div class="form-group">
+      <label for="education">Education</label>
+      <input type="text" id="education" [(ngModel)]="Education" class="form-control" placeholder="Enter updated education">
+  </div>
+
+  <button (click)="updateUserDetails()" class="btn btn-primary">Update Details</button>
+</div>

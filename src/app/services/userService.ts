@@ -22,7 +22,7 @@ import { Project } from '../models/projects';
     // retrieve user details by their ID
     getUserById(userId: string): Observable<User> {
       return this.http.get<User>(`${this.userApiUrl}/${userId}`);
-  }
+    }
 
     getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userApiUrl);
@@ -49,5 +49,13 @@ import { Project } from '../models/projects';
       return this.http.get<Project[]>(`${this.userApiUrl}/${userId}/ownerprojects`);
     }
 
+        updateUserDetails(userId: string, description: string, education: string): Observable<any> {
+        const body = {
+            description: description,
+            education: education,
+        };
+
+        return this.http.put<any>(`${this.userApiUrl}/${userId}`, body);
+    }
 
   }
