@@ -1,18 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+* {
+  box-sizing: border-box;
+}
 
-
-
-  @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-  * {
-    box-sizing: border-box;
-  }
-
-  /* Style the body */
-  body {
-    font-family: Arial;
-    margin: 0;
-  }
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+}
 
 #arrow{
     display: flex;
@@ -63,8 +59,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
-
-
  /* Base Button Styles */
 button {
     background-color: #3490dc; /* Base color for bg-blue-500 */
@@ -83,7 +77,6 @@ button {
   button:hover {
     background-color: #2779bd; /* Color on hover (hover:bg-blue-700) */
   }
-
 
   /* Column container */
   .row {
@@ -115,7 +108,6 @@ button {
     display: flex;
     justify-content: flex-start;
   }
-
 
   /* Footer */
   .footer {

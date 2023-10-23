@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MessageService } from 'src/app/services/messageService';
-import { MessageCreate } from 'src/app/models/message';
-import { Message, MessageResponse } from 'src/app/models/message';
+import { Message, MessageCreate } from 'src/app/models/message';
+import { ActivatedRoute } from '@angular/router';  // Import ActivatedRoute
 
 @Component({
   selector: 'app-new-message',
@@ -11,36 +11,51 @@ import { Message, MessageResponse } from 'src/app/models/message';
 
 export class NewMessageComponent {
   messages: Message[] = [];
-   newMessage: MessageCreate = {
+  newMessage: MessageCreate = {
     subject: '',
     messageContent: '',
     imageUrl: ''
   };
 
-  constructor(private messageService: MessageService) { }
+  projectId: string | null = null;  // Stores the projectId
+
+  constructor(
+    private messageService: MessageService,
+    private route: ActivatedRoute 
+  ) { }
 
   ngOnInit(): void {
-    this.fetchMessages();
+    this.projectId = this.route.snapshot.paramMap.get('id');  // Get 'id' from route parameters
+
+    if (this.projectId) {
+      this.fetchMessages(this.projectId);  // Pass the projectId to fetchMessages
+    } else {
+      console.error("No project ID found in route parameters.");
+    }
   }
 
-  fetchMessages(): void {
-    this.messageService.getMessages().subscribe(data => {
+  fetchMessages(id: string): void {
+    this.messageService.getMessages(id).subscribe(data => {
       this.messages = data;
     });
   }
 
   createMessage(): void {
-    this.messageService.createMessage(this.newMessage).subscribe(response => {
-      console.log('Message sent successfully!', response);
+    if (this.newMessage.subject && this.newMessage.messageContent && this.projectId) {
 
-      // Clear the form
-      this.newMessage.subject = '';
-      this.newMessage.messageContent = '';
-      this.newMessage.imageUrl = '';
+      this.messageService.createMessage(this.projectId, this.newMessage).subscribe(response => {
+        console.log('Message sent successfully!', response);
 
-      this.fetchMessages();
-    });
+        // Clear the form
+        this.newMessage.subject = '';
+        this.newMessage.messageContent = '';
+        this.newMessage.imageUrl = '';
+
+        this.fetchMessages(this.projectId!);  // Refresh messages after creating a new one
+      });
+      
+    } else {
+      alert('Both subject and message content is required!')
+    }
   }
-
-  
 }

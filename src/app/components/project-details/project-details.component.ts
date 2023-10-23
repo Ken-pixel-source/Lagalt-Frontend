@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/ProjectService';
 import { UserService } from 'src/app/services/userService';
-import { Project, ProjectType } from 'src/app/models/projects';
+import { Project, ProjectType, Tags } from 'src/app/models/projects';
 
 @Component({
   selector: 'app-project-details',
@@ -13,6 +13,8 @@ export class ProjectDetailsComponent implements OnInit {
   project: Project | undefined;
   projectTypeName: string | undefined;
   projectLeaderName: string | undefined;
+  projectTagName: string | undefined;
+  tags: Tags[] = []
 
   constructor(
     private route: ActivatedRoute,
@@ -31,6 +33,14 @@ export class ProjectDetailsComponent implements OnInit {
             this.getProjectTypeName(this.project.projectTypeId);
           }
 
+          // Fetch tags for the project
+          this.projectService.getProjectTags(projectId).subscribe({
+            next: (tagsData) => {
+              this.tags = tagsData;
+            },
+            error: (error) => console.log(error),
+          });
+
           // Find project leader name
           this.userService.getUsers().subscribe((users) => {
             const projectLeader = users.find((user) => user.userId === this.project?.ownerId);
@@ -48,6 +58,15 @@ export class ProjectDetailsComponent implements OnInit {
     this.projectService.getProjectTypeName(projectTypeId).subscribe({
       next: (typeName) => {
         this.projectTypeName = typeName;
+      },
+      error: (error) => console.log(error),
+    });
+  }
+
+  getTagName(id: number, tagId: number): void {
+    this.projectService.getProjectTagName(id, tagId).subscribe({
+      next: (tagName) => {
+        this.projectTagName = tagName;
       },
       error: (error) => console.log(error),
     });
