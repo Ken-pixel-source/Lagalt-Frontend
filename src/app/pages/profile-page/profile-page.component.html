@@ -26,10 +26,22 @@
     <div class="flex justify-end mb-6 space-x-4">
       <button (click)="showModal = true" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors duration-300">Add Skills</button>
       <app-edit-profile *ngIf="showModal" (saveData)="handleSave($event)" (closeModalRequest)="handleCloseModal()"></app-edit-profile>
+
       <button (click)="showPortfolioModal = true" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-300">Add Portfolio</button>
       <app-add-portfolio *ngIf="showPortfolioModal" (savePortfolioData)="portfolioSave($event)" (closePortfolioModalRequest)="closePortfolioModal()"></app-add-portfolio>
+
+      <button (click)="showUpdateUserModal = true" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-300">Edit Details </button>
+      <app-update-user *ngIf="showUpdateUserModal" (saveData)="handleUserUpdate()" (closeModalRequest)="closeUpdateUserModal()"></app-update-user>
     </div>
+
+    <!-- This is just an example. You can structure and style it as per your needs -->
+        <div *ngIf="userDetail">
+          <h2>About Me</h2>
+          <p>{{ userDetail.description }}</p>
+
+          <h2>Education</h2>
+          <p>{{ userDetail.education }}</p>
+        </div>
     <app-portfolio-projects-list></app-portfolio-projects-list>
     <app-owned-project></app-owned-project>
-    <app-update-user></app-update-user>
 </div>

@@ -30,3 +30,8 @@ export interface UserProfile {
   skillId: number;
   skillName: string;
 }
+
+export interface UserDetail {
+  description: string;
+  education: string;
+}

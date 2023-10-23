@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { UserService } from 'src/app/services/userService';
 import keycloak from 'src/keycloak';
 import { UserProfile } from 'src/app/models/user';
@@ -9,27 +9,31 @@ import { UserProfile } from 'src/app/models/user';
   styleUrls: ['./update-user.component.css']
 })
 export class UpdateUserComponent {
-    userProfile: UserProfile = {} as UserProfile;
-   Description: string = '';
-   Education: string = '';
+  userProfile: UserProfile = {} as UserProfile;
+  Description: string = '';
+  Education: string = '';
 
-    constructor(private userService: UserService) {}
+  @Output() saveData = new EventEmitter<void>();
+  @Output() closeModalRequest  = new EventEmitter<void>();
 
-    updateUserDetails() {
-        const loggedInUserId = keycloak.tokenParsed?.sub;
+  constructor(private userService: UserService) {}
 
-        if (loggedInUserId) {
-            this.userService.updateUserDetails(loggedInUserId, this.Description, this.Education)
-                .subscribe(
-                    response => {
-                        // Handle successful update, maybe show a success message
-                        console.log("User details updated successfully.");
-                    },
-                    error => {
-                        // Handle errors, maybe show an error message
-                        console.error("Error updating user details:", error);
-                    }
-                );
+  updateUserDetails() {
+    const userId = keycloak.tokenParsed?.sub;
+    if (userId) {
+      this.userService.updateUserDetails(userId, this.Description, this.Education).subscribe(
+        response => {
+          console.log("User details updated successfully.");
+          this.saveData.emit();
+        },
+        error => {
+          console.error("Error updating user details:", error);
         }
+      );
     }
+  }
+
+  closeUpdateUserModal() {
+    this.closeModalRequest.emit();
+  }
 }

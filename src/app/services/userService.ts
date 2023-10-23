@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from 'src/app/enviroment/enviroments';
-import { User } from '../models/user';
+import { User, UserDetail } from '../models/user';
 import { PortfolioProject } from '../models/portofolio';
 import { Project } from '../models/projects';
 
@@ -43,6 +43,11 @@ import { Project } from '../models/projects';
     getUserPortfolios(userId: string): Observable<PortfolioProject[]> {
       return this.http.get<PortfolioProject[]>(`${this.userApiUrl}/${userId}/portfolioprojects`);
     }
+
+    getUserDetailById(userId: string): Observable<UserDetail> {
+      return this.http.get<UserDetail>(`https://lagalt.azurewebsites.net/api/v1/users/${userId}`);
+    }
+
 
 
     getUserOwnedProjects(userId: string): Observable<Project[]> {

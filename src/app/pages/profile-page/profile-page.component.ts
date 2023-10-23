@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import keycloak from 'src/keycloak';
 import { UserService } from 'src/app/services/userService';
-import { User, skills } from 'src/app/models/user';
+import { User, skills, UserDetail  } from 'src/app/models/user';
+
+
 
 @Component({
   selector: 'app-profile-page',
@@ -13,6 +15,8 @@ export class ProfilePageComponent implements OnInit {
   user: User | undefined;
   userSkills: skills[] = [];
   userName: string | undefined;
+  userDetail: UserDetail | undefined;
+
 
 
 
@@ -35,9 +39,14 @@ export class ProfilePageComponent implements OnInit {
 
 
     }
+
+    if (userId) {
+      // Fetching the user details
+      this.userService.getUserDetailById(userId).subscribe((data: UserDetail) => {
+        this.userDetail = data;
+      });
+    }
   }
-
-
 
       goBack(): void {
           this.router.navigate(['/project']);
@@ -45,6 +54,8 @@ export class ProfilePageComponent implements OnInit {
 
       public showModal = false;
       public showPortfolioModal = false;
+      public showUpdateUserModal = false;
+
 
       handleSave(data: any) {
         console.log(data)
@@ -63,5 +74,18 @@ export class ProfilePageComponent implements OnInit {
      closePortfolioModal() {
         this.showPortfolioModal = false;
      }
+
+     handleUserUpdate() {
+      console.log('User details updated');
+      this.showUpdateUserModal = false;
+    }
+
+    openUpdateUserModal() {
+      this.showUpdateUserModal = true;
+    }
+
+    closeUpdateUserModal() {
+      this.showUpdateUserModal = false;
+    }
 
 }
