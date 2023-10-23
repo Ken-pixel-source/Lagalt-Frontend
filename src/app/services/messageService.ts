@@ -11,23 +11,24 @@ import { tap } from 'rxjs/operators';
 })
 
 export class MessageService {
-  private messageUrl = environment.messageUrl;
+  private projectUrl = environment.projectUrl;
   private messageUpdated = new Subject<Message>();
   public messageUpdated$ = this.messageUpdated.asObservable();
 
   constructor(private readonly httpClient: HttpClient) { }
 
-  getMessages(): Observable<Message[]> {
-    return this.httpClient.get<Message[]>(this.messageUrl);
+  getMessages(id: string): Observable<Message[]> {
+    const url = `${this.projectUrl}/${id}/messages`
+    return this.httpClient.get<Message[]>(url);
   }
 
-  getMessageById(id: number): Observable<Message | undefined> {
-    const url = `${this.messageUrl}/${id}`;
+  getMessageById(id: string, messageId: number): Observable<any> {
+    const url = `${this.projectUrl}/${id}/messages/${messageId}`;
     return this.httpClient.get<Message>(url);
   }
 
-  createMessage(message: MessageCreate): Observable<any> {
-    return this.httpClient.post(`${this.messageUrl}`, message).pipe(
+  createMessage(id: string, message: MessageCreate): Observable<any> {
+    return this.httpClient.post(`${this.projectUrl}/${id}/messages`, message).pipe(
       tap((newMessage: any) => {
         this.messageUpdated.next(newMessage);
       })
