@@ -14,10 +14,12 @@
       <div [id]="'Process'" class="tabcontent" [style.display]="activeTab === 'Process' ? 'block' : 'none'">
         <ul>
           <li *ngFor="let request of projectRequests">
-            {{ request.userName }} wants to join.
-            <button (click)="acceptRequest(request.projectRequestId)">Accept</button>
+              {{ request.userName }} wants to join.
+              <button (click)="acceptRequest(request.projectRequestId)">Accept</button>
+              <button (click)="deleteRequest(request.projectRequestId)">Delete</button>
           </li>
-        </ul>
+      </ul>
+
       </div>
 
       <div [id]="'Tools'" class="tabcontent" [style.display]="activeTab === 'Tools' ? 'block' : 'none'">

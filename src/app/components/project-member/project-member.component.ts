@@ -65,6 +65,17 @@ export class ProjectMemberComponent implements OnInit {
     }
   }
 
+  deleteRequest(requestId: string): void {
+    const projectId = this.route.snapshot.paramMap.get('id');
+    if (projectId) {
+        this.projectService.deleteJoinRequest(projectId, requestId).subscribe(() => {
+            // After deletion, filter out the deleted request from projectRequests
+            this.projectRequests = this.projectRequests.filter(request => request.projectRequestId !== requestId);
+        });
+    }
+}
+
+
 
   fetchUserNamesForRequests() {
     this.projectRequests.forEach((request, index) => {
