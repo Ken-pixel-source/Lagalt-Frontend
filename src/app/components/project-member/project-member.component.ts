@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./project-member.component.css']
 })
 export class ProjectMemberComponent {
-  activeTab: string = 'London';
+  activeTab: string = '';
 
   openTab(projectThing: string) {
     this.activeTab = projectThing;
   }
-  
+
 }

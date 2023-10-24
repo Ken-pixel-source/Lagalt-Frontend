@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import keycloak from 'src/keycloak';
 import { ProjectService } from 'src/app/services/ProjectService';
 import { UserService } from 'src/app/services/userService';
 import { Project, ProjectType, Tags } from 'src/app/models/projects';
@@ -11,21 +12,24 @@ import { Project, ProjectType, Tags } from 'src/app/models/projects';
 })
 export class ProjectDetailsComponent implements OnInit {
   project: Project | undefined;
+  projectUsers: any[] = [];
   projectTypeName: string | undefined;
   projectLeaderName: string | undefined;
   projectTagName: string | undefined;
-  tags: Tags[] = []
+  tags: Tags[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private projectService: ProjectService,
-    private userService: UserService // Import the user service
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
     const projectId = this.route.snapshot.paramMap.get('id');
     if (projectId) {
+      this.fetchProjectUsers(projectId);
+
       this.projectService.getProjectById(projectId).subscribe({
         next: (projectData) => {
           this.project = projectData;
@@ -52,6 +56,22 @@ export class ProjectDetailsComponent implements OnInit {
         error: (error) => console.log(error),
       });
     }
+  }
+
+  fetchProjectUsers(projectId: string) {
+    this.projectService.getUsersByProjectId(parseInt(projectId, 10)).subscribe(users => {
+      this.projectUsers = users;
+    });
+  }
+
+  isAuthorizedToView(): boolean {
+    const loggedInUserId = keycloak.tokenParsed?.sub;  // Using Keycloak to get the logged-in user's ID
+
+    if (this.project?.ownerId === loggedInUserId) {
+      return true;
+    }
+
+    return this.projectUsers.some(user => user.userId === loggedInUserId);
   }
 
   getProjectTypeName(projectTypeId: number): void {
