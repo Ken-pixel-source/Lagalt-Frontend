@@ -12,8 +12,12 @@
         <app-message></app-message>
       </div>
       <div [id]="'Process'" class="tabcontent" [style.display]="activeTab === 'Process' ? 'block' : 'none'">
-        <h3>Process</h3>
-        <p>Process is the capital of France.</p>
+        <ul>
+          <li *ngFor="let request of projectRequests">
+            {{ request.userName }} wants to join.
+            <button (click)="acceptRequest(request.projectRequestId)">Accept</button>
+          </li>
+        </ul>
       </div>
 
       <div [id]="'Tools'" class="tabcontent" [style.display]="activeTab === 'Tools' ? 'block' : 'none'">

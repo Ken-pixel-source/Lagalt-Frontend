@@ -24,7 +24,7 @@
       <tbody>
           <tr *ngFor="let portfolio of portfolios"class="bg-white border-b">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900">
-                {{ portfolio.portfolioProjectDescription }}              
+                {{ portfolio.portfolioProjectDescription }}
               </th>
               <td class="px-6 py-4">
                 {{ portfolio.portfolioProjectDescription }}
@@ -35,14 +35,11 @@
               <td class="px-6 py-4">
                 {{ portfolio.endDate | date }}
               </td>
-          
+
           </tr>
-         
+
       </tbody>
   </table>
 </div>
 
 
-<div *ngIf="portfolios.length === 0">
-  <p>Loading portfolio project details...</p>
-</div>

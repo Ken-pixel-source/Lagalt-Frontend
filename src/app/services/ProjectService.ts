@@ -55,8 +55,18 @@ export class ProjectService {
     return this.httpClient.post(url, null);
   }
 
+  acceptJoinRequest(projectId: string, requestId: string): Observable<any> {
+    const url = `${this.projectUrl}/projects/${projectId}/requests/${requestId}/accept`;
+    return this.httpClient.post<any>(url, {});  // Assuming this is a POST request
+  }
+
   getUsersByProjectId(id: number): Observable<any[]> {
     return this.httpClient.get<any[]>(`${this.projectUrl}/${id}/users`);
+  }
+
+  getRequestToJoinProject(projectId: string): Observable<any[]> {
+    const url = `${this.projectUrl}/${projectId}/requests`;
+    return this.httpClient.get<any[]>(url);
   }
 
 }

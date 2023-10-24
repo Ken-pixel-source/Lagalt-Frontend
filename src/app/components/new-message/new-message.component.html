@@ -18,7 +18,7 @@
       <span class="sr-only">Add emoji</span>
     </button>
 
-    <textarea required id="subject" rows="1" [(ngModel)]="newMessage.subject" [ngModelOptions]="{standalone: true}" class="block ml-5 p-3 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Subject"></textarea>
+    <input required id="subject" rows="1" [(ngModel)]="newMessage.subject" [ngModelOptions]="{standalone: true}" class="block ml-5 p-3 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Subject">
     <span *ngIf="!messageForm.controls['subject']?.valid && messageForm.controls['subject']?.touched" class="text-red-500">
       Subject is required.
     </span>
