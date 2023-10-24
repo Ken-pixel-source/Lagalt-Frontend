@@ -19,7 +19,7 @@ export class ProjectService {
   }
 
   getProjectById(id: string): Observable<Project | undefined> {
-    const url = `${this.projectUrl}/${id}`; 
+    const url = `${this.projectUrl}/${id}`;
     return this.httpClient.get<Project>(url);
   }
 
@@ -35,7 +35,7 @@ export class ProjectService {
   }
 
   getProjectTags(id: string): Observable<Tags[]> {
-    const url = `${this.projectUrl}/${id}/tags`; 
+    const url = `${this.projectUrl}/${id}/tags`;
     return this.httpClient.get<Tags[]>(url);
   }
 
@@ -49,9 +49,14 @@ export class ProjectService {
   createProject(project: any ): Observable<any> {
     return this.httpClient.post(`${this.projectUrl}`, project);
   }
+
   requestToJoinProject(projectId: string): Observable<any> {
     const url = `${this.projectUrl}/${projectId}/requests`;
     return this.httpClient.post(url, null);
   }
-  
+
+  getUsersByProjectId(id: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.projectUrl}/${id}/users`);
+  }
+
 }
