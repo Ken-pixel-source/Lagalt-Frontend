@@ -44,13 +44,14 @@
   </div>
 
         <div *ngIf="user">
-          <h2>About Me</h2>
-          <p>{{ user.description }}</p>
+          <h2 class="text-2xl font-extrabold dark:text-white">About me</h2>
+          <p class="my-4 text-lg ">{{ user.description }}</p>
 
-          <h2>Education</h2>
-          <p>{{ user.education }}</p>
+          <h2 class="text-2xl font-extrabold dark:text-white">Education</h2>
+          <p class="my-4 text-lg ">{{ user.education }}</p>
         </div>
-    <app-portfolio-projects-list></app-portfolio-projects-list>
+    <app-portfolio-projects-list></app-portfolio-projects-list>  
+      
     <app-owned-project></app-owned-project>
 
   </div>
