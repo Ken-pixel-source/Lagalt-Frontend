@@ -1,9 +1,47 @@
-<div *ngFor="let portfolio of portfolios">
-  <h2>{{ portfolio.portfolioProjectName }}</h2>
-  <p>{{ portfolio.portfolioProjectDescription }}</p>
-  <p>Start Date: {{ portfolio.startDate | date }}</p>
-  <p>End Date: {{ portfolio.endDate | date }}</p>
+
+<div class=" shadow-md sm:rounded-lg">
+  <table class="w-full text-sm text-left">
+      <caption class="p-5 text-lg font-bold text-left text-gray-950 bg-white">
+          My portfolio
+          <p class=" text-sm text-gray-500">Here you can se all my previous projects</p>
+      </caption>
+      <thead class="text-xs text-gray-900 uppercase bg-gray-100">
+          <tr>
+              <th scope="col" class="px-6 py-3">
+                  Project name
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Description
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Start date
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  End date
+              </th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let portfolio of portfolios"class="bg-white border-b">
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900">
+                {{ portfolio.portfolioProjectDescription }}              
+              </th>
+              <td class="px-6 py-4">
+                {{ portfolio.portfolioProjectDescription }}
+              </td>
+              <td class="px-6 py-4">
+                {{ portfolio.startDate | date }}
+              </td>
+              <td class="px-6 py-4">
+                {{ portfolio.endDate | date }}
+              </td>
+          
+          </tr>
+         
+      </tbody>
+  </table>
 </div>
+
 
 <div *ngIf="portfolios.length === 0">
   <p>Loading portfolio project details...</p>
