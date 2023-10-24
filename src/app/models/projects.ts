@@ -2,6 +2,7 @@ export type Project = {
     projectId: number;
     name: string;
     description: string;
+    imageUrl: string;
     ownerId: string;
     projectStatusId: number | null;
     projectTypeId: number | null;

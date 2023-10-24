@@ -13,15 +13,13 @@ const routes: Routes = [
   { path: 'project', component: ProjectPageComponent },
   { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
   { path: 'projects/:id', component: ProjectDetailsPageComponent, canActivate: [AuthGuard] },
-  { path: 'project-member', component: ProjectMemberComponent, canActivate: [AuthGuard] },
   { path: 'project-member/:id', component: ProjectMemberComponent, canActivate: [AuthGuard] },
   { path: 'newproject', component: NewProjectComponent, canActivate: [AuthGuard] },
   { path: '', component: LandingPageComponent },
 ];
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

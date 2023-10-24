@@ -49,10 +49,9 @@ export class ProjectService {
   createProject(project: any ): Observable<any> {
     return this.httpClient.post(`${this.projectUrl}`, project);
   }
-
-  /*createTag(tag: { tagName: string }): Observable<any> {
-    const url = `${this.projectTagUrl}`; // Replace with your actual endpoint for creating tags
-    return this.httpClient.post(url, tag);
-  }*/
+  requestToJoinProject(projectId: string): Observable<any> {
+    const url = `${this.projectUrl}/${projectId}/requests`;
+    return this.httpClient.post(url, null);
+  }
   
 }
