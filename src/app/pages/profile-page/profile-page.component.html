@@ -31,12 +31,16 @@
           <button (click)="openModal('skills')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-green-600">Add Skills</button>
           <button (click)="openModal('portfolio')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-blue-600">Add Portfolio</button>
           <button (click)="openModal('details')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-orange-400">Edit Details</button>
+          <button (click)="openModal('delete')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-red-600">Delete Skills/Portfolio</button>
+
       </div>
 
       <!-- Modals -->
       <app-edit-profile *ngIf="activeModal === 'skills'" (saveData)="handleSave($event)" (closeModalRequest)="closeModal()"></app-edit-profile>
       <app-add-portfolio *ngIf="activeModal === 'portfolio'" (savePortfolioData)="portfolioSave($event)" (closePortfolioModalRequest)="closeModal()"></app-add-portfolio>
       <app-update-user *ngIf="activeModal === 'details'" (saveData)="handleUserUpdate()" (closeModalRequest)="closeModal()"></app-update-user>
+      <app-delete-portfo-skills *ngIf="activeModal === 'delete'" (closeModalRequest)="closeModal()"></app-delete-portfo-skills>
+
   </div>
 
         <div *ngIf="user">
@@ -48,6 +52,6 @@
         </div>
     <app-portfolio-projects-list></app-portfolio-projects-list>
     <app-owned-project></app-owned-project>
-    <app-delete-portfo-skills></app-delete-portfo-skills>
-</div>
+
+  </div>
 
