@@ -11,4 +11,5 @@ export class ProjectMemberComponent {
   openTab(projectThing: string) {
     this.activeTab = projectThing;
   }
+  
 }
