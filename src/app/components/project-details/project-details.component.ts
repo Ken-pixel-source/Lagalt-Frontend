@@ -53,6 +53,20 @@ export class ProjectDetailsComponent implements OnInit {
       });
     }
   }
+  requestToJoinProject() {
+    if (this.project) {
+      const projectId = this.project.projectId.toString(); // Convert to string
+      this.projectService.requestToJoinProject(projectId).subscribe({
+        next: () => {
+          console.log('Request to join project successful');
+          this.router.navigate(['/project']);
+        },
+        error: (error) => {
+          console.error('Error while requesting to join the project:', error);
+        },
+      });
+    }
+  }
 
   getProjectTypeName(projectTypeId: number): void {
     this.projectService.getProjectTypeName(projectTypeId).subscribe({
