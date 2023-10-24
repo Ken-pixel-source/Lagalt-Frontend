@@ -22,7 +22,6 @@ export class ProfilePageComponent implements OnInit {
 
   public showModal = false;
   public showPortfolioModal = false;
-  public showUpdateUserModal = false;
   public showSettingsMenu = false;
   public activeModal: 'skills' | 'portfolio' | 'details' | 'delete' | null = null;
 
@@ -90,18 +89,5 @@ export class ProfilePageComponent implements OnInit {
      closePortfolioModal() {
         this.showPortfolioModal = false;
      }
-
-     handleUserUpdate() {
-      console.log('User details updated');
-      this.showUpdateUserModal = false;
-    }
-
-    openUpdateUserModal() {
-      this.showUpdateUserModal = true;
-    }
-
-    closeUpdateUserModal() {
-      this.showUpdateUserModal = false;
-    }
 
 }

@@ -26,7 +26,6 @@ import { NewMessageComponent } from './components/new-message/new-message.compon
 import { AddPortfolioComponent } from './components/add-portofolio/add-portfolio.component';
 import { PortfolioProjectsListComponent } from './components/portfolio-projects-list/portfolio-projects-list.component';
 import { OwnedProjectComponent } from './components/owned-project/owned-project.component';
-import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { DeletePortfoSkillsComponent } from './components/delete-portfo-skills/delete-portfo-skills.component';
 
 @NgModule({
@@ -52,7 +51,6 @@ import { DeletePortfoSkillsComponent } from './components/delete-portfo-skills/d
     AddPortfolioComponent,
     PortfolioProjectsListComponent,
     OwnedProjectComponent,
-    UpdateUserComponent,
     DeletePortfoSkillsComponent,
   ],
   imports: [
