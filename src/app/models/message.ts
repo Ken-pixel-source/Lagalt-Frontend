@@ -4,7 +4,7 @@ export interface Message {
     messageContent: string;
     imageUrl: string;
     timestamp: string | null;
-    creatorId: string | null; 
+    creatorId: string; 
     projectId: number;
     replies: Message[] | null;
   }
