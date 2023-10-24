@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/ProjectService';
 import { UserService } from 'src/app/services/userService';
-import { Project, ProjectType } from 'src/app/models/projects';
+import { Project, ProjectType, Tags } from 'src/app/models/projects';
 
 @Component({
   selector: 'app-project-details',
@@ -13,6 +13,8 @@ export class ProjectDetailsComponent implements OnInit {
   project: Project | undefined;
   projectTypeName: string | undefined;
   projectLeaderName: string | undefined;
+  projectTagName: string | undefined;
+  tags: Tags[] = []
 
   constructor(
     private route: ActivatedRoute,
@@ -30,6 +32,14 @@ export class ProjectDetailsComponent implements OnInit {
           if (this.project && this.project.projectTypeId) {
             this.getProjectTypeName(this.project.projectTypeId);
           }
+
+          // Fetch tags for the project
+          this.projectService.getProjectTags(projectId).subscribe({
+            next: (tagsData) => {
+              this.tags = tagsData;
+            },
+            error: (error) => console.log(error),
+          });
 
           // Find project leader name
           this.userService.getUsers().subscribe((users) => {
@@ -53,29 +63,14 @@ export class ProjectDetailsComponent implements OnInit {
     });
   }
 
-  requestToJoinProject() {
-    if (this.project) {
-      const projectId = this.project.projectId.toString(); // Convert to string
-      this.projectService.requestToJoinProject(projectId).subscribe({
-        next: () => {
-          // Handle success
-          // For example, you can show a success message or redirect the user
-          console.log('Request to join project successful');
-          // You can also navigate the user back to the project list or another page
-          this.router.navigate(['/project']);
-        },
-        error: (error) => {
-          // Handle error
-          // Display an error message to the user or handle the error appropriately
-          console.error('Error while requesting to join the project:', error);
-          // You might want to show an error message to the user, e.g., using a toast or alert
-          // this.errorMessage = 'An error occurred while requesting to join the project';
-        },
-      });
-    }
+  getTagName(id: number, tagId: number): void {
+    this.projectService.getProjectTagName(id, tagId).subscribe({
+      next: (tagName) => {
+        this.projectTagName = tagName;
+      },
+      error: (error) => console.log(error),
+    });
   }
-  
-  
 
   goBack(): void {
     this.router.navigate(['/project']);

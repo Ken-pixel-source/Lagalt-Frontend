@@ -1,0 +1,18 @@
+<div>
+  <h2>Skills</h2>
+  <ul>
+      <li *ngFor="let skill of userSkills" >
+        {{ skill.skillName }}
+        <button (click)="onDeleteSkill(skill.skillId)">Delete</button>
+      </li>
+  </ul>
+
+
+  <h2>Portfolio Projects</h2>
+  <ul>
+    <li *ngFor="let portfolio of portfolios">
+      {{ portfolio.portfolioProjectName }} <!-- Assuming your portfolio object has a name property -->
+      <button (click)="onDeletePortfolio(portfolio.portfolioProjectId)">Delete</button> <!-- Assuming your portfolio object has an id property -->
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,21 @@
+<div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+  <div class="bg-white p-4 rounded-lg w-1/2 relative">
+    <button (click)="closeUpdateUserModal()" class="absolute top-2 right-2 text-xl leading-none hover:text-gray-500">×</button>
+
+    <h2 class="text-xl font-bold mb-4">Update Profile</h2>
+
+    <div class="mb-2">
+      <label for="description" class="block text-sm font-medium text-gray-700">Description:</label>
+      <textarea id="description" placeholder="Enter updated description" [(ngModel)]="Description" class="mt-1 p-2 w-full border rounded-md"></textarea>
+    </div>
+
+    <div class="mb-2">
+      <label for="education" class="block text-sm font-medium text-gray-700">Education:</label>
+      <input type="text" id="education" [(ngModel)]="Education" class="mt-1 p-2 w-full border rounded-md" placeholder="Enter updated education">
+    </div>
+
+    <div class="mt-4 flex justify-end">
+      <button (click)="updateUserDetails()" class="bg-blue-500 text-white p-2 rounded">Update Details</button>
+    </div>
+  </div>
+</div>

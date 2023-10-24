@@ -1,5 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+nav {
+    position: sticky !important;
+    top: 0;
+    z-index: 999;
+}
 
 .nav-container{
     display: flex;
@@ -10,6 +15,9 @@
     color: #ffff;
     font-family: 'Lora', serif;
     height: 120px;
+    position: sticky !important;
+    top: 0;
+    z-index: 999;
 }
 .nav-logo{
     display: flex;

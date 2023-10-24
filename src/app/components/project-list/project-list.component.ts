@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Project, ProjectType } from 'src/app/models/projects';
 import {ProjectService} from 'src/app/services/ProjectService'
@@ -25,36 +24,39 @@ export class ProjectListComponent implements OnInit {
       next: (projectsData) => {
         this.projects = projectsData;
         this.filterProjects();
+        console.log('Projects loaded:', this.projects);
       },
-      
-      error: (error) => console.log(error)
+      error: (error) => {
+        console.error('Error loading projects:', error);
+      }
     });
+  
     this.projectService.getProjectType().subscribe({
       next: (projectTypesData) => {
         this.projectTypes = projectTypesData;
         this.filterProjects();
-
+        console.log('Project types loaded:', this.projectTypes);
       },
-      error: (error) => console.log(error)
+      error: (error) => {
+        console.error('Error loading project types:', error);
+      }
     });
-
   }
+
   searchQuery: string = ''; // Property to store the search query
   filteredProjects: Project[] = []; // Property to store filtered projects
   selectedProjectTypes: number[] = [];
 
+  filterProjects() {
+    this.filteredProjects = this.projects.filter((project) =>
+      project.name.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
+      (
+        this.selectedProjectTypes.length === 0 || (project.projectTypeId !== null && 
+        this.selectedProjectTypes.includes(project.projectTypeId)
+      ))
+    );
+  }
 
-filterProjects() {
-  this.filteredProjects = this.projects.filter((project) =>
-    project.name.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
-    (
-      this.selectedProjectTypes.length === 0 || (project.projectTypeId !== null && 
-      this.selectedProjectTypes.includes(project.projectTypeId)
-    ))
-  );
-}
-
-  
   toggleProjectTypeSelection(projectTypeId: number) {
     if (this.selectedProjectTypes.includes(projectTypeId)) {
       this.selectedProjectTypes = this.selectedProjectTypes.filter(id => id !== projectTypeId);
@@ -63,5 +65,4 @@ filterProjects() {
     }
     this.filterProjects();
   }
-  
 }

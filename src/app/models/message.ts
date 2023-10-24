@@ -1,23 +1,20 @@
-import { User } from './user';
-import { Project } from './projects';
-
 export interface Message {
     messageId: number;
     subject: string;
-    parentId: number; 
-    parent: Message | null;
     messageContent: string;
-    imageUrl: string | null;
-    timestamp: Date | string;
-    userId: string | number; 
-    user: User | null;
-    projectId: number | null;
-    project: Project | null; 
+    imageUrl: string;
+    timestamp: string | null;
+    creatorId: string | null; 
+    projectId: number;
     replies: Message[] | null;
   }
 
+  export interface MessageResponse {
+    messages: Message[];
+  }
+
   export interface MessageCreate {
-    subject: string | null;
+    subject: string;
     messageContent: string;
-    imageUrl: string | null;
+    imageUrl: string;
   }
