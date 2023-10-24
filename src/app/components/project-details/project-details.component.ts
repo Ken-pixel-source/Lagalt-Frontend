@@ -53,6 +53,30 @@ export class ProjectDetailsComponent implements OnInit {
     });
   }
 
+  requestToJoinProject() {
+    if (this.project) {
+      const projectId = this.project.projectId.toString(); // Convert to string
+      this.projectService.requestToJoinProject(projectId).subscribe({
+        next: () => {
+          // Handle success
+          // For example, you can show a success message or redirect the user
+          console.log('Request to join project successful');
+          // You can also navigate the user back to the project list or another page
+          this.router.navigate(['/project']);
+        },
+        error: (error) => {
+          // Handle error
+          // Display an error message to the user or handle the error appropriately
+          console.error('Error while requesting to join the project:', error);
+          // You might want to show an error message to the user, e.g., using a toast or alert
+          // this.errorMessage = 'An error occurred while requesting to join the project';
+        },
+      });
+    }
+  }
+  
+  
+
   goBack(): void {
     this.router.navigate(['/project']);
   }

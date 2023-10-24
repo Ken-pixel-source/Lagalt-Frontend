@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Project, ProjectType } from 'src/app/models/projects';
 import {ProjectService} from 'src/app/services/ProjectService'
