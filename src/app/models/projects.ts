@@ -6,11 +6,11 @@ export type Project = {
     ownerId: string;
     projectStatusId: number | null;
     projectTypeId: number | null;
-    users: any[]; // You can replace 'any' with a user model if needed
-    updates: any[]; // You can replace 'any' with an update model if needed
-    milestones: any[]; // You can replace 'any' with a milestone model if needed
-    tags: Tags[]; // You can replace 'any' with a tag model if needed
-    projectRequests: any[]; // You can replace 'any' with a project request model if needed
+    users: any[];
+    updates: any[];
+    milestones: any[];
+    tags: Tags[];
+    projectRequests: any[];
   }
 
 export type ProjectType ={
@@ -19,7 +19,7 @@ export type ProjectType ={
   projects: Project[];
 }
 
-  export interface ProjectResponse{ 
+  export interface ProjectResponse{
     projects: Project[]
 }
 
@@ -31,4 +31,10 @@ export interface Tags {
 
 export interface TagsCreate {
   tagName: string;
+}
+
+export interface ProjectUsers {
+  projectId: number;
+  ownerId: string;
+  users: any[];
 }

@@ -4,7 +4,7 @@
     <div class="main">
       <div class="tab h-8 bg-green-500 flex justify-between items-center" id="tabs">
         <div (click)="openTab('Message')" [class.active]="activeTab === 'Message'" class="tabItem">Message Board</div>
-        <div (click)="openTab('Process')" [class.active]="activeTab === 'Process'" class="tabItem">Process</div>
+        <div *ngIf="isAuthorizedToView()"  (click)="openTab('Process')" [class.active]="activeTab === 'Process'" class="tabItem">Process</div>
         <div (click)="openTab('Tools')" [class.active]="activeTab === 'Tools'" class="tabItem">Tools and Resources</div>
       </div>
       <div [id]="'Message'" class="tabcontent" [style.display]="activeTab === 'Message' ? 'block' : 'none'">
