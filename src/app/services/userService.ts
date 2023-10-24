@@ -23,6 +23,11 @@ import { Project } from '../models/projects';
       return this.http.get<T>(`${this.userApiUrl}/${userId}`);
     }
 
+    getUserById(userId: string): Observable<any> {
+      const url = `${this.userApiUrl}/${userId}`;
+      return this.http.get<any>(url);
+    }
+
     getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.userApiUrl);
     }
