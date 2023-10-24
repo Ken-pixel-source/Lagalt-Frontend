@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import keycloak from 'src/keycloak';
 import { UserService } from 'src/app/services/userService';
 import { User, skills  } from 'src/app/models/user';
+import { Project } from 'src/app/models/projects';
 
 
 
@@ -15,6 +16,9 @@ export class ProfilePageComponent implements OnInit {
   user: User | undefined;
   userSkills: skills[] = [];
   userName: string | undefined;
+  userProjects: Project[] = [];
+
+
 
   public showModal = false;
   public showPortfolioModal = false;
@@ -41,6 +45,12 @@ export class ProfilePageComponent implements OnInit {
       });
 
     }
+    if (userId) {
+      this.userService.getProjectsByUserId(userId).subscribe(projects => {
+        this.userProjects = projects;
+      });
+    }
+
 }
 
       goBack(): void {

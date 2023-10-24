@@ -18,6 +18,7 @@ export class ProjectDetailsComponent implements OnInit {
   projectTagName: string | undefined;
   tags: Tags[] = [];
 
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,

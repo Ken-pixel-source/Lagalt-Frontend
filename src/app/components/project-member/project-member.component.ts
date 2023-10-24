@@ -15,6 +15,8 @@ export class ProjectMemberComponent implements OnInit {
   project: Project | undefined;
   projectUsers: any[] = [];
   projectRequests: any[] = [];
+  userDetails: any; // To store fetched user details
+  showModal: boolean = false;
 
 
   constructor(private projectService: ProjectService, private userService: UserService, private route: ActivatedRoute) {}
@@ -63,6 +65,17 @@ export class ProjectMemberComponent implements OnInit {
         // Handle error here, maybe show a message to the user
       });
     }
+  }
+
+  viewUserDetails(userId: string): void {
+    this.userService.getUserDataById(userId).subscribe(details => {
+      this.userDetails = details;
+      this.showModal = true; // Display the modal
+    });
+  }
+
+  closeModal(): void {
+    this.showModal = false; // Hide the modal
   }
 
   deleteRequest(requestId: string): void {

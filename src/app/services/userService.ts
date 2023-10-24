@@ -15,6 +15,13 @@ import { Project } from '../models/projects';
 
     constructor(private readonly http: HttpClient) {}
 
+
+
+  getProjectsByUserId(userId: string): Observable<Project[]> {
+    const url = `${this.userApiUrl}/${userId}/teammemberprojects`;
+    return this.http.get<Project[]>(url);
+  }
+
     registerUser() {
       return this.http.post(`${this.userApiUrl}/register`, {});
     }
