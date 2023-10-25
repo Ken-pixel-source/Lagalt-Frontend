@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import keycloak from 'src/keycloak';
 import { UserService } from 'src/app/services/userService';
 import { User, skills  } from 'src/app/models/user';
 import { Project } from 'src/app/models/projects';
+import { PortfolioProject } from 'src/app/models/portofolio';
 
 
 
@@ -50,7 +51,11 @@ export class ProfilePageComponent implements OnInit {
       });
     }
 
-}
+
+  }
+
+
+    
 
       goBack(): void {
           this.router.navigate(['/project']);
@@ -81,10 +86,13 @@ export class ProfilePageComponent implements OnInit {
         this.showModal = false;
       }
 
-     portfolioSave(data: any) {
+      portfolioSave(data: any) {
         console.log(data);
         this.showPortfolioModal = false;
+        window.location.reload();
       }
+    
+      
 
      closePortfolioModal() {
         this.showPortfolioModal = false;
