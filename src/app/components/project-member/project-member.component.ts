@@ -31,6 +31,20 @@ export class ProjectMemberComponent implements OnInit {
     }
   }
 
+  removeUserFromProject(userId: string) {
+    const projectId = this.route.snapshot.paramMap.get('id');
+    if (projectId) {
+      this.projectService.removeUserFromProject(projectId, userId).subscribe(() => {
+        // Once the removal is successful, remove that user from the projectUsers array
+        this.projectUsers = this.projectUsers.filter(user => user.userId !== userId);
+      }, error => {
+        // Handle error here, maybe show a message to the user
+        console.error('Error removing the user:', error);
+      });
+    }
+  }
+
+
 
 
   fetchProjectDetails(projectId: string) {
@@ -54,7 +68,7 @@ export class ProjectMemberComponent implements OnInit {
       this.fetchUserNamesForRequests();
     });
   }
-  
+
   acceptRequest(requestId: string) {
     const projectId = this.route.snapshot.paramMap.get('id');
     if (projectId) {
@@ -70,7 +84,7 @@ export class ProjectMemberComponent implements OnInit {
   viewUserDetails(userId: string): void {
     this.userService.getUserDataById(userId).subscribe(details => {
       this.userDetails = details;
-      this.showModal = true; // Display the modal
+      this.showModal = true;
     });
   }
 
@@ -87,7 +101,6 @@ export class ProjectMemberComponent implements OnInit {
         });
     }
 }
-
 
 
   fetchUserNamesForRequests() {

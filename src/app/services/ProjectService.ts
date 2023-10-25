@@ -12,6 +12,7 @@ export class ProjectService {
   private projectUrl = environment.projectUrl;
   private projectTypeUrl = environment.projectTypeUrl;
 
+
   constructor(private readonly httpClient: HttpClient) {}
 
   getProjects(): Observable<Project[]> {
@@ -50,6 +51,26 @@ export class ProjectService {
     return this.httpClient.post(`${this.projectUrl}`, project);
   }
 
+  checkIfRequestSent(projectId: string, userId: string): Observable<boolean> {
+    return this.httpClient.get<any[]>(`${this.projectUrl}/${projectId}/requests`).pipe(
+      map(requests => {
+        return requests.some(request => request.userId === userId);
+      })
+    );
+  }
+
+  removeUserFromProject(projectId: string, userId: string): Observable<any> {
+    const url = `${this.projectUrl}/${projectId}/users/remove/${userId}`;
+    return this.httpClient.delete<any>(url);
+  }
+
+
+  leaveProject(projectId: string): Observable<any> {
+    const url = `${this.projectUrl}/${projectId}/leave`;
+    return this.httpClient.delete(url, {});
+  }
+
+
   requestToJoinProject(projectId: string): Observable<any> {
     const url = `${this.projectUrl}/${projectId}/requests`;
     return this.httpClient.post(url, null);
@@ -57,7 +78,7 @@ export class ProjectService {
 
   acceptJoinRequest(projectId: string, requestId: string): Observable<any> {
     const url = `${this.projectUrl}/projects/${projectId}/requests/${requestId}/accept`;
-    return this.httpClient.post<any>(url, {});  // Assuming this is a POST request
+    return this.httpClient.post<any>(url, {});
   }
 
   getUsersByProjectId(id: number): Observable<any[]> {
@@ -65,11 +86,16 @@ export class ProjectService {
   }
 
 
+
   deleteJoinRequest(projectId: string, requestId: string): Observable<any> {
     const url = `${this.projectUrl}/${projectId}/requests/${requestId}`;
     return this.httpClient.delete<any>(url);
   }
 
+  addRequirement(projectId: string, requirement: any): Observable<any> {
+    const url = `${this.projectUrl}/${projectId}/requirements/add`;
+    return this.httpClient.post(url, requirement);
+  }
 
 
   getRequestToJoinProject(projectId: string): Observable<any[]> {

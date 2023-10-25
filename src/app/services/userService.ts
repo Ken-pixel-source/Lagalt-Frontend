@@ -5,6 +5,7 @@ import { environment } from 'src/app/enviroment/enviroments';
 import { User } from '../models/user';
 import { PortfolioProject } from '../models/portofolio';
 import { Project } from '../models/projects';
+import { Subject, tap } from 'rxjs';
 
 
 @Injectable({
@@ -12,6 +13,10 @@ import { Project } from '../models/projects';
   })
   export class UserService {
     private userApiUrl = environment.projectUsers;
+
+    private portfolioUpdated$ = new Subject<PortfolioProject>();
+
+    public portfolioUpdateObservable$ = this.portfolioUpdated$.asObservable();
 
     constructor(private readonly http: HttpClient) {}
 
@@ -48,8 +53,12 @@ import { Project } from '../models/projects';
     }
 
     addPortfolio(userId: string, portfolio: PortfolioProject): Observable<any> {
-      return this.http.post<any>(`${this.userApiUrl}/${userId}/portfolioprojects`, portfolio);
-    }
+      return this.http.post<any>(`${this.userApiUrl}/${userId}/portfolioprojects`, portfolio).pipe(
+          tap((newPortFolio: any) => {
+              this.portfolioUpdated$.next(newPortFolio);
+          })
+      );
+  }
 
     getUserPortfolios(userId: string): Observable<PortfolioProject[]> {
       return this.http.get<PortfolioProject[]>(`${this.userApiUrl}/${userId}/portfolioprojects`);

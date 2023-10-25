@@ -71,26 +71,6 @@ body {
 }
 
 
- /* Base Button Styles */
-button {
-    background-color: white; /* Base color for bg-blue-500 */
-    color: #002449; /* Text color for text-white */
-    font-weight: 700; /* Font weight for font-bold */
-    padding: 0.5rem 1rem; /* Padding for py-2 px-4 */
-    border-radius: 0.25rem; /* Rounded corners for rounded */
-    border: none; /* Remove default button border */
-    cursor: pointer; /* Change cursor to pointer on hover */
-
-    /* Hover Effect */
-    transition: background-color 0.3s ease; /* Smooth transition on hover */
-  }
-
-  /* Hover State */
-  button:hover {
-    border: white;
-    color: white;
-    background-color: #002449; /* Color on hover (hover:bg-blue-700) */
-  }
 
   /* Column container */
   .row {
