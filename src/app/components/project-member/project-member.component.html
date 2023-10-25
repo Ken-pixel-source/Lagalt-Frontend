@@ -5,8 +5,8 @@
     <div class="main">
       <div class="tab h-8 bg-green-500 flex justify-between items-center" id="tabs">
         <div (click)="openTab('Message')" [class.active]="activeTab === 'Message'" class="tabItem">Message Board</div>
-        <div *ngIf="isAuthorizedToView()"  (click)="openTab('Process')" [class.active]="activeTab === 'Process'" class="tabItem">Process</div>
-        <div (click)="openTab('Tools')" [class.active]="activeTab === 'Tools'" class="tabItem">Tools and Resources</div>
+        <div *ngIf="isAuthorizedToView()"  (click)="openTab('Process')" [class.active]="activeTab === 'Process'" class="tabItem">Join Requests</div>
+        <div (click)="openTab('Tools')" [class.active]="activeTab === 'Tools'" class="tabItem">Member List</div>
       </div>
       <div [id]="'Message'" class="tabcontent" [style.display]="activeTab === 'Message' ? 'block' : 'none'">
         <app-new-message></app-new-message>
@@ -54,8 +54,8 @@
         </div>
       </div>
       <div [id]="'Tools'" class="tabcontent" [style.display]="activeTab === 'Tools' ? 'block' : 'none'">
-        <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">Users in the project:</h2>
-        <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside flex justify-center flex-col items-center">
+        <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-whiter">Users in the project:</h2>
+        <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside flex justify-center flex-col items-center ">
           <li *ngFor="let user of projectUsers">
             <span class="font-semibold text-gray-900 dark:text-white">{{ user.userName }}</span>
           </li>

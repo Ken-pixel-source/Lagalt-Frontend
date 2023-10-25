@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
-<div class="flex h-screen bg-gray-100 overflow-auto">
+<div *ngIf="loading" class="flex h-screen justify-center items-center">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
 
+
+<div class="flex h-screen bg-gray-100 overflow-auto" *ngIf="!loading">
   <!-- Sidebar -->
   <div class="flex flex-col p-5 h-screen bg-[#004080] text-white space-y-4">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 cursor-pointer" id="arrow" (click)="goBack()">
@@ -22,7 +26,7 @@
   </div>
 
   <!-- Main Content -->
-  <div class="flex-grow p-4 md:p-6 overflow-y-auto">
+  <div class="flex-grow p-4 md:p-6 overflow-y-auto" *ngIf="!loading">
     <div class="flex justify-end mb-6 space-x-4">
       <img src="assets\images\Settings.png" alt="Settings" (click)="toggleSettingsMenu()" class="h-8 w-8 cursor-pointer">
 
@@ -62,3 +66,4 @@
 
   </div>
 
+</div>

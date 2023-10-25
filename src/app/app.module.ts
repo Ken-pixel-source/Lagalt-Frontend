@@ -27,6 +27,9 @@ import { AddPortfolioComponent } from './components/add-portofolio/add-portfolio
 import { PortfolioProjectsListComponent } from './components/portfolio-projects-list/portfolio-projects-list.component';
 import { OwnedProjectComponent } from './components/owned-project/owned-project.component';
 import { DeletePortfoSkillsComponent } from './components/delete-portfo-skills/delete-portfo-skills.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import { DeletePortfoSkillsComponent } from './components/delete-portfo-skills/d
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule
+
   ],
   providers: [
     {

@@ -18,6 +18,8 @@ export class ProjectDetailsComponent implements OnInit {
   projectTagName: string | undefined;
   tags: Tags[] = [];
 
+  loading: boolean = true; 
+
 
   constructor(
     private route: ActivatedRoute,
@@ -30,34 +32,45 @@ export class ProjectDetailsComponent implements OnInit {
     const projectId = this.route.snapshot.paramMap.get('id');
     if (projectId) {
       this.fetchProjectUsers(projectId);
-
+  
       this.projectService.getProjectById(projectId).subscribe({
         next: (projectData) => {
           this.project = projectData;
           if (this.project && this.project.projectTypeId) {
             this.getProjectTypeName(this.project.projectTypeId);
           }
-
+  
           // Fetch tags for the project
           this.projectService.getProjectTags(projectId).subscribe({
             next: (tagsData) => {
               this.tags = tagsData;
+  
+              // Find project leader name
+              this.userService.getUsers().subscribe((users) => {
+                const projectLeader = users.find((user) => user.userId === this.project?.ownerId);
+                if (projectLeader) {
+                  this.projectLeaderName = projectLeader.userName;
+                }
+  
+                this.loading = false; // Only set loading to false after all data fetching is done
+              });
             },
-            error: (error) => console.log(error),
-          });
-
-          // Find project leader name
-          this.userService.getUsers().subscribe((users) => {
-            const projectLeader = users.find((user) => user.userId === this.project?.ownerId);
-            if (projectLeader) {
-              this.projectLeaderName = projectLeader.userName;
-            }
+            error: (error) => {
+              console.log(error);
+              this.loading = false;  // Set loading to false in case of error
+            },
           });
         },
-        error: (error) => console.log(error),
+        error: (error) => {
+          console.log(error);
+          this.loading = false;  // Set loading to false in case of error
+        },
       });
+    } else {
+      this.loading = false;  // Set loading to false if no projectId is available
     }
   }
+  
   requestToJoinProject() {
     if (this.project) {
       const projectId = this.project.projectId.toString();

@@ -2,6 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Love+Ya+Like+A+Sister&display=swap');
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 
 html, body {  font-family: 'roboto', sans-serif;
     background: linear-gradient(130deg, rgba(21,103,186,0.9137780112044818) 0%, rgba(210,224,233,1) 17%, rgba(210,224,233,1) 77%, rgba(255,193,7,0.9417892156862745) 100%);

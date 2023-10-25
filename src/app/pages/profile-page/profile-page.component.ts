@@ -5,6 +5,8 @@ import { UserService } from 'src/app/services/userService';
 import { User, skills  } from 'src/app/models/user';
 import { Project } from 'src/app/models/projects';
 import { PortfolioProject } from 'src/app/models/portofolio';
+import { forkJoin } from 'rxjs';
+
 
 
 
@@ -20,7 +22,7 @@ export class ProfilePageComponent implements OnInit {
   userProjects: Project[] = [];
   portfolios: PortfolioProject[] = [];
 
-
+  loading: boolean = true; 
 
   public showModal = false;
   public showPortfolioModal = false;
@@ -32,38 +34,28 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = keycloak.tokenParsed?.preferred_username;
-  
-
     const userId = keycloak.tokenParsed?.sub;
+  
     if (userId) {
-      // Fetching the user details of type User
-      this.userService.getUserDataById<User>(userId).subscribe(data => {
-        this.user = data;
-      });
-
-      // Fetching the skills of the user
-      this.userService.getSkillsByUserId(userId).subscribe(skills => {
-        this.userSkills = skills.map(skill => skill as unknown as skills);
-      });
-
-    }
-    if (userId) {
-      this.userService.getProjectsByUserId(userId).subscribe(projects => {
-        this.userProjects = projects;
-      });
-    }
-    if (userId) {
-      this.userService.getUserPortfolios(userId).subscribe(
-        (data: PortfolioProject[]) => {
-          this.portfolios = data;
+      const userData$ = this.userService.getUserDataById<User>(userId);
+      const userSkills$ = this.userService.getSkillsByUserId(userId);
+      const userProjects$ = this.userService.getProjectsByUserId(userId);
+      const portfolios$ = this.userService.getUserPortfolios(userId);
+  
+      forkJoin([userData$, userSkills$, userProjects$, portfolios$]).subscribe(
+        ([userData, userSkillsData, userProjectsData, portfoliosData]) => {
+          this.user = userData;
+          this.userSkills = userSkillsData.map(skill => skill as unknown as skills);
+          this.userProjects = userProjectsData;
+          this.portfolios = portfoliosData;
+          this.loading = false;  // Set loading to false when all API calls are done
         },
         error => {
-          console.error('Error fetching portfolios:', error);
+          console.error('Error fetching data:', error);
+          this.loading = false;  // Also set to false in case of error to stop the spinner
         }
       );
     }
-
-
   }
 
   
