@@ -1,8 +1,13 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@500&family=Love+Ya+Like+A+Sister&display=swap');
 
 html, body {  font-family: 'roboto', sans-serif;background: linear-gradient(175deg, rgba(0,64,128,1) 24%, rgba(38,140,43,1) 46%, rgba(255,193,7,1) 93%);
     ; height: 100%; text-align: center;  letter-spacing: 1.9px;}
+
+h1, h2, h3 {
+    font-family: 'Lora', serif;
+}
 
 body { margin: 0; }
