@@ -54,7 +54,7 @@ export class ProjectMemberComponent implements OnInit {
       this.fetchUserNamesForRequests();
     });
   }
-
+  
   acceptRequest(requestId: string) {
     const projectId = this.route.snapshot.paramMap.get('id');
     if (projectId) {

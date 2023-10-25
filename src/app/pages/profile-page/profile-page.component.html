@@ -36,7 +36,7 @@
 
       <!-- Modals -->
       <app-edit-profile *ngIf="activeModal === 'skills'" (saveData)="handleSave($event)" (closeModalRequest)="closeModal()"></app-edit-profile>
-      <app-add-portfolio *ngIf="activeModal === 'portfolio'" (savePortfolioData)="portfolioSave($event)" (closePortfolioModalRequest)="closeModal()"></app-add-portfolio>
+      <app-add-portfolio *ngIf="activeModal === 'portfolio'"  (savePortfolioData)="portfolioSave($event)" (closePortfolioModalRequest)="closeModal()"></app-add-portfolio>
       <app-delete-portfo-skills *ngIf="activeModal === 'delete'" (closeModalRequest)="closeModal()"></app-delete-portfo-skills>
 
   </div>
@@ -48,8 +48,8 @@
           <h2 class="text-2xl font-extrabold dark:text-white">Education</h2>
           <p class="my-4 text-lg ">{{ user.education }}</p>
         </div>
-    <app-portfolio-projects-list></app-portfolio-projects-list>
-    <h2 class="text-4xl font-extrabold dark:text-white">Contributing Project</h2>
+        <app-portfolio-projects-list></app-portfolio-projects-list>
+        <h2 class="text-4xl font-extrabold dark:text-white">Contributing Project</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <div *ngFor="let project of userProjects" class="border rounded-lg shadow-md p-4 flex justify-center flex-col items-center">
         <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{project.imageUrl}}" alt="" />

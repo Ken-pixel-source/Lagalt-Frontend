@@ -24,8 +24,12 @@
       </ul>
       </div>
       <div [id]="'Tools'" class="tabcontent" [style.display]="activeTab === 'Tools' ? 'block' : 'none'">
-        <h3>Tools</h3>
-        <p>Tools is the capital of Japan.</p>
+        <h4>Users in the project:</h4>
+        <ul>
+          <li *ngFor="let user of projectUsers">
+            {{ user.userName }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
