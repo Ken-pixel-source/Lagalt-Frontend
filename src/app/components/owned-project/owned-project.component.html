@@ -1,7 +1,7 @@
 <h2 class="text-4xl font-extrabold dark:text-white">Owned projects </h2>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-  <div *ngFor="let project of ownedProjects" class="border rounded-lg shadow-md p-4 flex justify-center flex-col items-center">
+  <div *ngFor="let project of ownedProjects" [routerLink]="['/projects', project?.projectId]" class="border cursor-pointer rounded-lg shadow-md p-4 flex justify-center flex-col items-center">
     <!-- Display Project Details -->
     <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{project.imageUrl}}" alt="" />
     <h3 class="text-lg font-bold">{{ project.name }}</h3>
