@@ -31,7 +31,8 @@ export class AddPortfolioComponent {
       this.userService.addPortfolio(userId, this.portfolioData).subscribe(
         response => {
           console.log("Portfolio added successfully:", response);
-          this.saveData.emit(this.portfolioData);  // Emit the event here
+          this.saveData.emit(this.portfolioData); 
+          window.location.reload();
         },
         error => {
           console.error("Error adding portfolio:", error);
@@ -45,7 +46,6 @@ export class AddPortfolioComponent {
   savePortfolio() {
     this.savePortfolioToServer();
     this.closePortfolioModalRequest.emit();
-    window.location.reload();
   }
   
 

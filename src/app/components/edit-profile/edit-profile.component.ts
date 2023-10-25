@@ -31,6 +31,7 @@ export class EditProfilComponent {
         response => {
           console.log("User details updated successfully.");
           this.saveData.emit();
+          window.location.reload();
         },
         error => {
           console.error("Error updating user details:", error);
