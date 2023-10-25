@@ -31,6 +31,7 @@ export class AddPortfolioComponent {
       this.userService.addPortfolio(userId, this.portfolioData).subscribe(
         response => {
           console.log("Portfolio added successfully:", response);
+          this.saveData.emit(this.portfolioData);  // Emit the event here
         },
         error => {
           console.error("Error adding portfolio:", error);
@@ -40,11 +41,13 @@ export class AddPortfolioComponent {
       console.error("No user ID found.");
     }
   }
-
+  
   savePortfolio() {
     this.savePortfolioToServer();
-    this.saveData.emit(this.portfolioData);
+    this.closePortfolioModalRequest.emit();
+    window.location.reload();
   }
+  
 
   closePortfolioModal() {
     this.closePortfolioModalRequest.emit();

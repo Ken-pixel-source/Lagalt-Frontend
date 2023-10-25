@@ -12,7 +12,7 @@ import { ProjectMemberComponent } from './components/project-member/project-memb
 const routes: Routes = [
   { path: 'project', component: ProjectPageComponent },
   { path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard] },
-  { path: 'projects/:id', component: ProjectDetailsPageComponent, canActivate: [AuthGuard] },
+  { path: 'projects/:id', component: ProjectDetailsPageComponent },
   { path: 'project-member/:id', component: ProjectMemberComponent, canActivate: [AuthGuard] },
   { path: 'newproject', component: NewProjectComponent, canActivate: [AuthGuard] },
   { path: '', component: LandingPageComponent },
