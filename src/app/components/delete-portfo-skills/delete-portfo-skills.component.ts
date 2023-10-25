@@ -62,4 +62,7 @@ closeModal(): void {
     this.closeModalRequest.emit();
 }
 
+saveDelete(): void {
+  window.location.reload();
+}
 }

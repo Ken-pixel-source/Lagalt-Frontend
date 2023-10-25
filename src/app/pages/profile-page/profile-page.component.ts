@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import keycloak from 'src/keycloak';
 import { UserService } from 'src/app/services/userService';
@@ -18,6 +18,7 @@ export class ProfilePageComponent implements OnInit {
   userSkills: skills[] = [];
   userName: string | undefined;
   userProjects: Project[] = [];
+  portfolios: PortfolioProject[] = [];
 
 
 
@@ -31,6 +32,7 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.userName = keycloak.tokenParsed?.preferred_username;
+  
 
     const userId = keycloak.tokenParsed?.sub;
     if (userId) {
@@ -50,12 +52,21 @@ export class ProfilePageComponent implements OnInit {
         this.userProjects = projects;
       });
     }
+    if (userId) {
+      this.userService.getUserPortfolios(userId).subscribe(
+        (data: PortfolioProject[]) => {
+          this.portfolios = data;
+        },
+        error => {
+          console.error('Error fetching portfolios:', error);
+        }
+      );
+    }
 
 
   }
 
-
-    
+  
 
       goBack(): void {
           this.router.navigate(['/project']);
@@ -89,11 +100,9 @@ export class ProfilePageComponent implements OnInit {
       portfolioSave(data: any) {
         console.log(data);
         this.showPortfolioModal = false;
-        window.location.reload();
-      }
+    }
     
-      
-
+    
      closePortfolioModal() {
         this.showPortfolioModal = false;
      }
