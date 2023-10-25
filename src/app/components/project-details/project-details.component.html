@@ -1,6 +1,6 @@
 <div class="container h-full">
-  <div class="bg-gray-100 shadow-lg rounded-lg row">
-    <div class="side  text-white rounded-l-lg">
+  <div class="flex bg-opacity-100">
+    <div class="side text-white rounded-l-lg">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 cursor-pointer" id="arrow" (click)="goBack()">
         <path fill="yellow" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
       </svg>
@@ -24,11 +24,11 @@
       </div>
 
       <div class="mt-4">
-        <button class="btn bg-blue-500 hover:bg-blue-700 text-white" (click)="requestToJoinProject()">Request to Join</button>      </div>
+        <button class="btn custom-button" (click)="requestToJoinProject()">Request to Join</button>
+    </div> 
     </div>
 
-    <div class="main p-4 bg-white rounded-r-lg">
-      <h1 class="text-2xl mt-4">{{ project?.name }}</h1>
+    <div class="main p-4">
 
       <!-- Tags -->
       <h2 class="text-xl flex p-3">Tags</h2>

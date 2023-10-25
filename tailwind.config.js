@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       backgroundColor: {
         'D2E0E9': '#D2E0E9',
+        'button-bg-color': '#4CAF50'
       },
     },
   },

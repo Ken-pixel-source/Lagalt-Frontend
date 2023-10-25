@@ -2,23 +2,23 @@
 <div class="page">
 
     <div class="flex justify-around flex-row">
-        <div class="max-w-sm m-4 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="max-w-sm m-4 p-6 bg-white border-none rounded-lg shadow-2xl dark:bg-gray-800 dark:border-gray-700">
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Welcome to Lagalt: Where Creativity Meets Opportunity!</h5>
-        <br>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-            Discover endless possibilities at Lagalt, connecting you to a thriving community of professionals and a treasure trove of tailored projects that ignite your passion. 
-            <br> <br>
-            Join a project today to turn your freelance aspirations into exciting realities!
-        </p>
-        <a [routerLink]="['/project']" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-            Find projects
-            <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-            </svg>
-        </a>
+            <br>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                Discover endless possibilities at Lagalt, connecting you to a thriving community of professionals and a treasure trove of tailored projects that ignite your passion.
+                <br> <br>
+                Join a project today to turn your freelance aspirations into exciting realities!
+            </p>
+            <a [routerLink]="['/project']" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover-bg-blue-700 dark:focus:ring-blue-800">
+                Find projects
+                <svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
         </div>
         <div class="">
-            <img [src]="imageSrc" [alt]="imageAlt" class=" max-w-md min-w-md"/>
+            <img [src]="imageSrc" [alt]="imageAlt" class="max-w-md min-w-md" />
         </div>
-    </div>
+    </div>    
 </div>

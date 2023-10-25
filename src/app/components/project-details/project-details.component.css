@@ -59,10 +59,22 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
+  .custom-button {
+    background-color: white;
+    color: #002449;
+}
+
+.custom-button:hover {
+    background-color: #002449;
+    color: white;
+    border: white solid 2px;
+}
+
+
  /* Base Button Styles */
 button {
-    background-color: #3490dc; /* Base color for bg-blue-500 */
-    color: #fff; /* Text color for text-white */
+    background-color: white; /* Base color for bg-blue-500 */
+    color: #002449; /* Text color for text-white */
     font-weight: 700; /* Font weight for font-bold */
     padding: 0.5rem 1rem; /* Padding for py-2 px-4 */
     border-radius: 0.25rem; /* Rounded corners for rounded */
@@ -75,7 +87,9 @@ button {
 
   /* Hover State */
   button:hover {
-    background-color: #2779bd; /* Color on hover (hover:bg-blue-700) */
+    border: white;
+    color: white;
+    background-color: #002449; /* Color on hover (hover:bg-blue-700) */
   }
 
   /* Column container */
@@ -91,7 +105,7 @@ button {
     flex: 20%;
     display: flex;
     flex-direction: column;
-    background-color: #004080;
+    background-color: #002449;
     padding: 20px;
     height: 100%;
   }
@@ -99,9 +113,7 @@ button {
   /* Main column */
   .main {
     flex: 70%;
-    background-color: white;
     padding: 20px;
-    border-radius: 10px;
 
   }
   .tags{
