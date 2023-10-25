@@ -11,6 +11,7 @@ import keycloak from 'src/keycloak';
 export class PortfolioProjectsListComponent implements OnInit {
 
   public portfolios: PortfolioProject[] = [];
+  public loading: boolean = true;  // Initialize loading to true
 
   constructor(private userService: UserService) { }
 
@@ -20,15 +21,15 @@ export class PortfolioProjectsListComponent implements OnInit {
       this.userService.getUserPortfolios(userId).subscribe(
         (data: PortfolioProject[]) => {
           this.portfolios = data;
+          this.loading = false;  // Set loading to false after data fetching is done
         },
         error => {
           console.error('Error fetching portfolios:', error);
+          this.loading = false;  // Set loading to false in case of error
         }
       );
+    } else {
+      this.loading = false;  // Set loading to false if no userId is available
     }
   }
-
-
-
-
 }
