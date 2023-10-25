@@ -1,27 +1,38 @@
+
 # LagaltNet
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+Lagalt is a collaborative full-stack development project that aims to create a system connecting individuals in creative fields with projects that match their skills. The site covers Music, Film, Game Development, and Web Development at a minimum but can be expanded to other fields.
 
-## Development server
+This project is the frontend part of the lagalt web app, which is connected to a backend server with a REST API. The front end part is made with Angular and TypeScript, and are using Tailwind for a nice look.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Contributors: 
 
-## Code scaffolding
+Kenny Huynh
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Kasper Bruda
 
-## Build
+Ida Christensen
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Jacob Langevei
 
-## Running unit tests
+## Vercel Page
+https://best-lagalt-project.vercel.app/
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Install Dependencies:
+Navigate to the project directory and run:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+npm install
 
-## Further help
+## Environment Setup
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Ensure you have the Keycloak setup (as the project seems to use Keycloak for authentication).
+
+Update the keycloak configuration file with appropriate client ID, realm, and other necessary details.
+
+## Run the Service:
+
+Once all the prerequisites are met and dependencies are installed, run the Angular development server with:
+
+ng serve
+
