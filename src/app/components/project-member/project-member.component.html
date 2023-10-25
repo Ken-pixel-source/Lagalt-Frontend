@@ -45,10 +45,10 @@
                       <td class="px-6 py-4">
                           <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" (click)="viewUserDetails(request.userId)">View Details</button>
                       </td>
-                     
+
                   </tr>
-                  
-                  
+
+
               </tbody>
           </table>
         </div>
@@ -56,11 +56,17 @@
       <div [id]="'Tools'" class="tabcontent" [style.display]="activeTab === 'Tools' ? 'block' : 'none'">
         <h2 class="mb-2 text-lg font-semibold text-gray-900 dark:text-whiter">Users in the project:</h2>
         <ol class="max-w-md space-y-1 text-gray-500 list-decimal list-inside flex justify-center flex-col items-center ">
-          <li *ngFor="let user of projectUsers">
+          <li *ngFor="let user of projectUsers" class="flex justify-between items-center w-full">
             <span class="font-semibold text-gray-900 dark:text-white">{{ user.userName }}</span>
-          </li>
+            <div class="flex space-x-2">
+                <button (click)="viewUserDetails(user.userId)" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">View Details</button>
+                <button *ngIf="isAuthorizedToView()" (click)="removeUserFromProject(user.userId)" class="bg-red-500 text-white px-5 py-2.5 rounded">Remove</button>
+            </div>
+        </li>
+
         </ol>
-      </div>
+    </div>
+
     </div>
   </div>
 </div>
