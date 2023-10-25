@@ -15,6 +15,8 @@ export class ProjectMemberComponent implements OnInit {
   project: Project | undefined;
   projectUsers: any[] = [];
   projectRequests: any[] = [];
+  userDetails: any; // To store fetched user details
+  showModal: boolean = false;
 
 
   constructor(private projectService: ProjectService, private userService: UserService, private route: ActivatedRoute) {}
@@ -64,6 +66,28 @@ export class ProjectMemberComponent implements OnInit {
       });
     }
   }
+
+  viewUserDetails(userId: string): void {
+    this.userService.getUserDataById(userId).subscribe(details => {
+      this.userDetails = details;
+      this.showModal = true; // Display the modal
+    });
+  }
+
+  closeModal(): void {
+    this.showModal = false; // Hide the modal
+  }
+
+  deleteRequest(requestId: string): void {
+    const projectId = this.route.snapshot.paramMap.get('id');
+    if (projectId) {
+        this.projectService.deleteJoinRequest(projectId, requestId).subscribe(() => {
+            // After deletion, filter out the deleted request from projectRequests
+            this.projectRequests = this.projectRequests.filter(request => request.projectRequestId !== requestId);
+        });
+    }
+}
+
 
 
   fetchUserNamesForRequests() {

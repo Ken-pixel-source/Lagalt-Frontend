@@ -15,8 +15,8 @@
     <!-- Display user skills inside Sidebar -->
     <div class="mt-6 bg-white p-4 rounded-md shadow-md">
       <h2 class="text-xl font-bold mb-4 text-[#004080]">Technical Skills:</h2>
-      <ul class="space-y-2 text-left">
-        <li *ngFor="let skill of userSkills" class="text-lg text-[#004080]">-{{skill.skillName }}</li>
+      <ul class="space-y-2 text-center">
+        <li *ngFor="let skill of userSkills" class="text-lg text-[#004080]">{{skill.skillName }}</li>
       </ul>
     </div>
   </div>
@@ -28,9 +28,8 @@
 
       <!-- Dropdown Menu -->
       <div *ngIf="showSettingsMenu" class="absolute right-0 mt-2 w-60 py-3 bg-white rounded-md shadow-xl z-10">
-          <button (click)="openModal('skills')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-green-600">Add Skills</button>
+          <button (click)="openModal('skills')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-green-600">Edit profile</button>
           <button (click)="openModal('portfolio')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-blue-600">Add Portfolio</button>
-          <button (click)="openModal('details')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-orange-400">Edit Details</button>
           <button (click)="openModal('delete')" class="block w-full px-5 py-3 text-center text-base font-medium text-gray-700 hover:bg-red-600">Delete Skills/Portfolio</button>
 
       </div>
@@ -38,7 +37,6 @@
       <!-- Modals -->
       <app-edit-profile *ngIf="activeModal === 'skills'" (saveData)="handleSave($event)" (closeModalRequest)="closeModal()"></app-edit-profile>
       <app-add-portfolio *ngIf="activeModal === 'portfolio'" (savePortfolioData)="portfolioSave($event)" (closePortfolioModalRequest)="closeModal()"></app-add-portfolio>
-      <app-update-user *ngIf="activeModal === 'details'" (saveData)="handleUserUpdate()" (closeModalRequest)="closeModal()"></app-update-user>
       <app-delete-portfo-skills *ngIf="activeModal === 'delete'" (closeModalRequest)="closeModal()"></app-delete-portfo-skills>
 
   </div>
@@ -51,6 +49,14 @@
           <p class="my-4 text-lg ">{{ user.education }}</p>
         </div>
     <app-portfolio-projects-list></app-portfolio-projects-list>
+    <h2 class="text-4xl font-extrabold dark:text-white">Contributing Project</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div *ngFor="let project of userProjects" class="border rounded-lg shadow-md p-4 flex justify-center flex-col items-center">
+        <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{project.imageUrl}}" alt="" />
+        <h3 class="text-lg font-bold">{{ project.name }}</h3>
+        <p class="text-gray-600">{{ project.description }}</p>
+      </div>
+    </div>
 
     <app-owned-project></app-owned-project>
 

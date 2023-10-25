@@ -64,6 +64,14 @@ export class ProjectService {
     return this.httpClient.get<any[]>(`${this.projectUrl}/${id}/users`);
   }
 
+
+  deleteJoinRequest(projectId: string, requestId: string): Observable<any> {
+    const url = `${this.projectUrl}/${projectId}/requests/${requestId}`;
+    return this.httpClient.delete<any>(url);
+  }
+
+
+
   getRequestToJoinProject(projectId: string): Observable<any[]> {
     const url = `${this.projectUrl}/${projectId}/requests`;
     return this.httpClient.get<any[]>(url);

@@ -1,14 +1,23 @@
 <div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
   <div class="bg-white p-4 rounded-lg w-1/2 relative">
-
     <button (click)="closeModal()" class="absolute top-2 right-2 text-xl leading-none hover:text-gray-500">×</button>
 
+    <h2 class="text-xl font-bold mb-4">Update Profile & Skills</h2>
 
-    <h2 class="text-xl font-bold mb-4">Add Skills</h2>
+    <!-- Description Section -->
+    <div class="mb-2">
+      <label for="description" class="block text-sm font-medium text-gray-700">Description:</label>
+      <textarea id="description" placeholder="Enter updated description" [(ngModel)]="Description" class="mt-1 p-2 w-full border rounded-md"></textarea>
+    </div>
+
+    <!-- Education Section -->
+    <div class="mb-2">
+      <label for="education" class="block text-sm font-medium text-gray-700">Education:</label>
+      <input type="text" id="education" [(ngModel)]="Education" class="mt-1 p-2 w-full border rounded-md" placeholder="Enter updated education">
+    </div>
 
     <!-- Skill Input Section -->
     <div class="mb-4">
-
       <div class="mt-1 flex rounded-md shadow-sm">
         <input type="text" name="skill" id="skillInput" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md sm:text-sm border-gray-300" placeholder="Enter your skill" [(ngModel)]="newSkill">
         <button (click)="addSkill()" class="bg-blue-500 text-white p-2 rounded-r-md">Add</button>
@@ -23,8 +32,9 @@
       </ul>
     </div>
 
+    <!-- Save Button -->
     <div class="mt-4 flex justify-end">
-      <button (click)="save()" class="bg-blue-500 text-white p-2 rounded">Save</button>
+      <button (click)="saveChanges()" class="bg-blue-500 text-white p-2 rounded">Save</button>
     </div>
   </div>
 </div>

@@ -18,6 +18,7 @@ export class ProjectDetailsComponent implements OnInit {
   projectTagName: string | undefined;
   tags: Tags[] = [];
 
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -59,11 +60,11 @@ export class ProjectDetailsComponent implements OnInit {
   }
   requestToJoinProject() {
     if (this.project) {
-      const projectId = this.project.projectId.toString(); // Convert to string
+      const projectId = this.project.projectId.toString();
       this.projectService.requestToJoinProject(projectId).subscribe({
         next: () => {
           console.log('Request to join project successful');
-          this.router.navigate(['/project']);
+          alert("request sent!")
         },
         error: (error) => {
           console.error('Error while requesting to join the project:', error);
