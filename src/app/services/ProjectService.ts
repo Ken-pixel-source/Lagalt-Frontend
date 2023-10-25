@@ -65,6 +65,11 @@ export class ProjectService {
   }
 
 
+  leaveProject(projectId: string): Observable<any> {
+    const url = `${this.projectUrl}/${projectId}/leave`;
+    return this.httpClient.delete(url, {});
+  }
+
 
   requestToJoinProject(projectId: string): Observable<any> {
     const url = `${this.projectUrl}/${projectId}/requests`;

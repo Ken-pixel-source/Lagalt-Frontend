@@ -87,6 +87,21 @@ export class ProjectDetailsComponent implements OnInit {
     }
   }
 
+  leaveCurrentProject(): void {
+    const projectId = this.route.snapshot.paramMap.get('id');
+    if (projectId) {
+      this.projectService.leaveProject(projectId).subscribe(() => {
+        // Navigate the user back to the projects page
+        this.router.navigate(['/project']);
+        console.log('Successfully left the project.');
+      }, error => {
+        // Handle the error, maybe show a message to the user
+        console.error('Error leaving the project:', error);
+      });
+    }
+  }
+
+
   requestToJoinProject() {
     if (this.project) {
       const projectId = this.project.projectId.toString();
@@ -108,6 +123,14 @@ export class ProjectDetailsComponent implements OnInit {
     }
   }
 
+  isUserOfProjectButNotOwner(): boolean {
+    const loggedInUserId = keycloak.tokenParsed?.sub;
+
+
+    return this.project?.ownerId !== loggedInUserId && this.projectUsers.some(user => user.userId === loggedInUserId);
+  }
+
+
 
   fetchProjectUsers(projectId: string) {
     this.projectService.getUsersByProjectId(parseInt(projectId, 10)).subscribe(users => {
@@ -116,7 +139,7 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   isAuthorizedToView(): boolean {
-    const loggedInUserId = keycloak.tokenParsed?.sub;  // Using Keycloak to get the logged-in user's ID
+    const loggedInUserId = keycloak.tokenParsed?.sub;
 
     if (this.project?.ownerId === loggedInUserId) {
       return true;
