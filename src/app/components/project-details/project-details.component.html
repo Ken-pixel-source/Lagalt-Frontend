@@ -31,12 +31,12 @@
         <div class="mt-4">
           <button class="btn custom-button" *ngIf="!hasRequestedToJoin && !isAuthorizedToView()" (click)="requestToJoinProject()">Request to Join</button>
           <button
-  class="bg-red-500 text-white px-4 py-2 hover:bg-red-700 transition-colors duration-300"
-  *ngIf="isUserOfProjectButNotOwner()"
-  (click)="leaveCurrentProject()"
->
-  Leave Project
-</button>
+            class="bg-red-500 text-white px-4 rounded-xl py-2 hover:bg-red-700 transition-colors duration-300"
+            *ngIf="isUserOfProjectButNotOwner()"
+            (click)="leaveCurrentProject()"
+          >
+            Leave Project
+          </button>
           <button  class="btn custom-button" *ngIf="hasRequestedToJoin" disabled>Request Sent</button>
       </div>
     </div>

@@ -3,11 +3,11 @@
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
 </div>
 
-<div class=" shadow-md sm:rounded-lg">
+<div class="shadow-md rounded-xl sm:rounded-md">
   <table class="w-full text-sm text-left">
-      <caption class="p-5 text-lg font-bold text-left text-gray-950 bg-white">
+      <caption class="p-5 text-lg font-bold text-left text-gray-950 bg-white rounded-t-xl">
           My portfolio
-          <p class=" text-sm text-gray-500">Here you can se all my previous projects</p>
+          <p class="text-sm text-gray-500">Here you can see all my previous projects</p>
       </caption>
       <thead class="text-xs text-gray-900 uppercase bg-gray-100">
           <tr>
@@ -26,25 +26,22 @@
           </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let portfolio of portfolios"class="bg-white border-b">
+          <tr *ngFor="let portfolio of portfolios" class="bg-white border-b rounded-b-xl">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900">
-                {{ portfolio.portfolioProjectName }}
+                  {{ portfolio.portfolioProjectName }}
               </th>
               <td class="px-6 py-4">
-                {{ portfolio.portfolioProjectDescription }}
+                  {{ portfolio.portfolioProjectDescription }}
               </td>
               <td class="px-6 py-4">
-                {{ portfolio.startDate | date }}
+                  {{ portfolio.startDate | date }}
               </td>
               <td class="px-6 py-4">
-                {{ portfolio.endDate | date }}
+                  {{ portfolio.endDate | date }}
               </td>
-
           </tr>
-
       </tbody>
   </table>
-
 </div>
 
 
