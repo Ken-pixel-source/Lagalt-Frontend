@@ -7,17 +7,16 @@
 <div class="flex" *ngIf="!loading">
   <!-- Sidebar -->
   <div class="w-64 flex flex-col p-20 bg-[#004080] text-white space-y-4 fixed left-0 top-0 h-screen overflow-y-auto">
-    <div class="mt-4 flex items-center justify-center space-x-4">
+    <div class="mt-4 flex items-center justify-center space-x-4 mb-4">
         <div class="leaderInfo text-center">
-            <h2 class="text-2xl font-bold text-center">{{ userName }}</h2>
+          <h2 class="text-2xl font-bold text-center" style="text-transform: uppercase;">{{ userName }}</h2>
         </div>
     </div>
     <!-- Display user skills inside Sidebar -->
-      <h2 class="text-xl font-bold mb-4 text-white">Technical Skills:</h2>
-      <ul class="space-y-2 text-center">
-        <li *ngFor="let skill of userSkills" class="text-lg text-white">{{skill.skillName }}</li>
-      </ul>
-
+    <h2 class="text-xl font-bold mb-4 text-white">Technical Skills:</h2>
+    <ul class="space-y-2 text-center">
+      <li *ngFor="let skill of userSkills" class="text-lg text-white">{{skill.skillName }}</li>
+    </ul>
   </div>
 
   <!-- Main Content -->
@@ -47,16 +46,19 @@
           <p class="my-4 text-lg ">{{ user.education }}</p>
         </div>
         <app-portfolio-projects-list></app-portfolio-projects-list>
-        <h2 class="text-4xl font-extrabold dark:text-white mt-5 mb-5">Contributing Project</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div *ngFor="let project of userProjects"[routerLink]="['/projects', project.projectId]"class="border rounded-lg shadow-md p-4 flex justify-center flex-col items-center cursor-pointer bg-white hover:scale-105">
-        <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{ project.imageUrl }}" alt="" />
-        <h3 class="text-lg font-bold">{{ project.name }}</h3>
-        <p class="text-gray-600">{{ project.description }}</p>
-        </div>
+        <div *ngIf="userProjects && userProjects.length > 0">
+          <h2 class="text-4xl font-extrabold dark:text-white mt-5 mb-5">Contributing Project</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div *ngFor="let project of userProjects" [routerLink]="['/projects', project.projectId]" class="border rounded-lg shadow-md p-4 flex justify-center flex-col items-center cursor-pointer bg-white hover:scale-105">
+                  <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{ project.imageUrl }}" alt="" />
+                  <h3 class="text-lg font-bold">{{ project.name }}</h3>
+                  <p class="text-gray-600">{{ project.description }}</p>
+              </div>
+          </div>
       </div>
 
-    <app-owned-project></app-owned-project>
+      <app-owned-project></app-owned-project>
+
 
   </div>
 

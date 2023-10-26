@@ -1,12 +1,12 @@
-<h2 class="text-4xl font-extrabold dark:text-white mt-5 mb-5">Owned projects</h2>
+<div *ngIf="ownedProjects && ownedProjects.length > 0">
+  <h2 class="text-4xl font-extrabold dark:text-white mt-5 mb-5">Owned projects</h2>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-  <div *ngFor="let project of ownedProjects" [routerLink]="['/projects', project?.projectId]" class="border cursor-pointer rounded-lg shadow-md p-4 flex justify-center flex-col items-center bg-white hover:scale-105">
-    <!-- Display Project Details -->
-    <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{project.imageUrl}}" alt="" />
-    <h3 class="text-lg font-bold">{{ project.name }}</h3>
-    <p class="text-gray-600">{{ project.description }}</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div *ngFor="let project of ownedProjects" [routerLink]="['/projects', project?.projectId]" class="border cursor-pointer rounded-lg shadow-md p-4 flex justify-center flex-col items-center bg-white hover:scale-105">
+          <!-- Display Project Details -->
+          <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{project.imageUrl}}" alt="" />
+          <h3 class="text-lg font-bold">{{ project.name }}</h3>
+          <p class="text-gray-600">{{ project.description }}</p>
+      </div>
   </div>
 </div>
-
-
