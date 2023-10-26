@@ -157,14 +157,7 @@ export class ProjectDetailsComponent implements OnInit {
     });
   }
 
-  getTagName(id: number, tagId: number): void {
-    this.projectService.getProjectTagName(id, tagId).subscribe({
-      next: (tagName) => {
-        this.projectTagName = tagName;
-      },
-      error: (error) => console.log(error),
-    });
-  }
+
 
   goBack(): void {
     this.router.navigate(['/project']);

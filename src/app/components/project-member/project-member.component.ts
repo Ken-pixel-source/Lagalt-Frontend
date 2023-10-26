@@ -17,7 +17,7 @@ export class ProjectMemberComponent implements OnInit {
   projectRequests: any[] = [];
   userDetails: any; // To store fetched user details
   showModal: boolean = false;
-
+  loading: boolean = true;
 
   constructor(private projectService: ProjectService, private userService: UserService, private route: ActivatedRoute) {}
 
@@ -96,7 +96,6 @@ export class ProjectMemberComponent implements OnInit {
     const projectId = this.route.snapshot.paramMap.get('id');
     if (projectId) {
         this.projectService.deleteJoinRequest(projectId, requestId).subscribe(() => {
-            // After deletion, filter out the deleted request from projectRequests
             this.projectRequests = this.projectRequests.filter(request => request.projectRequestId !== requestId);
         });
     }

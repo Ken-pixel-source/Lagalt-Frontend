@@ -11,15 +11,20 @@ import { ProjectService } from 'src/app/services/ProjectService';
 export class ProjectItemComponent implements OnInit {
   @Input() project?: Project;
   projectTypeName: string | undefined;
+  projectTags: string[] = [];
 
   constructor(private router: Router, private projectService: ProjectService) {}
+
+
 
   ngOnInit(): void {
     if (this.project && this.project.projectTypeId) {
       this.getProjectTypeName(this.project.projectTypeId);
+      this.getProjectTags(this.project.projectId)
     }
-  }
 
+
+  }
   // Gets the projettype name by the id thats in the project
   getProjectTypeName(projectTypeId: number): void {
     this.projectService.getProjectTypeName(projectTypeId).subscribe({
@@ -29,4 +34,17 @@ export class ProjectItemComponent implements OnInit {
       error: (error) => console.log(error),
     });
   }
+
+  getProjectTags(projectId: number): void {
+    this.projectService.getProjectTags(projectId.toString()).subscribe({
+      next: (tags) => {
+        this.projectTags = tags.map(tag => tag.tagName);
+      },
+      error: (error) => console.log(error),
+    });
+  }
+
 }
+
+
+

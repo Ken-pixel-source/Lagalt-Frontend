@@ -14,6 +14,7 @@ export class ProjectPageComponent implements OnInit  {
     private userService: UserService // Inject the UserService
   ) { }
 
+
   ngOnInit(): void {
     this.registerUser();
   }

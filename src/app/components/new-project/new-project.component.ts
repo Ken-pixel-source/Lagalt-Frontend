@@ -10,7 +10,7 @@ import keycloak from 'src/keycloak';
   templateUrl: './new-project.component.html',
   styleUrls: ['./new-project.component.css']
 })
-export class NewProjectComponent implements OnInit {  
+export class NewProjectComponent implements OnInit {
   project: any = {
     name: '',
     description: '',
@@ -18,31 +18,31 @@ export class NewProjectComponent implements OnInit {
     projectTypes: [],
     tags: []
   };
-  projectTypes: any[] = []; 
+  projectTypes: any[] = [];
   tagInput: string = '';
 
   constructor(private projectService: ProjectService, private router: Router) { }
 
-  // ... other properties ...
+
 
   createProject() {
     const tagsArray = this.tagInput.split(',').map(tag => tag.trim());
-    this.project.tags = tagsArray.map(tagName => ({ TagName: tagName }));  // Adjusted here
+    this.project.tags = tagsArray.map(tagName => ({ TagName: tagName }));
 
 
-    // ... other code ...
+
 
     this.projectService.createProject(this.project).pipe(
       switchMap((response: any) => {
-        // Assuming the response contains the created project's data
+
         const projectId = response.projectId;
         console.log('Project created successfully!', response);
-        
-        // Create an array of Observables for each tag to be added
-        const addTagObservables = this.project.tags.map((tag: TagsCreate) => 
+
+
+        const addTagObservables = this.project.tags.map((tag: TagsCreate) =>
         this.projectService.addTag(projectId, tag)
       );
-        // Use forkJoin to wait for all addTag requests to complete
+
         return forkJoin(addTagObservables);
       })
     ).subscribe(
@@ -56,7 +56,7 @@ export class NewProjectComponent implements OnInit {
     );
   }
 
-  
+
   ngOnInit() {
     this.projectService.getProjectType().subscribe(
       (projectTypes) => {
