@@ -18,32 +18,30 @@ export class NewProjectComponent implements OnInit {
     projectTypes: [],
     tags: []
   };
-
-  tags: { TagName: string }[] = [];
-  newTag: string = '';
   projectTypes: any[] = [];
   tagInput: string = '';
 
   constructor(private projectService: ProjectService, private router: Router) { }
 
 
-  addTag() {
-    if (this.newTag.trim()) {
-      this.tags.push({ TagName: this.newTag.trim() });
-      this.newTag = '';
-    }
-  }
+
   createProject() {
-    this.project.tags = this.tags;
+    const tagsArray = this.tagInput.split(',').map(tag => tag.trim());
+    this.project.tags = tagsArray.map(tagName => ({ TagName: tagName }));
+
+
+
 
     this.projectService.createProject(this.project).pipe(
       switchMap((response: any) => {
+
         const projectId = response.projectId;
         console.log('Project created successfully!', response);
 
+
         const addTagObservables = this.project.tags.map((tag: TagsCreate) =>
-          this.projectService.addTag(projectId, tag)
-        );
+        this.projectService.addTag(projectId, tag)
+      );
 
         return forkJoin(addTagObservables);
       })
