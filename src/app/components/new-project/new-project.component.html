@@ -25,10 +25,17 @@
       </select>
     </div>
 
+
     <div class="m-6">
       <label for="tags" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Tags</label>
-      <input type="text" id="tags" [(ngModel)]="tagInput" name="tags" placeholder="Enter tags, separated by commas" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
-  </div>
+      <input type="text" id="newTag" [(ngModel)]="newTag" name="newTag" placeholder="Enter a tag" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required>
+      <button (click)="addTag()" class="bg-blue-500 text-white p-2 rounded-r-md">Add</button>
+      <div class="mt-2">
+        <ul>
+          <li *ngFor="let tag of tags">{{ tag.TagName }}</li>
+        </ul>
+      </div>
+    </div>
 
     <div class="m-6">
         <label for="image" class="block mb-2 text-lg font-medium text-gray-900 dark:text-white">Image URL</label>
