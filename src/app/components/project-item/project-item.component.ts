@@ -20,10 +20,7 @@ export class ProjectItemComponent implements OnInit {
     }
   }
 
-  redirectToProductDetail(productId: number): void {
-    this.router.navigate(['/product', productId]);
-  }
-
+  // Gets the projettype name by the id thats in the project
   getProjectTypeName(projectTypeId: number): void {
     this.projectService.getProjectTypeName(projectTypeId).subscribe({
       next: (typeName) => {

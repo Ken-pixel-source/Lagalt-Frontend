@@ -24,7 +24,9 @@ export class NewProjectComponent implements OnInit {
   createProject() {
     // Split the input tags string into an array
     const tagsArray = this.tagInput.split(',').map(tag => tag.trim());
-    this.project.tags = tagsArray.map(tagName => ({ tagName })); // Transforming each tag string to an object with tagName property
+    // Transforming each tag string to an object with tagName property
+    this.project.tags = tagsArray.map(tagName => ({ tagName })); 
+   
 
     this.project.projectStatusId = 1;
     console.log('Project data to be sent to the API:', this.project);
