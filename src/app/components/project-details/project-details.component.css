@@ -92,7 +92,7 @@ body {
   /* Main column */
   .main {
     flex: 70%;
-    padding: 20px;
+    margin: 0;
 
   }
   .tags{
