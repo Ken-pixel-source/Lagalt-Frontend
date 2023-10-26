@@ -43,8 +43,8 @@ export class ProjectListComponent implements OnInit {
     });
   }
 
-  searchQuery: string = ''; // Property to store the search query
-  filteredProjects: Project[] = []; // Property to store filtered projects
+  searchQuery: string = ''; 
+  filteredProjects: Project[] = []; 
   selectedProjectTypes: number[] = [];
 
   filterProjects() {

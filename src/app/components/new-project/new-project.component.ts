@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { forkJoin, switchMap } from 'rxjs';
+import { TagsCreate } from 'src/app/models/projects';
 import { ProjectService } from 'src/app/services/ProjectService';
 import keycloak from 'src/keycloak';
 
@@ -19,32 +21,42 @@ export class NewProjectComponent implements OnInit {
   projectTypes: any[] = []; 
   tagInput: string = '';
 
-  constructor(private projectService: ProjectService, private router: Router) {}
+  constructor(private projectService: ProjectService, private router: Router) { }
+
+  // ... other properties ...
 
   createProject() {
-    // Split the input tags string into an array
     const tagsArray = this.tagInput.split(',').map(tag => tag.trim());
-    this.project.tags = tagsArray.map(tagName => ({ tagName })); // Transforming each tag string to an object with tagName property
+    this.project.tags = tagsArray.map(tagName => ({ TagName: tagName }));  // Adjusted here
 
-    this.project.projectStatusId = 1;
-    console.log('Project data to be sent to the API:', this.project);
-    this.projectService.createProject(this.project).subscribe(
-      (response) => {
-        // Handle the successful response, e.g., show a success message
+    // ... other code ...
+
+    this.projectService.createProject(this.project).pipe(
+      switchMap((response: any) => {
+        // Assuming the response contains the created project's data
+        const projectId = response.projectId;
         console.log('Project created successfully!', response);
-        // You can also navigate to the project list or perform other actions
+        
+        // Create an array of Observables for each tag to be added
+        const addTagObservables = this.project.tags.map((tag: TagsCreate) => 
+        this.projectService.addTag(projectId, tag)
+      );
+        // Use forkJoin to wait for all addTag requests to complete
+        return forkJoin(addTagObservables);
+      })
+    ).subscribe(
+      (response) => {
+        console.log('Tags added successfully!', response);
         this.router.navigate(['/project']);
       },
       (error) => {
-        // Handle any errors that occur during project creation
-        console.error('Error creating the project:', error);
-        // You can display an error message or take appropriate action
+        console.error('Error:', error);
       }
     );
   }
+
   
   ngOnInit() {
-    // Fetch project types and store them in projectTypes
     this.projectService.getProjectType().subscribe(
       (projectTypes) => {
         this.projectTypes = projectTypes;

@@ -30,8 +30,9 @@ export interface Tags {
 }
 
 export interface TagsCreate {
-  tagName: string;
+  TagName: string;
 }
+
 
 export interface ProjectUsers {
   projectId: number;
