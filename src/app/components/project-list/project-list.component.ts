@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Project, ProjectType } from 'src/app/models/projects';
 import {ProjectService} from 'src/app/services/ProjectService'
 import { ActivatedRoute, Router } from '@angular/router';
+import { forkJoin } from 'rxjs';
+
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
@@ -16,36 +18,37 @@ export class ProjectListComponent implements OnInit {
     private projectService: ProjectService,
     private router: Router,
     private route: ActivatedRoute
-    
+
     ) {}
 
-  ngOnInit(): void {
-    //   Fetch projects from the service  
-    this.projectService.getProjects().subscribe({
-      next: (projectsData) => {
-        this.projects = projectsData;
-        this.filterProjects();
-        console.log('Projects loaded:', this.projects);
-      },
-      error: (error) => {
-        console.error('Error loading projects:', error);
-      }
-    });
-    // Fetch projecttypes from the service
-    this.projectService.getProjectType().subscribe({
-      next: (projectTypesData) => {
-        this.projectTypes = projectTypesData;
-        this.filterProjects();
-        console.log('Project types loaded:', this.projectTypes);
-      },
-      error: (error) => {
-        console.error('Error loading project types:', error);
-      }
-    });
+    loading: boolean = true;
+    ngOnInit(): void {
+      this.loading = true;  // Set loading to true at the start
+
+      // Create observables for the two data fetches
+      const projectsObservable = this.projectService.getProjects();
+      const projectTypesObservable = this.projectService.getProjectType();
+
+      // Use forkJoin to wait for both observables to complete
+      forkJoin([projectsObservable, projectTypesObservable]).subscribe(
+        ([projectsData, projectTypesData]) => {
+          this.projects = projectsData;
+          this.projectTypes = projectTypesData;
+          this.filterProjects();
+          console.log('Projects loaded:', this.projects);
+          console.log('Project types loaded:', this.projectTypes);
+          this.loading = false;  // Set loading to false when both calls are complete
+        },
+        (error) => {
+          console.error('Error loading data:', error);
+          this.loading = false;  // Set loading to false in case of error
+        }
+      );
   }
 
-  searchQuery: string = ''; 
-  filteredProjects: Project[] = []; 
+
+  searchQuery: string = '';
+  filteredProjects: Project[] = [];
   selectedProjectTypes: number[] = [];
 
   // Function to filter projects on input and checkbox
@@ -53,7 +56,7 @@ export class ProjectListComponent implements OnInit {
     this.filteredProjects = this.projects.filter((project) =>
       project.name.toLowerCase().includes(this.searchQuery.toLowerCase()) &&
       (
-        this.selectedProjectTypes.length === 0 || (project.projectTypeId !== null && 
+        this.selectedProjectTypes.length === 0 || (project.projectTypeId !== null &&
         this.selectedProjectTypes.includes(project.projectTypeId)
       ))
     );
