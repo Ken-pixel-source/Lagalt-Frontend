@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Project, ProjectResponse, ProjectType, Tags } from '../models/projects';
+import { Project, ProjectResponse, ProjectType, Tags, TagsCreate } from '../models/projects';
 import { environment } from '../enviroment/enviroments';
 import { map } from 'rxjs';
 
@@ -50,6 +50,13 @@ export class ProjectService {
   createProject(project: any ): Observable<any> {
     return this.httpClient.post(`${this.projectUrl}`, project);
   }
+
+
+  addTag(projectId: number, tag: TagsCreate): Observable<any> {
+    const endpoint = `${this.projectUrl}/${projectId}/tags/add`;
+    return this.httpClient.post(endpoint, tag);  // Sending a single tag object
+}
+
 
   checkIfRequestSent(projectId: string, userId: string): Observable<boolean> {
     return this.httpClient.get<any[]>(`${this.projectUrl}/${projectId}/requests`).pipe(
