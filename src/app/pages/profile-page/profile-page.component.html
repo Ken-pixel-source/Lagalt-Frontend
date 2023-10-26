@@ -44,7 +44,6 @@
       <app-delete-portfo-skills *ngIf="activeModal === 'delete'" (closeModalRequest)="closeModal()"></app-delete-portfo-skills>
 
   </div>
-
         <div *ngIf="user">
           <h2 class="text-2xl font-extrabold dark:text-white">About me</h2>
           <p class="my-4 text-lg ">{{ user.description }}</p>
@@ -55,17 +54,12 @@
         <app-portfolio-projects-list></app-portfolio-projects-list>
         <h2 class="text-4xl font-extrabold dark:text-white mt-5 mb-5">Contributing Project</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div
-  *ngFor="let project of userProjects"
-  [routerLink]="['/projects', project.projectId]"
-  class="border rounded-lg shadow-md p-4 flex justify-center flex-col items-center cursor-pointer bg-white transform transition-transform hover:scale-105"
->
-  <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{ project.imageUrl }}" alt="" />
-  <h3 class="text-lg font-bold">{{ project.name }}</h3>
-  <p class="text-gray-600">{{ project.description }}</p>
-  </div>
-</div>
-
+      <div *ngFor="let project of userProjects"[routerLink]="['/projects', project.projectId]"class="border rounded-lg shadow-md p-4 flex justify-center flex-col items-center cursor-pointer bg-white hover:scale-105">
+        <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{ project.imageUrl }}" alt="" />
+        <h3 class="text-lg font-bold">{{ project.name }}</h3>
+        <p class="text-gray-600">{{ project.description }}</p>
+        </div>
+      </div>
 
     <app-owned-project></app-owned-project>
 
