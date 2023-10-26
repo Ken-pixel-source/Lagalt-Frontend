@@ -4,9 +4,9 @@
 </div>
 
 
-<div class="flex h-screen bg-gray-100 overflow-auto" *ngIf="!loading">
+<div class="content flex h-full bg-gray-100" *ngIf="!loading">
   <!-- Sidebar -->
-  <div class="flex flex-col p-5 h-screen bg-[#004080] text-white space-y-4">
+  <div class="side flex flex-col p-5 h-full bg-[#004080] text-white space-y-4">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 cursor-pointer" id="arrow" (click)="goBack()">
       <path fill="yellow" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
     </svg>
@@ -26,7 +26,7 @@
   </div>
 
   <!-- Main Content -->
-  <div class="flex-grow p-4 md:p-6 overflow-y-auto" *ngIf="!loading">
+  <div class="flex-grow p-4 md:p-6 overflow-y-auto main" *ngIf="!loading">
     <div class="flex justify-end mb-6 space-x-4">
       <img src="assets\images\Settings.png" alt="Settings" (click)="toggleSettingsMenu()" class="h-8 w-8 cursor-pointer">
 

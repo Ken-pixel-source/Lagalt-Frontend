@@ -8,27 +8,11 @@
       </a>
 
     <!--Hamburger menu-->
-      <button data-collapse-toggle="navbar-hamburger" (click)="toggleDropdown()" type="button" class="inline-flex items-center justify-center p-2 w-10 h-10 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-hamburger" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-        </svg>
-      </button>
-      <div *ngIf="showDropdown" class="absolute mt-12 top-15 bg-white p-4 rounded shadow-lg top-15" id="navbar-hamburger">
-        <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
-          <li>
-            <a routerLink="#" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-blue-700 dark:bg-blue-600  hover:text-white" aria-current="page">Home</a>
-          </li>
-          <li>
-            <a routerLink="/project" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-blue-700 dark:bg-blue-600  hover:text-white">Projects</a>
-          </li>
-          <li>
-            <a routerLink="/profile" class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-blue-700  dark:bg-blue-600 hover:text-white">Profile</a>
-          </li>
-        </ul>
-      </div>
+    <button type="button" routerLink="/project" class="flex items-center justify-between py-2.5 px-5 text-sm font-medium text-white focus:outline-none bg-blue-800 rounded-full border border-gray-200 transform transition-transform hover:scale-105 hover:bg-opacity-90 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-button-bg-color dark:text-white dark:border-gray-600 dark:hover:text-white dark:hover:bg-button-bg-color">
+      <p class="mr-1">View projects</p>
+    </button>
     </div>
-
+   
     <!--Right section-->
     <div class="flex items-center justify-end p-4">
       <button type="button" routerLink="/newproject" class="flex items-center justify-between py-2.5 px-5 text-sm font-medium text-white focus:outline-none bg-button-bg-color rounded-full border border-gray-200 transform transition-transform hover:scale-105 hover:bg-opacity-90 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-button-bg-color dark:text-white dark:border-gray-600 dark:hover:text-white dark:hover:bg-button-bg-color">
