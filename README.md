@@ -9,7 +9,7 @@ This project is the frontend part of the lagalt web app, which is connected to a
 
 Kenny Huynh
 
-Kasper Bruda
+Kasper Brudal
 
 Ida Christensen
 

@@ -20,6 +20,7 @@ export class ProjectListComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
+    //   Fetch projects from the service  
     this.projectService.getProjects().subscribe({
       next: (projectsData) => {
         this.projects = projectsData;
@@ -30,7 +31,7 @@ export class ProjectListComponent implements OnInit {
         console.error('Error loading projects:', error);
       }
     });
-  
+    // Fetch projecttypes from the service
     this.projectService.getProjectType().subscribe({
       next: (projectTypesData) => {
         this.projectTypes = projectTypesData;
@@ -47,6 +48,7 @@ export class ProjectListComponent implements OnInit {
   filteredProjects: Project[] = []; 
   selectedProjectTypes: number[] = [];
 
+  // Function to filter projects on input and checkbox
   filterProjects() {
     this.filteredProjects = this.projects.filter((project) =>
       project.name.toLowerCase().includes(this.searchQuery.toLowerCase()) &&

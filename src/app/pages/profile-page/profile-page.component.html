@@ -4,29 +4,29 @@
 </div>
 
 
-<div class="flex h-screen bg-gray-100 overflow-auto" *ngIf="!loading">
+<div class="flex" *ngIf="!loading">
   <!-- Sidebar -->
-  <div class="flex flex-col p-5 h-screen bg-[#004080] text-white space-y-4">
+  <div class="w-64 flex flex-col p-20 bg-[#004080] text-white space-y-4 fixed left-0 top-0 h-screen overflow-y-auto">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-6 h-6 cursor-pointer" id="arrow" (click)="goBack()">
-      <path fill="yellow" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
+        <path fill="yellow" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" />
     </svg>
     <div class="mt-4 flex items-center justify-center space-x-4">
-      <div class="leaderInfo">
-          <h2 class="text-2xl font-bold">{{ userName }}</h2>
-      </div>
+        <div class="leaderInfo">
+            <h2 class="text-2xl font-bold">{{ userName }}</h2>
+        </div>
     </div>
 
     <!-- Display user skills inside Sidebar -->
-    <div class="mt-6 bg-white p-4 rounded-md shadow-md">
-      <h2 class="text-xl font-bold mb-4 text-[#004080]">Technical Skills:</h2>
+    <div class="mt-6 p-4 rounded-md">
+      <h2 class="text-xl font-bold mb-4 text-white">Technical Skills:</h2>
       <ul class="space-y-2 text-center">
-        <li *ngFor="let skill of userSkills" class="text-lg text-[#004080]">{{skill.skillName }}</li>
+        <li *ngFor="let skill of userSkills" class="text-lg text-white">{{skill.skillName }}</li>
       </ul>
     </div>
   </div>
 
   <!-- Main Content -->
-  <div class="flex-grow p-4 md:p-6 overflow-y-auto" *ngIf="!loading">
+  <div class="ml-64 p-4 md:p-6 overflow-y-auto" *ngIf="!loading">
     <div class="flex justify-end mb-6 space-x-4">
       <img src="assets\images\Settings.png" alt="Settings" (click)="toggleSettingsMenu()" class="h-8 w-8 cursor-pointer">
 
@@ -44,7 +44,6 @@
       <app-delete-portfo-skills *ngIf="activeModal === 'delete'" (closeModalRequest)="closeModal()"></app-delete-portfo-skills>
 
   </div>
-
         <div *ngIf="user">
           <h2 class="text-2xl font-extrabold dark:text-white">About me</h2>
           <p class="my-4 text-lg ">{{ user.description }}</p>
@@ -53,14 +52,14 @@
           <p class="my-4 text-lg ">{{ user.education }}</p>
         </div>
         <app-portfolio-projects-list></app-portfolio-projects-list>
-        <h2 class="text-4xl font-extrabold dark:text-white">Contributing Project</h2>
+        <h2 class="text-4xl font-extrabold dark:text-white mt-5 mb-5">Contributing Project</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div *ngFor="let project of userProjects" [routerLink]="['/projects', project.projectId]" class="border rounded-lg shadow-md p-4 flex justify-center flex-col items-center cursor-pointer">
-        <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{project.imageUrl}}" alt="" />
+      <div *ngFor="let project of userProjects"[routerLink]="['/projects', project.projectId]"class="border rounded-lg shadow-md p-4 flex justify-center flex-col items-center cursor-pointer bg-white hover:scale-105">
+        <img class="w-24 h-24 mb-3 rounded-full shadow-lg flex justify-center" src="{{ project.imageUrl }}" alt="" />
         <h3 class="text-lg font-bold">{{ project.name }}</h3>
         <p class="text-gray-600">{{ project.description }}</p>
+        </div>
       </div>
-    </div>
 
     <app-owned-project></app-owned-project>
 

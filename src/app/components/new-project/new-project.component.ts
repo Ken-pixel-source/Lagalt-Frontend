@@ -29,6 +29,7 @@ export class NewProjectComponent implements OnInit {
     const tagsArray = this.tagInput.split(',').map(tag => tag.trim());
     this.project.tags = tagsArray.map(tagName => ({ TagName: tagName }));  // Adjusted here
 
+
     // ... other code ...
 
     this.projectService.createProject(this.project).pipe(

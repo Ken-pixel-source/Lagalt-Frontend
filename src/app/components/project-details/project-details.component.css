@@ -12,7 +12,7 @@ body {
 
 #arrow{
     display: flex;
-    border: 5px solid #FFC107;
+    border: 5px solid #ffffff;
     border-radius: 15px;
     color: yellow;
     background-color: #004080;
@@ -85,14 +85,14 @@ body {
     flex: 20%;
     display: flex;
     flex-direction: column;
-    background-color: #002449;
+    background-color: #004080;
     padding: 20px;
   }
 
   /* Main column */
   .main {
     flex: 70%;
-    padding: 20px;
+    margin: 0;
 
   }
   .tags{
@@ -109,5 +109,8 @@ body {
 
   /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
   @media screen and (max-width: 700px) {
-
+    .content{
+      display: flex;
+      flex-direction: column;
+    }
   }

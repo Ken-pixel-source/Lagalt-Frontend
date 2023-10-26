@@ -1,21 +1,21 @@
-<div class="container">
+<div class="container w-full">
 
-  <div class="bg-gray-100 shadow-lg rounded-lg row">
+  <div class="rounded-lg row">
 
     <div class="main">
-      <div class="tab h-8 bg-green-500 flex justify-between items-center" id="tabs">
+      <div class="tab h-8 bg-blue-800 flex justify-between items-center text-white" id="tabs">
         <div (click)="openTab('Message')" [class.active]="activeTab === 'Message'" class="tabItem">Message Board</div>
         <div *ngIf="isAuthorizedToView()"  (click)="openTab('Process')" [class.active]="activeTab === 'Process'" class="tabItem">Join Requests</div>
         <div (click)="openTab('Tools')" [class.active]="activeTab === 'Tools'" class="tabItem">Member List</div>
-      </div>
+      </div>      
       <div [id]="'Message'" class="tabcontent" [style.display]="activeTab === 'Message' ? 'block' : 'none'">
         <app-new-message></app-new-message>
         <app-message></app-message>
       </div>
       <div [id]="'Process'" class="tabcontent" [style.display]="activeTab === 'Process' ? 'block' : 'none'">
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <div class="relative overflow-x-auto sm:rounded-lg p-2">
+          <table class=" w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead class="text-xs text-gray-700 uppercase dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                       <th scope="col" class="px-6 py-3">
                           User name
@@ -32,8 +32,8 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let request of projectRequests" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  <tr *ngFor="let request of projectRequests" class=" dark:bg-gray-800 dark:border-gray-700 hover: dark:hover:bg-gray-600">
+                      <th scope="row" class=" px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           {{request.userName}}
                       </th>
                       <td class="px-6 py-4">

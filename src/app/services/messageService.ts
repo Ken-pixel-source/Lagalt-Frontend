@@ -27,6 +27,7 @@ export class MessageService {
     return this.httpClient.get<Message>(url);
   }
 
+  // Create a new message
   createMessage(id: string, message: MessageCreate): Observable<any> {
     return this.httpClient.post(`${this.projectUrl}/${id}/messages`, message).pipe(
       tap((newMessage: any) => {
