@@ -148,6 +148,8 @@ export class ProjectDetailsComponent implements OnInit {
     return this.projectUsers.some(user => user.userId === loggedInUserId);
   }
 
+
+
   getProjectTypeName(projectTypeId: number): void {
     this.projectService.getProjectTypeName(projectTypeId).subscribe({
       next: (typeName) => {
@@ -157,7 +159,15 @@ export class ProjectDetailsComponent implements OnInit {
     });
   }
 
+  isNotAuthorizedToView(): boolean {
+    const loggedInUserId = keycloak.tokenParsed?.sub;
 
+    if (this.project?.ownerId === loggedInUserId) {
+        return false;
+    }
+
+    return !this.projectUsers.some(user => user.userId === loggedInUserId);
+}
 
   goBack(): void {
     this.router.navigate(['/project']);
