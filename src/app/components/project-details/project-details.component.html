@@ -44,28 +44,30 @@
   <div class="main h-full w-full m-0 overflow-y-auto">
     <!-- Description -->
     <h2 class="text-2xl m-4 justify-start flex">Description</h2>
-    <div class="flex justify-start p-1 border-red-200">
+    <div  class="flex justify-start p-1 border-red-200">
       <p class="m-4 text-gray-700 mb-2">{{ project?.description }}</p>
     </div>
 
     <!-- Requirements -->
-    <h2 class="text-2xl m-4 justify-start flex">Requirements</h2>
-    <div class="m-4 flex justify-start text-left">
-      <ul class="m-4 text-yellow list-disc dark-text-gray-400">
-        <li class="">
-          Must have a Bachelor's degree
-        </li>
-        <li>
-          Knows how to use Github
-        </li>
-        <li>
-          Can program languages such as C# and .Net
-        </li>
-        <li>
-          Experience with Microsoft Azure
-        </li>
-      </ul>
-    </div>
+    <ng-container *ngIf="isNotAuthorizedToView()">
+      <h2 class="text-2xl m-4 justify-start flex">Requirements</h2>
+      <div class="m-4 flex justify-start text-left">
+        <ul class="m-4 text-yellow list-disc dark-text-gray-400">
+          <li class="">
+            Must have a Bachelor's degree
+          </li>
+          <li>
+            Knows how to use Github
+          </li>
+          <li>
+            Knows programming languages such as C# and .Net
+          </li>
+          <li>
+            Experience with Microsoft Azure
+          </li>
+        </ul>
+      </div>
+  </ng-container>
     <app-project-member *ngIf="isAuthorizedToView()"></app-project-member>
   </div>
 </div>
